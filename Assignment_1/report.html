@@ -1,0 +1,415 @@
+<!DOCTYPE html><html><head>
+      <title>report</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\Ant\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.6.2\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="report-assignment-due-next-sunday-april-3rd">Report Assignment - Due Next Sunday April 3rd</h1>
+
+<h1 class="mume-header" id="report">Report</h1>
+
+<h2 class="mume-header" id="exec-summary">Exec Summary</h2>
+
+<p>Our customers endured major service outages during the initial stages of the pandemic. This was in large part due to the lack of resiliency built into our systems which would have allowed our network administrators to quickly, securely and consistently make changes to the network lockdown. Network automation tools will ensure that in future, our network is managed efficently, is always available and is secure.</p>
+<blockquote>
+<p>&#x201C;The first rule of any technology used in a business is that automation applied to an efficient operation will magnify the efficiency. The second is that automation applied to an inefficient operation will magnify the inefficiency.&#x201D;<br>
+<em>Bill Gates</em></p>
+</blockquote>
+<h2 class="mume-header" id="what-is-network-automation">What is Network Automation?</h2>
+
+<p>Network administration is currently performed using commandline configuration changes on a per site, device or user basis.</p>
+<p>Manual configurations made to network devices in Sydney are very likely to differ to those in Auckland or Christchurch.</p>
+<p>With no monitoring system in place, there is no true way of knowing if a device, or a group of devices at one location has been misconfigured, leaving our network and data exposed. Troubleshooting network misconfigurations Network administrators here in New Zealand have the additional challenge of troubleshooting devices in Australia due to the different timezone, state holidays, so issues that occur after hours take a toll on our people as well as our clients and investors, who lose money and patience when we fail to deliver a reliable, secure service.</p>
+<p>maintaining and monitoring all areas of our network both in New Zealand and Australia using this method is inefficent....time consuming.</p>
+<p>Network automation tools take advantage of network administors knowledge and experience and scale this across multiple devices, users and sites.</p>
+<p>This process is a expensive in that it requires a large investment human resources, time, travel, training and equipment.</p>
+<p>Network automation allows common, repetative network administration tasks to be performed is the process of simplifying repetative tasks buautomatically performing repetitive tasks on a system.</p>
+<p>require and constantly evolving<br>
+constantly changing and evolving with customer demand and industry trends.<br>
+cyber security is a key component of all networks</p>
+<p>77% of organizations plan to increase automation to simplify and speed up response times in their security ecosystems.</p>
+<h2 class="mume-header" id="global-events-and-global-competition">Global Events and Global Competition.</h2>
+
+<p>Global events like the COVID-19 pandemic, large scale cyber attacks against the west, caused a significant change in the way we manage our networks.</p>
+<p>To maximise the Automated network management tools enable effiecient, cost effective network management across each of the companies sites in New Zealand and Australia. The tools are used to manage the configuration of network devices, monitor the network performance, and provide a centralised view of the network.</p>
+<p>IDC&#x2019;s Worldwide Semiannual Software Tracker, published earlier this year, forecasts that the worldwide IT automation and configuration software market will grow to 11.5 billion in 2025, increasing from 7.9 billion in 2020.<br>
+Monitor the state of the network, and network devices around the clock. The auto</p>
+<p>Network access control includes the security policies designed to control network access, such as authorization controls and authentication checks.</p>
+<h2 class="mume-header" id="benefits">Benefits</h2>
+
+<ol>
+<li>significant reduction network downtime</li>
+<li>reduced network management costs,<br>
+in network administration cos the costs of current network administration</li>
+</ol>
+<h3 class="mume-header" id="resolving-problems">Resolving Problems</h3>
+
+<ol>
+<li>Each change in configuration is version controlled, tested, reviewed, incrementally deployed and monitored.<br>
+&apos;Canary&apos; deployment ensures a This ensures that each change can be incrementally deployed at an appropriate time<br>
+will not cause any large scale failures</li>
+</ol>
+<h3 class="mume-header" id="operational-efficiency">Operational Efficiency</h3>
+
+<p>Automation reduces the time it takes to deploy a change across our entire network.<br>
+For example, A single security patch that requires urgent installation, can be deployed to each device matching the exact make and model the patch is intended for, from a single configuration file, created by a single network administrator. The patch is monitored and can be quickly rolled back to the previous version if necessary.</p>
+<p>This one change may have taken days or weeks to test, deploy, and troubleshoot post installation. Automation allows this time critical update to be deployed with no effect to the end-user.</p>
+<h3 class="mume-header" id="cost">Cost</h3>
+
+<p>An obvious obstacle for any company to move toward automation, is the cost of adapting its existing infrasturcture to accomodate an automation system.<br>
+The beauty of network automation systems is that they generally do not require any change to the existing network infrastructure.<br>
+The benefit of open source systems is the community of developers that work to create solutions that allow<br>
+is that they allow businesses to enter the automation spacein automation tools</p>
+<h3 class="mume-header" id="increased-flexibility-and-sustainability">Increased Flexibility and Sustainability</h3>
+
+<h2 class="mume-header" id="how-will-automation-help-us-to-be-competitive">How will automation help us to be competitive?</h2>
+
+<p>Automation will help to ensure that our services are secure and reliable,</p>
+<h3 class="mume-header" id="how-it-works">how it works</h3>
+
+<p>Network devices use firmware provided by the manufacturer, this limitation protects the integrity of the device and the network.</p>
+<p>In order to automate the management of each device,<br>
+There are three variations of network configuration management systems.</p>
+<ol>
+<li>Agentless</li>
+<li>Proxy-Agent Based</li>
+<li>Agent Based</li>
+</ol>
+<p>These technologies typically use one of two forms of language to structure configurations. (DSL) Domain-Specific Language, is specific to the platform used to configure the network. This has a steep learning curve for the network administrator to adopt the technology. (SML) Structure Markup Language, takes utilises more commonly used, easily understood languages and markup, such as YAML. This enables network administrators and non-programmers to adopt the technology much faster, and with less errors (Gargano).</p>
+<h3 class="mume-header" id="where-it-is-best-deployed">where it is best deployed</h3>
+
+<h2 class="mume-header" id="why-is-it-important-to-implement-this-technology">Why is it important to implement this technology?</h2>
+
+<ul>
+<li>Savings in costs:</li>
+<li>incurred through error prone manual configuration.
+<ul>
+<li>network outage</li>
+<li>data loss due to unsecure configuration changes</li>
+</ul>
+</li>
+</ul>
+<p>centralised configuration management, backup, software patch management and upgrades. Central source of truth ensures that all devices can be incrementally updated with consistent configuration changes.</p>
+<p>solution can be scaled incrementally across multiple sites.</p>
+<p>can be deployed across existing infrastructure.</p>
+<p>how can the solution be used to manage the company&#x2019;s network?</p>
+<p>Benefits of implementing automation include:</p>
+<p>streamline the process of managing all network devices across all our sites both here New Zealand and Australia.</p>
+<p>Infrastructure is managed as code, this makes problem solving issues much easier, making it easier to identify and resolve issues.</p>
+<p>Standardises changes across all sites, replacing the current work flow of manually configuring each network device on a per site basis through utilising a single configuration file.</p>
+<p>Manual configuring devices is time consuming, highly error prone, can down the entire network, or accidentially leave it vulnerable to attack.</p>
+<p>Automation ensures that all devices are configured to an exact standard for its make and model.</p>
+<p>Monitor the network for devices, IP addresses, configuration changes which conflict with the standard,</p>
+<p>react immediately to the change,<br>
+by blocking a non permitted device from the network, resetting the access control configuration for a particular site, a configuration to be compliant,</p>
+<p>device patch management is streamlined, for example, network administrators here in New Zealand can create a configuration to update all routers, deploy this change to a small test group of devices, monitor the deployment for errors, before deploying the patch to all devices in a region, monitor, and report on the deployment. Once error free, the patch can be set to automatically be applied to all devices across the network, with variations to suit the time zones in Australian states.</p>
+<p>financial impacts</p>
+<p>Non-financial impact to the company, Travel, human resources, worker stress, employee turnover, family impact</p>
+<h2 class="mume-header" id="advantages-of-network-automation">Advantages of Network Automation.</h2>
+
+<ol>
+<li>Network wide asset audit: will assess the current network, and provide a list connected assets.</li>
+<li>Alerting: will alert network administrators when a device is not in compliance with the standards, has failed to respond to a ping, or has been offline for a period of time.</li>
+<li>Network wide configuration audit: will provide a list of devices that are not in compliance with the standards.</li>
+<li>Scalability: allow for the deployment of new devices to the network which are compliant with the company requirements.</li>
+<li>Backup: will allow for the creation of a backup of the network configuration, and will allow for the restoration of the network configuration from a backup in the event of a natural disaster, outage, or total loss of network.</li>
+<li>Software patch management: will allow for the management of software patches, and will allow for a incremental installation of patches on the network. This allows administrators to deploy changes to the network without disruption to services; This is particularly important to our customers and employees different timezones throughout Australia.</li>
+<li>Security:</li>
+<li>IP address management</li>
+<li>access control management</li>
+<li></li>
+</ol>
+<h2 class="mume-header" id="limitations-of-network-automation">Limitations of Network Automation</h2>
+
+<p>There are a number of options available for managing network devices across the company network. These options have a multitude of features, but there are none that will be able to perform all the tasks required to manage the company&#x2019;s network. The company is currently struggling with the overhead of managing so many devices. The company is also struggling with the cost of managing the network.</p>
+<ol>
+<li>There are a lot of different options for network management, not all will be suitable for all areas of the network or the companies needs.</li>
+<li></li>
+</ol>
+<h3 class="mume-header" id="what-options-are-available">What options are available?</h3>
+
+<h4 class="mume-header" id="ansible">Ansible</h4>
+
+<img src="https://ipcisco.com/wp-content/uploads/2020/05/ansible-architecture-ipcisco.jpg" alt="src: https://ipcisco.com/lesson/ansible-overview/" title="src: https://ipcisco.com/lesson/ansible-overview/">
+<h4 class="mume-header" id="chef">Chef</h4>
+
+<img src="https://ipcisco.com/wp-content/uploads/2020/05/how-chef-works-ipcisco.jpg">
+<h4 class="mume-header" id="puppet">Puppet</h4>
+
+<h2 class="mume-header" id="configuration-examples-are-accepted-where-they-enhance-understanding-of-the-report-and-are-commented-to-show-your-understanding">Configuration examples are accepted where they enhance understanding of the report and are commented to show your understanding.</h2>
+
+<h2 class="mume-header" id="supporting-diagrams-that-help-convey-meaning-are-encouraged">Supporting diagrams that help convey meaning are encouraged.</h2>
+
+<h2 class="mume-header" id="references-for-all-sources-of-information-and-supporting-materials">References for all sources of information and supporting materials.</h2>
+
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

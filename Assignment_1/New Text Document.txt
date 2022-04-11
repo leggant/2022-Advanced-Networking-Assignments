@@ -1,0 +1,49 @@
+1. There are a lot of different options for network management, not all will be suitable for all areas of the network or the companies needs.
+   2.
+
+-   Savings in costs:
+-   incurred through error prone manual configuration.
+    -   network outage
+    -   data loss due to unsecure configuration changes
+
+centralised configuration management, backup, software patch management and upgrades. Central source of truth ensures that all devices can be incrementally updated with consistent configuration changes.
+
+solution can be scaled incrementally across multiple sites.
+
+can be deployed across existing infrastructure.
+
+how can the solution be used to manage the company’s network?
+
+Benefits of implementing automation include:
+
+streamline the process of managing all network devices across all our sites both here New Zealand and Australia.
+
+Infrastructure is managed as code, this makes problem solving issues much easier, making it easier to identify and resolve issues.
+
+Standardises changes across all sites, replacing the current work flow of manually configuring each network device on a per site basis through utilising a single configuration file.
+
+Manual configuring devices is time consuming, highly error prone, can down the entire network, or accidentally leave it vulnerable to attack.
+
+Automation ensures that all devices are configured to an exact standard for its make and model.
+
+Monitor the network for devices, IP addresses, configuration changes which conflict with the standard,
+
+react immediately to the change,
+by blocking a non permitted device from the network, resetting the access control configuration for a particular site, a configuration to be compliant,
+
+device patch management is streamlined, for example, network administrators here in New Zealand can create a configuration to update all routers, deploy this change to a small test group of devices, monitor the deployment for errors, before deploying the patch to all devices in a region, monitor, and report on the deployment. Once error free, the patch can be set to automatically be applied to all devices across the network, with variations to suit the time zones in Australian states.
+
+financial impacts
+
+Non-financial impact to the company, Travel, human resources, worker stress, employee turnover, family im
+
+1. significant reduction network downtime
+2. reduced network management costs,
+   in network administration cos the costs of current network administration
+
+To maximise the Automated network management tools enable efficient, cost effective network management across each of the companies sites in New Zealand and Australia. The tools are used to manage the configuration of network devices, monitor the network performance, and provide a centralised view of the network.
+
+IDC’s Worldwide Semi-annual Software Tracker, published earlier this year, forecasts that the worldwide IT automation and configuration software market will grow to 11.5 billion in 2025, increasing from 7.9 billion in 2020.
+Monitor the state of the network, and network devices around the clock. The auto
+
+Network access control includes the security policies designed to control network access, such as authorization controls and authentication checks.
