@@ -9,7 +9,8 @@
 | Task                       | Includes                                                     | Date_Started | Completed | Total |
 | :------------------------- | ------------------------------------------------------------ | ------------ | --------- | ----- |
 | Initial Setup              | creating files for documentation, GNS3 WAN and Packet Tracer LAN. Adding to GitHub Repository. | 28/03/22     | 12/04/22  | 1     |
-| Create<br />Timesheet_File | Created in markdown, add items from items in the assignment requirement list for LAN, WAN and submission | 28/03/22     |           | 2     |
+| Create<br />Timesheet_File | Created in markdown, add items from items in the assignment requirement list for LAN, WAN and submission | 28/03/22     | 17/04/22  | 1.5   |
+|                            |                                                              |              |           |       |
 | LAN Questions              | Subnetting                                                   |              |           |       |
 |                            | Access                                                       |              |           |       |
 |                            | Resilience q5-7 + q9 (layer 3 switching)                     |              |           |       |
@@ -24,12 +25,12 @@
 
 ### LAN Configuration Timesheet
 
-| Task | Includes | Date_Started | Completed | Total |
+| Task | Includes | Date_Started | Completed | Total (hrs) |
 | ---- | ------------ | --------- | ----------- | ----------- |
-| Initial Packet Tracer Set-up | Layout of devices, adding links between devices |  |           |             |
-|  | labelling devices |  |           | 1 |
-|Subnets||              |           |             |
-|      |      |              |           |             |
+| Initial Packet Tracer Set-up | Layout of devices, adding links between devices and  labelling devices | 30/03/22 | 17/04/22 | 1.5 |
+|  | labelling devices and ports | 17/04/22 |           | 1 |
+|Subnets|divide given IP into required subnets, documenting, and adding to PT notes| 17/04/22 | 17/04/22 | 1.5 |
+|      | Label networks allocated |              |           |             |
 |      |      |              |           |             |
 |      |      |              |           |             |
 |      |      |              |           |             |
