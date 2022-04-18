@@ -1,0 +1,16 @@
+en
+conf t
+hostname ACCESS_SW_1
+no ip domain-lookup
+service password-encryption
+line con 0
+logging synchronous
+line vty 0 15
+logging synchronous
+transport input ssh
+vlan 118
+name Parking
+end
+wr
+
+## Set Password On Completion
