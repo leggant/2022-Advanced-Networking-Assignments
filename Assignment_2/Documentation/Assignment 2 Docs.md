@@ -2,36 +2,6 @@
 
 ## Anthony Legg #03007276
 
-**Questions and Answers**
-
-**IP Assignment**
-
- 
-
-**Diagrams** 
-
- 
-
-**Timesheet**
-
-| Task | Date Started | Completed | Total Hours |
-| ---- | ------------ | --------- | ----------- |
-| Planning | 18-03-2022 |           |             |
-| Initial Packet Tracer Set-up | 18-03-2022 |           | 1.0 |
-|Initial GCS3 Set-Up|              |           |             |
-|      |              |           |             |
-|      |              |           |             |
-|      |              |           |             |
-|      |              |           |             |
-|      |              |           |             |
-|      |              |           |             |
-
-IN723 Advanced Networking - Project 2022 LAN and WAN Design 
-
-Level 7 – 15 
-
-Credits Worth 40% 
-
 Using Packet Tracer and GNS3 Due: Due: by Monday May 23 
 
 Where to hand in: submit to Michael Holtz via Teams 
@@ -51,9 +21,11 @@ Tyrell Corp is opening a new head office site. You have been asked to provide a 
 ### Special Note 
 > This assessment has a special emphasis on critical evaluation. This means that where possible you  are to describe why you have chosen the various features / technologies and give consideration for   alternative solutions. Use the customer questions / requirements below in red to guide you. 
 
-## Customer Specifications
-Head Office LAN Design The customer requires a hierarchical design with discrete Access, Distribution and Core layers providing for availability, scalability and security.
+## Head Office LAN Network - Customer Specifications
+
+The customer requires a hierarchical design with discrete Access, Distribution and Core layers providing for availability, scalability and security.
 You are tasked with designing: 
+
   - The Core layer
 
   - WAN edge block
