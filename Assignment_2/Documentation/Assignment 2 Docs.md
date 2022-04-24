@@ -61,27 +61,27 @@ The customer has requested that subnet allocations are easy to summarise, unders
 
 **Consider** how device management addressing will be allocated. Ensure some point-to-point /30  networks are set aside for the WAN design. 
 
-| Subnet Name | Needed Size | Allocated Size | Address   | Mask | Dec Mask        | Assignable Range      | Broadcast |
-| ----------- | ----------- | -------------- | --------- | ---- | --------------- | --------------------- | --------- |
-| A           | 2           | 2              | 10.7.0.0  | /30  | 255.255.255.252 | 10.7.0.1 - 10.7.0.2   | 10.7.0.3  |
-| B           | 2           | 2              | 10.7.0.4  | /30  | 255.255.255.252 | 10.7.0.5 - 10.7.0.6   | 10.7.0.7  |
-| C           | 2           | 2              | 10.7.0.8  | /30  | 255.255.255.252 | 10.7.0.9 - 10.7.0.10  | 10.7.0.11 |
-| D           | 2           | 2              | 10.7.0.12 | /30  | 255.255.255.252 | 10.7.0.13 - 10.7.0.14 | 10.7.0.15 |
-| E           | 2           | 2              | 10.7.0.16 | /30  | 255.255.255.252 | 10.7.0.17 - 10.7.0.18 | 10.7.0.19 |
-| F           | 2           | 2              | 10.7.0.20 | /30  | 255.255.255.252 | 10.7.0.21 - 10.7.0.22 | 10.7.0.23 |
-| G           | 2           | 2              | 10.7.0.24 | /30  | 255.255.255.252 | 10.7.0.25 - 10.7.0.26 | 10.7.0.27 |
-| H           | 2           | 2              | 10.7.0.28 | /30  | 255.255.255.252 | 10.7.0.29 - 10.7.0.30 | 10.7.0.31 |
-| I           | 2           | 2              | 10.7.0.32 | /30  | 255.255.255.252 | 10.7.0.33 - 10.7.0.34 | 10.7.0.35 |
-| J           | 2           | 2              | 10.7.0.36 | /30  | 255.255.255.252 | 10.7.0.37 - 10.7.0.38 | 10.7.0.39 |
-| K           | 2           | 2              | 10.7.0.40 | /30  | 255.255.255.252 | 10.7.0.41 - 10.7.0.42 | 10.7.0.43 |
-| L           | 2           | 2              | 10.7.0.44 | /30  | 255.255.255.252 | 10.7.0.45 - 10.7.0.46 | 10.7.0.47 |
-| M           | 2           | 2              | 10.7.0.48 | /30  | 255.255.255.252 | 10.7.0.49 - 10.7.0.50 | 10.7.0.51 |
-| N           | 2           | 2              | 10.7.0.52 | /30  | 255.255.255.252 | 10.7.0.53 - 10.7.0.54 | 10.7.0.55 |
-| O           | 2           | 2              | 10.7.0.56 | /30  | 255.255.255.252 | 10.7.0.57 - 10.7.0.58 | 10.7.0.59 |
-| P           | 2           | 2              | 10.7.0.60 | /30  | 255.255.255.252 | 10.7.0.61 - 10.7.0.62 | 10.7.0.63 |
-| Q           | 2           | 2              | 10.7.0.64 | /30  | 255.255.255.252 | 10.7.0.65 - 10.7.0.66 | 10.7.0.67 |
-| R           | 2           | 2              | 10.7.0.68 | /30  | 255.255.255.252 | 10.7.0.69 - 10.7.0.70 | 10.7.0.71 |
-| S           | 2           | 2              | 10.7.0.72 | /30  | 255.255.255.252 | 10.7.0.73 - 10.7.0.74 | 10.7.0.75 |
+| Subnet Name | Address   | Mask | Dec Mask        | Assignable Range      | Broadcast |
+| ----------- | --------- | ---- | --------------- | --------------------- | --------- |
+| A           | 10.7.0.0  | /30  | 255.255.255.252 | 10.7.0.1 - 10.7.0.2   | 10.7.0.3  |
+| B           | 10.7.0.4  | /30  | 255.255.255.252 | 10.7.0.5 - 10.7.0.6   | 10.7.0.7  |
+| C           | 10.7.0.8  | /30  | 255.255.255.252 | 10.7.0.9 - 10.7.0.10  | 10.7.0.11 |
+| D           | 10.7.0.12 | /30  | 255.255.255.252 | 10.7.0.13 - 10.7.0.14 | 10.7.0.15 |
+| E           | 10.7.0.16 | /30  | 255.255.255.252 | 10.7.0.17 - 10.7.0.18 | 10.7.0.19 |
+| F           | 10.7.0.20 | /30  | 255.255.255.252 | 10.7.0.21 - 10.7.0.22 | 10.7.0.23 |
+| G           | 10.7.0.24 | /30  | 255.255.255.252 | 10.7.0.25 - 10.7.0.26 | 10.7.0.27 |
+| H           | 10.7.0.28 | /30  | 255.255.255.252 | 10.7.0.29 - 10.7.0.30 | 10.7.0.31 |
+| I           | 10.7.0.32 | /30  | 255.255.255.252 | 10.7.0.33 - 10.7.0.34 | 10.7.0.35 |
+| J           | 10.7.0.36 | /30  | 255.255.255.252 | 10.7.0.37 - 10.7.0.38 | 10.7.0.39 |
+| K           | 10.7.0.40 | /30  | 255.255.255.252 | 10.7.0.41 - 10.7.0.42 | 10.7.0.43 |
+| L           | 10.7.0.44 | /30  | 255.255.255.252 | 10.7.0.45 - 10.7.0.46 | 10.7.0.47 |
+| M           | 10.7.0.48 | /30  | 255.255.255.252 | 10.7.0.49 - 10.7.0.50 | 10.7.0.51 |
+| N           | 10.7.0.52 | /30  | 255.255.255.252 | 10.7.0.53 - 10.7.0.54 | 10.7.0.55 |
+| O           | 10.7.0.56 | /30  | 255.255.255.252 | 10.7.0.57 - 10.7.0.58 | 10.7.0.59 |
+| P           | 10.7.0.60 | /30  | 255.255.255.252 | 10.7.0.61 - 10.7.0.62 | 10.7.0.63 |
+| Q           | 10.7.0.64 | /30  | 255.255.255.252 | 10.7.0.65 - 10.7.0.66 | 10.7.0.67 |
+| R           | 10.7.0.68 | /30  | 255.255.255.252 | 10.7.0.69 - 10.7.0.70 | 10.7.0.71 |
+| S           | 10.7.0.72 | /30  | 255.255.255.252 | 10.7.0.73 - 10.7.0.74 | 10.7.0.75 |
 
 ### Access
 
@@ -107,7 +107,7 @@ The company’s existing LAN deployments utilise L2 VLANS and STP from the distr
 
 4. You are to decide if VLANs need to be spanned across access switches or if each access  switch will have a dedicated user VLAN. Why have you made this decision? 
 
-Each switch will have a dedicated user VLAN, this ensures traffic is separated. Layer 3 switches can be divided so that physical connections to the layer 3 can still be made. Data will still be handled as if it was snet on separate devices
+Each switch will have a dedicated user VLAN, this ensures traffic is separated. Layer 3 switches can be divided so that physical connections to the layer 3 can still be made. 
 
 **Note** this decision will influence if the link between the distribution switches is L2 or L3. 
 
@@ -124,10 +124,12 @@ The HO LAN is to provide redundant links and paths where possible while minimisi
 
 You must specify an appropriate interior gateway protocol to be used for internal routing within the HO site. The interior routing protocol will be used between the Distribution layer, Core layer and  edge routers.
 
+**OSPF selected**
+
 10. Explain why you have chosen the IGP?
 11. Explain how you have configured the IGP including methods you have employed to minimise  convergence time, optimise traffic flow and limit the wasting of bandwidth and CPU calculations. 
 
-### Security 
+### Security
 
 The customer has asked you to consider security.
 12. Are there any security features that should be deployed within the new HO LAN? Explain  your choices. 

@@ -1,0 +1,11 @@
+en
+conf t
+hostname Access_SW1
+banner motd #
+Unauthorised Access Is Prohibited
+But Since You Are Here The Password 
+domain-name
+spanning-tree mode rapid-pvst
+line con 0
+logging synchronous
+exec-timeout 3 0
