@@ -1,6 +1,6 @@
 en
 conf t
-hostname Access_SW1
+hostname Distribution_SW1
 service password-encryption
 no ip domain-lookup
 ip domain-name acme.nz
@@ -21,8 +21,6 @@ vlan 10
 name Sales_Marketing
 vlan 20
 name Admin
-vlan 99
-name Default
 int range f0/1-6,f0/11,f0/15-23,g0/1-2
 spanning-tree bpduguard enable
 switchport access vlan 103
@@ -35,30 +33,12 @@ int f0/24
 switchport mode access
 spanning-tree bpduguard enable
 switchport access vlan 20
-int range f0/7-9
-no switchport
-channel-group 1 mode active
-description Connection to DIST_SW1
-exit
-int range f0/12-14
-no switchport
-channel-group 2 mode active
-description Connection to DIST_SW2
-exit
-int po 1
-ip add ___
-description Connection to DIST_SW1
-no shut
-int po 2
-ip add ___
-description Connection to DIST_SW2
-no shut
 end
 wr
 
 en
 conf t
-hostname Access_SW2
+hostname Distribution_SW1
 service password-encryption
 no ip domain-lookup
 ip domain-name acme.nz
@@ -77,8 +57,6 @@ vlan 103
 name Parking
 vlan 30
 name Finance
-vlan 99
-name Default
 int range f0/1-9,f0/11,f0/15-16,f0/20-24,g0/1-2
 spanning-tree bpduguard enable
 switchport access vlan 103
@@ -90,38 +68,3 @@ switchport access vlan 30
 end
 wr
 
-
-
-en
-conf t
-hostname Access_SW3
-service password-encryption
-no ip domain-lookup
-ip domain-name acme.nz
-banner motd # Unauthorised Access Is Prohibited #
-spanning-tree mode rapid-pvst
-spanning-tree portfast default
-line con 0
-logging synchronous
-exec-timeout 3 0
-exit
-line vty 0 4
-logging synchronous
-exec-timeout 3 0
-exit
-vlan 103
-name Parking
-vlan 40
-name HR
-vlan 99
-name Default
-int range f0/1-6,f0/11-19,f0/23-24,g0/1-2
-spanning-tree bpduguard enable
-switchport access vlan 103
-shut
-int f0/10
-switchport mode access
-spanning-tree bpduguard enable
-switchport access vlan 40
-end
-wr
