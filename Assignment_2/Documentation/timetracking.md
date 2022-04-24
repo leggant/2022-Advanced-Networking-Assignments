@@ -11,7 +11,7 @@
 | Initial Setup              | creating files for documentation, GNS3 WAN and Packet Tracer LAN. Adding to GitHub Repository. | 28/03/22     | 12/04/22  | 1     |
 | Create<br />Timesheet_File | Created in markdown, add items from items in the assignment requirement list for LAN, WAN and submission | 28/03/22     | 17/04/22  | 1.5   |
 |                            |                                                              |              |           |       |
-| LAN Questions              | Subnetting                                                   |              |           |       |
+| LAN Questions              | Subnetting                                                   | 24/04/22     |           |       |
 |                            | Access                                                       |              |           |       |
 |                            | Resilience q5-7 + q9 (layer 3 switching)                     |              |           |       |
 |                            | Routing                                                      |              |           |       |

@@ -61,13 +61,6 @@ The customer has requested that subnet allocations are easy to summarise, unders
 
 **Consider** how device management addressing will be allocated. Ensure some point-to-point /30  networks are set aside for the WAN design. 
 
-Major Network: 10.7.0.0/16
-Available IP addresses in major network: 65534
-Number of IP addresses needed: 1100
-Available IP addresses in allocated subnets: 1270
-About 2% of available major network address space is used
-About 87% of subnetted network address space is used
-
 | Subnet Name | Needed Size | Allocated Size | Address   | Mask | Dec Mask        | Assignable Range      | Broadcast |
 | ----------- | ----------- | -------------- | --------- | ---- | --------------- | --------------------- | --------- |
 | A           | 2           | 2              | 10.7.0.0  | /30  | 255.255.255.252 | 10.7.0.1 - 10.7.0.2   | 10.7.0.3  |
@@ -114,7 +107,7 @@ The company’s existing LAN deployments utilise L2 VLANS and STP from the distr
 
 4. You are to decide if VLANs need to be spanned across access switches or if each access  switch will have a dedicated user VLAN. Why have you made this decision? 
 
-    Each switch will have a dedicated user VLAN, this ensures traffic is separated. Layer 3 switches can be divided so that physical connections to the layer 3 can still be made. Data will still be handled as if it was snet on separate devices
+Each switch will have a dedicated user VLAN, this ensures traffic is separated. Layer 3 switches can be divided so that physical connections to the layer 3 can still be made. Data will still be handled as if it was snet on separate devices
 
 **Note** this decision will influence if the link between the distribution switches is L2 or L3. 
 
@@ -122,31 +115,21 @@ The company’s existing LAN deployments utilise L2 VLANS and STP from the distr
 The HO LAN is to provide redundant links and paths where possible while minimising convergence  time. The design needs to consider the impact of a switch failure.
 
 5. The customer requests you describe traffic flow and how it is affected by at least three  potential failure scenarios. Use diagrams to indicate primary and alternate traffic paths in  the event of device and or link failures.
-
 6. You are to explain how you are using ether channel and if not why?
-
 7. Explain how have the core to distribution links been designed to minimise convergence? 
+8. Alternatively if you are using a layer 3 access then describe how you have done this including  the routing protocol used and how the routing metrics have been configured and why. How  does this impact the ability to have redundant host default gateways? 
 
-    **Answer either 8 or 9 (Not both)**
 
-8. If the access layer to distribution layer is layer 2 then spanning tree is required. In addition as  redundant default gateways are required for each user VLAN and a switch management  VLAN. Describe how both STP & FHRP are deployed. Which FHRP have you chosen and why?  Which STP protocol have you chosen and why?
-
-**or**
-
-9. Alternatively if you are using a layer 3 access then describe how you have done this including  the routing protocol used and how the routing metrics have been configured and why. How  does this impact the ability to have redundant host default gateways? 
-
-### Routing 
+### Routing
 
 You must specify an appropriate interior gateway protocol to be used for internal routing within the HO site. The interior routing protocol will be used between the Distribution layer, Core layer and  edge routers.
 
 10. Explain why you have chosen the IGP?
-
 11. Explain how you have configured the IGP including methods you have employed to minimise  convergence time, optimise traffic flow and limit the wasting of bandwidth and CPU calculations. 
 
 ### Security 
 
 The customer has asked you to consider security.
-
 12. Are there any security features that should be deployed within the new HO LAN? Explain  your choices. 
 
 ## Customer Specifications - WAN Connectivity 
@@ -172,11 +155,10 @@ The MPLS Core BGP AS is 4700 The Head Office has been allocated BGP AS 65007 Liv
 
 ### Routing - HO LAN to Service Provider
 You are required to use BGP to connect the head office site to the ISP. The company has purchased an active / active service offering from the provider. This means that the company can choose which link to use on a per subnet basis. 
-
 You are to configure BGP policy on the HO LAN WAN Routers such that:
 For inbound traffic from the Service Provider (& other attached sites) to the HO LAN networks, Link 1 (see appendix diagram) will be used as the primary path. Traffic will route over Link 2 if the primary path fails. Only a summary route of the Head Office LAN networks is to be advertised to the ISP via the primary and backup paths.
 
-Outbound traffic from the HO LAN network to the Liverpool site will use Link 2 as primary and Link 1as backup.
+Outbound traffic from the HO LAN network to the Liverpool site will use Link 2 as primary and Link 1 as backup.
 
 Outbound traffic from the HO LAN network to the Fulham site will use Link 1 as primary and Link 2 as backup.
 
@@ -184,4 +166,62 @@ Outbound traffic from the HO LAN network to the Fulham site will use Link 1 as p
 14. You are to ensure the Head Office cannot be used as transit between any other Service Provider attached sites. Explain how you have achieved this.
 15. You are to ensure end to end connectivity between the HO user VLANs and Liverpool and Fulham sites. Provide evidence of this.
 
-Security The customer has asked you to consider security. 16. Anti spoof (URPF or ACL) not break Asymmetric traffic 17. You are to choose at least two additional security features that should be deployed on the  WAN routers (not related to VTY or console passwords)? Explain your choices. Deliverables Provide the following documents and evidence. Ensure your work adheres to the marking rubric. a) Deliverable – LAN design (25%) 1. Describe the LAN design, giving a broad overview of how the design works and meets the  customer requirements. 2. Provide detail of how the chosen features work, paying careful attention to answer the  customer questions in red within the customer specifications above. Supply tables and  diagrams as requested.  3. Supporting references. Include in text referencing and a table of references. b) Deliverable – WAN design (25%) 1. Describe the WAN design, giving a broad overview of how the design works and meets the  customer requirements. 2. Provide detail of how the chosen features work, paying careful attention to answer the  customer questions in red within the customer specifications above. Supply tables and  diagrams as requested.  3. Supporting references. Include in text referencing and a table of references. c) Deliverable – LAN Logical topology diagram (5%) You are to provide a LAN logical topology diagram that includes the following: 1. Access, distribution, core and WAN edge intermediary devices 2. VLANs / Network addressing 3. Port numbering for infrastructure links (not access ports). 4. Routing domains / Autonomous systems / Areas 5. Default gateways, Virtual IPs 6. Show traffic flows (primary / backup paths) If needed the diagram can be split into multiple parts. The diagram must be separate to the supplied  packet tracer or VIRL configuration (though packet tracer or VIRL can be used as the basis). d) Deliverable – WAN Logical topology diagram (5%) You are to provide a WAN logical topology diagram that includes the following: 1. Distribution layer, WAN edge, Service provider, Liverpool, Fulham 2. Interface / port assignment 3. Network addressing 4. Routing domains / Autonomous systems / Areas 5. Any relevant feature information (e.g. BGP attributes) 6. Show traffic flows (primary / backup paths) If needed the diagram can be split into multiple parts. The diagram must be separate to the supplied  packet tracer or VIRL configuration (though packet tracer or VIRL can be used as the basis). e) Deliverable – LAN Working Configuration (15%) You are to provide a working proof of concept lab within packet tracer. 1. Include all access, distribution and core switches.  2. Include the WAN edge routers, however BGP configuration is not required on these within  Packet Tracer. 3. Ensure all specified technologies and features (including specified security features) are  configured correctly and working. 4. Provide testing output as supporting evidence (e.g. output of relevant show commands) for  each feature. Note: Due to the number of devices you are requested to use packet tracer. Due to packet Tracer  limitations, some features may not be available or work as intended. If you have specified any such  features in your design you are to provide the configuration of the feature separately.  f) Deliverable – WAN Working Configuration (15%) You are to provide a working proof of concept lab within GNS3 (portable project) 1. Include all routers for the HO LAN, Provider edge, Liverpool, Fulham 2. The HO LAN WAN edge distribution switches are to be included (to source the HO LAN  networks) however as GNS3 is resource intensive (CPU, mem) the following option can be  implemented to help minimise resource use. HO LAN Can be simulated with a single device that uses loopbacks to source the HO LAN networks as  required. Make sure these match any summary addresses you may already have created  within the HO LAN design. See appendix. 3. Ensure all specified technologies and features (including specified security features) are  configured correctly and working. 4. Provide testing output as supporting evidence (e.g. output of relevant show commands) for  each feature. 5. While the service provider core is stated as running MPLS, you do not need to provide any  MPLS configuration. g) Deliverable - Time sheeting To ensure accurate billing you have been asked to record the time you spend on each activity,  including date, length of time and a brief description of the activity.  h) Deliverable – Grade your work You are to review the marking rubric against your work and provide a grade on a scale from F to A+  for each item.
+### Security 
+
+The customer has asked you to consider security. 
+16. Anti spoof (URPF or ACL) not break Asymmetric traffic 
+17. You are to choose at least two additional security features that should be deployed on the  WAN routers (not related to VTY or console passwords)? Explain your choices. 
+
+## Deliverables
+Provide the following documents and evidence. Ensure your work adheres to the marking rubric. 
+
+### Deliverable – LAN design (25%)
+  - Describe the LAN design, giving a broad overview of how the design works and meets the  customer requirements.
+  - Provide detail of how the chosen features work, paying careful attention to answer the  customer questions in red within the customer specifications above. Supply tables and  diagrams as requested.
+  -  Supporting references. Include in text referencing and a table of references.
+
+### Deliverable – WAN design (25%) 
+  - Describe the WAN design, giving a broad overview of how the design works and meets the  customer requirements.
+  - Provide detail of how the chosen features work, paying careful attention to answer the  customer questions in red within the customer specifications above. Supply tables and  diagrams as requested.
+  - Supporting references. Include in text referencing and a table of references.
+
+### Deliverable – LAN Logical topology diagram (5%) 
+  You are to provide a LAN logical topology diagram that includes the following: 
+  - Access, distribution, core and WAN edge intermediary devices
+  - VLANs / Network addressing
+  - Port numbering for infrastructure links (not access ports).
+  - Routing domains / Autonomous systems / Areas
+  - Default gateways, Virtual IPs
+  - Show traffic flows (primary / backup paths) 
+    If needed the diagram can be split into multiple parts. The diagram must be separate to the supplied  packet tracer or VIRL configuration (though packet tracer or VIRL can be used as the basis). 
+
+### Deliverable – WAN Logical topology diagram (5%) 
+  You are to provide a WAN logical topology diagram that includes the following:
+  - Distribution layer, WAN edge, Service provider, Liverpool, Fulham
+  - Interface / port assignment
+  - Network addressing
+  - Routing domains / Autonomous systems / Areas
+  - Any relevant feature information (e.g. BGP attributes)
+  - Show traffic flows (primary / backup paths) 
+    If needed the diagram can be split into multiple parts. The diagram must be separate to the supplied  packet tracer or VIRL configuration (though packet tracer or VIRL can be used as the basis).
+
+### Deliverable – LAN Working Configuration (15%) 
+  You are to provide a working proof of concept lab within packet tracer. 
+  - Include all access, distribution and core switches.
+  - Include the WAN edge routers, however BGP configuration is not required on these within Packet Tracer.
+  - Ensure all specified technologies and features (including specified security features) are  configured correctly and working.
+  - Provide testing output as supporting evidence (e.g. output of relevant show commands) for  each feature. Note: Due to the number of devices you are requested to use packet tracer. Due to packet Tracer limitations, some features may not be available or work as intended. If you have specified any such features in your design you are to provide the configuration of the feature separately.  
+
+### Deliverable – WAN Working Configuration (15%) 
+You are to provide a working proof of concept lab within GNS3 (portable project) 
+- Include all routers for the HO LAN, Provider edge, Liverpool, Fulham
+- The HO LAN WAN edge distribution switches are to be included (to source the HO LAN  networks) however as GNS3 is resource intensive (CPU, mem) the following option can be  implemented to help minimise resource use. HO LAN Can be simulated with a single device that uses loopbacks to source the HO LAN networks as  required. Make sure these match any summary addresses you may already have created  within the HO LAN design. See appendix.
+- Ensure all specified technologies and features (including specified security features) are  configured correctly and working.
+- Provide testing output as supporting evidence (e.g. output of relevant show commands) for  each feature.
+- While the service provider core is stated as running MPLS, you do not need to provide any  MPLS configuration.
+
+### Deliverable - Time sheeting
+To ensure accurate billing you have been asked to record the time you spend on each activity,  including date, length of time and a brief description of the activity. 
+
+###  Deliverable – Grade your work
+You are to review the marking rubric against your work and provide a grade on a scale from F to A+  for each item.
