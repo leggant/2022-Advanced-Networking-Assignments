@@ -29,10 +29,12 @@ switchport access vlan 103
 shut
 int f0/10
 switchport mode access
+switchport port-security mac-address sticky 
 spanning-tree bpduguard enable
 switchport access vlan 10
 int f0/24
 switchport mode access
+switchport port-security mac-address sticky 
 spanning-tree bpduguard enable
 switchport access vlan 20
 int range f0/7-9
