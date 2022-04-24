@@ -48,16 +48,73 @@ Growth for each department is not expected to exceed 100%.
 
 The customer has requested that subnet allocations are easy to summarise, understand and support. 
 1. You must describe why this is true for your design.
+    I have created the subnets using /24 CIDRs. These are commonly used, have a large number of user IP addresses which can be allocated in future as needed. End user subnets start at the 10.7.1.0/24 and end at 10.7.4.0/24. The 10.7.0.0/24 address space has been allocated to point-to-point connections, this makes it easier to keep track of addresses that are exclusively for the network infrastructure. This also keeps a large address space in reserve for future expansion of the network. An additional subnet has been created for loopback addressing, these addresses are to be allocated as needed for routing and testing purposes. Unused address space has approx. ____ IP addresses unused.
 2. You must provide documentation that lists each of the IP Subnets (including L3 links) and what they are used for. 
 
+| Subnet Name | Allocated Size | Address  | Mask | Dec Mask      | Assignable Range      | Broadcast  |
+| ----------- | -------------- | -------- | ---- | ------------- | --------------------- | ---------- |
+| P2P         | 254            | 10.7.0.0 | /24  | 255.255.255.0 | 10.7.0.1 - 10.7.0.254 | 10.7.0.255 |
+| Finance     | 254            | 10.7.1.0 | /24  | 255.255.255.0 | 10.7.1.1 - 10.7.1.254 | 10.7.1.255 |
+| Marketing   | 254            | 10.7.2.0 | /24  | 255.255.255.0 | 10.7.2.1 - 10.7.2.254 | 10.7.2.255 |
+| Admin       | 254            | 10.7.3.0 | /24  | 255.255.255.0 | 10.7.3.1 - 10.7.3.254 | 10.7.3.255 |
+| Sales       | 254            | 10.7.4.0 | /24  | 255.255.255.0 | 10.7.4.1 - 10.7.4.254 | 10.7.4.255 |
+
 **Consider** how device management addressing will be allocated. Ensure some point-to-point /30  networks are set aside for the WAN design. 
+
+Major Network: 10.7.0.0/16
+Available IP addresses in major network: 65534
+Number of IP addresses needed: 1100
+Available IP addresses in allocated subnets: 1270
+About 2% of available major network address space is used
+About 87% of subnetted network address space is used
+
+| Subnet Name | Needed Size | Allocated Size | Address   | Mask | Dec Mask        | Assignable Range      | Broadcast |
+| ----------- | ----------- | -------------- | --------- | ---- | --------------- | --------------------- | --------- |
+| A           | 2           | 2              | 10.7.0.0  | /30  | 255.255.255.252 | 10.7.0.1 - 10.7.0.2   | 10.7.0.3  |
+| B           | 2           | 2              | 10.7.0.4  | /30  | 255.255.255.252 | 10.7.0.5 - 10.7.0.6   | 10.7.0.7  |
+| C           | 2           | 2              | 10.7.0.8  | /30  | 255.255.255.252 | 10.7.0.9 - 10.7.0.10  | 10.7.0.11 |
+| D           | 2           | 2              | 10.7.0.12 | /30  | 255.255.255.252 | 10.7.0.13 - 10.7.0.14 | 10.7.0.15 |
+| E           | 2           | 2              | 10.7.0.16 | /30  | 255.255.255.252 | 10.7.0.17 - 10.7.0.18 | 10.7.0.19 |
+| F           | 2           | 2              | 10.7.0.20 | /30  | 255.255.255.252 | 10.7.0.21 - 10.7.0.22 | 10.7.0.23 |
+| G           | 2           | 2              | 10.7.0.24 | /30  | 255.255.255.252 | 10.7.0.25 - 10.7.0.26 | 10.7.0.27 |
+| H           | 2           | 2              | 10.7.0.28 | /30  | 255.255.255.252 | 10.7.0.29 - 10.7.0.30 | 10.7.0.31 |
+| I           | 2           | 2              | 10.7.0.32 | /30  | 255.255.255.252 | 10.7.0.33 - 10.7.0.34 | 10.7.0.35 |
+| J           | 2           | 2              | 10.7.0.36 | /30  | 255.255.255.252 | 10.7.0.37 - 10.7.0.38 | 10.7.0.39 |
+| K           | 2           | 2              | 10.7.0.40 | /30  | 255.255.255.252 | 10.7.0.41 - 10.7.0.42 | 10.7.0.43 |
+| L           | 2           | 2              | 10.7.0.44 | /30  | 255.255.255.252 | 10.7.0.45 - 10.7.0.46 | 10.7.0.47 |
+| M           | 2           | 2              | 10.7.0.48 | /30  | 255.255.255.252 | 10.7.0.49 - 10.7.0.50 | 10.7.0.51 |
+| N           | 2           | 2              | 10.7.0.52 | /30  | 255.255.255.252 | 10.7.0.53 - 10.7.0.54 | 10.7.0.55 |
+| O           | 2           | 2              | 10.7.0.56 | /30  | 255.255.255.252 | 10.7.0.57 - 10.7.0.58 | 10.7.0.59 |
+| P           | 2           | 2              | 10.7.0.60 | /30  | 255.255.255.252 | 10.7.0.61 - 10.7.0.62 | 10.7.0.63 |
+| Q           | 2           | 2              | 10.7.0.64 | /30  | 255.255.255.252 | 10.7.0.65 - 10.7.0.66 | 10.7.0.67 |
+| R           | 2           | 2              | 10.7.0.68 | /30  | 255.255.255.252 | 10.7.0.69 - 10.7.0.70 | 10.7.0.71 |
+| S           | 2           | 2              | 10.7.0.72 | /30  | 255.255.255.252 | 10.7.0.73 - 10.7.0.74 | 10.7.0.75 |
 
 ### Access
 
 The company’s existing LAN deployments utilise L2 VLANS and STP from the distribution layer to the  access layer, however the company will consider layer 3 to the access layer.
 
 3. You are to decide if the access to distribution will be layer2 or layer3 and provide an argument that considers both pros and cons of your decision. 
+
+    The access to distribution will be layer 3. 
+
+    **Cons of Layer 3:**
+
+    - Higher cost of access layer hardware
+
+    **Pros of Layer 3:**
+
+    - Faster processing of IP packets
+
+        Layer 3 devices do not use spanning tree, VLANs. This free CPU processing capacity, allowing routing to occuring much faster
+
+    - Routing and switching is handled internally without the need to be transmitted to a router 
+
+    The additional cost of adding this hardware to the network is  investment 
+
 4. You are to decide if VLANs need to be spanned across access switches or if each access  switch will have a dedicated user VLAN. Why have you made this decision? 
+
+    Each switch will have a dedicated user VLAN, this ensures traffic is separated. Layer 3 switches can be divided so that physical connections to the layer 3 can still be made. Data will still be handled as if it was snet on separate devices
 
 **Note** this decision will influence if the link between the distribution switches is L2 or L3. 
 
