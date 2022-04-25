@@ -27,9 +27,7 @@ The customer requires a hierarchical design with discrete Access, Distribution a
 You are tasked with designing: 
 
   - The Core layer
-
   - WAN edge block
-
   - User access block
 
 The core design must allow for additional distribution blocks to be added in the future. 
@@ -61,27 +59,27 @@ The customer has requested that subnet allocations are easy to summarise, unders
 
 **Consider** how device management addressing will be allocated. Ensure some point-to-point /30  networks are set aside for the WAN design. 
 
-| Subnet Name | Address   | Mask | Dec Mask        | Assignable Range      | Broadcast |
-| ----------- | --------- | ---- | --------------- | --------------------- | --------- |
-| A           | 10.7.0.0  | /30  | 255.255.255.252 | 10.7.0.1 - 10.7.0.2   | 10.7.0.3  |
-| B           | 10.7.0.4  | /30  | 255.255.255.252 | 10.7.0.5 - 10.7.0.6   | 10.7.0.7  |
-| C           | 10.7.0.8  | /30  | 255.255.255.252 | 10.7.0.9 - 10.7.0.10  | 10.7.0.11 |
-| D           | 10.7.0.12 | /30  | 255.255.255.252 | 10.7.0.13 - 10.7.0.14 | 10.7.0.15 |
-| E           | 10.7.0.16 | /30  | 255.255.255.252 | 10.7.0.17 - 10.7.0.18 | 10.7.0.19 |
-| F           | 10.7.0.20 | /30  | 255.255.255.252 | 10.7.0.21 - 10.7.0.22 | 10.7.0.23 |
-| G           | 10.7.0.24 | /30  | 255.255.255.252 | 10.7.0.25 - 10.7.0.26 | 10.7.0.27 |
-| H           | 10.7.0.28 | /30  | 255.255.255.252 | 10.7.0.29 - 10.7.0.30 | 10.7.0.31 |
-| I           | 10.7.0.32 | /30  | 255.255.255.252 | 10.7.0.33 - 10.7.0.34 | 10.7.0.35 |
-| J           | 10.7.0.36 | /30  | 255.255.255.252 | 10.7.0.37 - 10.7.0.38 | 10.7.0.39 |
-| K           | 10.7.0.40 | /30  | 255.255.255.252 | 10.7.0.41 - 10.7.0.42 | 10.7.0.43 |
-| L           | 10.7.0.44 | /30  | 255.255.255.252 | 10.7.0.45 - 10.7.0.46 | 10.7.0.47 |
-| M           | 10.7.0.48 | /30  | 255.255.255.252 | 10.7.0.49 - 10.7.0.50 | 10.7.0.51 |
-| N           | 10.7.0.52 | /30  | 255.255.255.252 | 10.7.0.53 - 10.7.0.54 | 10.7.0.55 |
-| O           | 10.7.0.56 | /30  | 255.255.255.252 | 10.7.0.57 - 10.7.0.58 | 10.7.0.59 |
-| P           | 10.7.0.60 | /30  | 255.255.255.252 | 10.7.0.61 - 10.7.0.62 | 10.7.0.63 |
-| Q           | 10.7.0.64 | /30  | 255.255.255.252 | 10.7.0.65 - 10.7.0.66 | 10.7.0.67 |
-| R           | 10.7.0.68 | /30  | 255.255.255.252 | 10.7.0.69 - 10.7.0.70 | 10.7.0.71 |
-| S           | 10.7.0.72 | /30  | 255.255.255.252 | 10.7.0.73 - 10.7.0.74 | 10.7.0.75 |
+| Subnet Label| Device | Port(s) | Port Channel | Purpose | Address   | Mask | Dec Mask        | Assignable Range      | Broadcast |
+| ------------| ------------| ------------ | ------------ | --------- | --------- | ---- | --------------- | --------------------- | --------- |
+| A           | A           | A           |  A           | Connection between Access_SW1 and Dist_SW1 | 10.7.0.0  | /30  | 255.255.255.252 | 10.7.0.1 - 10.7.0.2   | 10.7.0.3  |
+| B           | B           | B           |  B           | Connection between Access_SW1 and Dist_SW2        | 10.7.0.4  | /30  | 255.255.255.252 | 10.7.0.5 - 10.7.0.6   | 10.7.0.7  |
+| C           | C           | C           |  C           | Connection between Access_SW2 and Dist_SW1        | 10.7.0.8  | /30  | 255.255.255.252 | 10.7.0.9 - 10.7.0.10  | 10.7.0.11 |
+| D           | D           | D           |  D           | Connection between Access_SW2 and Dist_SW2        | 10.7.0.12 | /30  | 255.255.255.252 | 10.7.0.13 - 10.7.0.14 | 10.7.0.15 |
+| E           | E           | E           |  E           | Connection between Access_SW3 and Dist_SW1        | 10.7.0.16 | /30  | 255.255.255.252 | 10.7.0.17 - 10.7.0.18 | 10.7.0.19 |
+| F           | F           | F           |  F           | Connection between Access_SW3 and Dist_SW2        | 10.7.0.20 | /30  | 255.255.255.252 | 10.7.0.21 - 10.7.0.22 | 10.7.0.23 |
+| G           | G           | G           |  G           |         | 10.7.0.24 | /30  | 255.255.255.252 | 10.7.0.25 - 10.7.0.26 | 10.7.0.27 |
+| H           | H           | H           |  H           |         | 10.7.0.28 | /30  | 255.255.255.252 | 10.7.0.29 - 10.7.0.30 | 10.7.0.31 |
+| I           | I           | I           |  I           |         | 10.7.0.32 | /30  | 255.255.255.252 | 10.7.0.33 - 10.7.0.34 | 10.7.0.35 |
+| J           | J           | J           |  J           |         | 10.7.0.36 | /30  | 255.255.255.252 | 10.7.0.37 - 10.7.0.38 | 10.7.0.39 |
+| K           | K           | K           |  K           |         | 10.7.0.40 | /30  | 255.255.255.252 | 10.7.0.41 - 10.7.0.42 | 10.7.0.43 |
+| L           | L           | L           |  L           |         | 10.7.0.44 | /30  | 255.255.255.252 | 10.7.0.45 - 10.7.0.46 | 10.7.0.47 |
+| M           | M           | M           |  M           |         | 10.7.0.48 | /30  | 255.255.255.252 | 10.7.0.49 - 10.7.0.50 | 10.7.0.51 |
+| N           | N           | N           |  N           |         | 10.7.0.52 | /30  | 255.255.255.252 | 10.7.0.53 - 10.7.0.54 | 10.7.0.55 |
+| O           | O           | O           |  O           |         | 10.7.0.56 | /30  | 255.255.255.252 | 10.7.0.57 - 10.7.0.58 | 10.7.0.59 |
+| P           | P           | P           |  P           |         | 10.7.0.60 | /30  | 255.255.255.252 | 10.7.0.61 - 10.7.0.62 | 10.7.0.63 |
+| Q           | Q           | Q           |  Q           |         | 10.7.0.64 | /30  | 255.255.255.252 | 10.7.0.65 - 10.7.0.66 | 10.7.0.67 |
+| R           | R           | R           |  R           |         | 10.7.0.68 | /30  | 255.255.255.252 | 10.7.0.69 - 10.7.0.70 | 10.7.0.71 |
+| S           | S           | S           |  S           |         | 10.7.0.72 | /30  | 255.255.255.252 | 10.7.0.73 - 10.7.0.74 | 10.7.0.75 |
 
 ### Access
 
@@ -180,7 +178,7 @@ Provide the following documents and evidence. Ensure your work adheres to the ma
 ### Deliverable – LAN design (25%)
   - Describe the LAN design, giving a broad overview of how the design works and meets the  customer requirements.
   - Provide detail of how the chosen features work, paying careful attention to answer the  customer questions in red within the customer specifications above. Supply tables and  diagrams as requested.
-  -  Supporting references. Include in text referencing and a table of references.
+  - Supporting references. Include in text referencing and a table of references.
 
 ### Deliverable – WAN design (25%) 
   - Describe the WAN design, giving a broad overview of how the design works and meets the  customer requirements.

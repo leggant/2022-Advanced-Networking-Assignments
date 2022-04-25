@@ -21,25 +21,23 @@ vlan 10
 name Sales_Marketing
 vlan 20
 name Admin
-vlan 99
-name Default
-int range f0/1-6,f0/11,f0/15-23,g0/1-2
+int range f0/1-6,f0/15-24,g0/1-2
 spanning-tree bpduguard enable
 switchport access vlan 103
 shut
 int f0/10
 switchport mode access
-switchport port-security mac-address sticky 
+switchport port-security mac-address sticky
 spanning-tree bpduguard enable
 switchport access vlan 10
-int f0/24
+int f0/11
 switchport mode access
-switchport port-security mac-address sticky 
+switchport port-security mac-address sticky
 spanning-tree bpduguard enable
 switchport access vlan 20
 int range f0/7-9
 no switchport
-channel-group 1 mode active
+channel-group 6 mode active
 description Connection to DIST_SW1
 exit
 int range f0/12-14
@@ -47,12 +45,12 @@ no switchport
 channel-group 2 mode active
 description Connection to DIST_SW2
 exit
-int po 1
-ip add ___
+int po 6
+ip add 10.7.0.1 255.255.255.252
 description Connection to DIST_SW1
 no shut
 int po 2
-ip add ___
+ip add 10.7.0.5 255.255.255.252
 description Connection to DIST_SW2
 no shut
 end
@@ -79,19 +77,36 @@ vlan 103
 name Parking
 vlan 30
 name Finance
-vlan 99
-name Default
-int range f0/1-9,f0/11,f0/15-16,f0/20-24,g0/1-2
+int range f0/1-9,f0/14-16,f0/20-24,g0/1-2
 spanning-tree bpduguard enable
 switchport access vlan 103
 shut
 int f0/10
 switchport mode access
+switchport port-security mac-address sticky
 spanning-tree bpduguard enable
 switchport access vlan 30
+no shut
+int range f0/11-13
+no switchport
+channel-group 2 mode active
+description Connection to DIST_SW1
+exit
+int range f0/17-19
+no switchport
+channel-group 6 mode active
+description Connection to DIST_SW2
+exit
+int po 2
+ip add 10.7.0.9 255.255.255.252
+description Connection to DIST_SW1
+no shut
+int po 6
+ip add 10.7.0.13 255.255.255.252
+description Connection to DIST_SW2
+no shut
 end
 wr
-
 
 
 en
@@ -115,15 +130,30 @@ vlan 103
 name Parking
 vlan 40
 name HR
-vlan 99
-name Default
-int range f0/1-6,f0/11-19,f0/23-24,g0/1-2
+int range f0/1-9,f0/11-20,g0/1-2
 spanning-tree bpduguard enable
 switchport access vlan 103
 shut
 int f0/10
 switchport mode access
+switchport port-security mac-address sticky
 spanning-tree bpduguard enable
 switchport access vlan 40
+no shut
+int range f0/22-24
+no switchport
+channel-group 3 mode active
+description Connection to DIST_SW1
+exit
+int f0/21
+no switchport
+description Connection to DIST_SW2
+ip add 10.7.0.13 255.255.255.252
+no shut
+exit
+int po 3
+ip add 10.7.0.9 255.255.255.252
+description Connection to DIST_SW1
+no shut
 end
 wr

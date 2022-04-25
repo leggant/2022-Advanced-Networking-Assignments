@@ -94,12 +94,13 @@
 2. Include the WAN edge routers, however BGP configuration is not required on these within  Packet Tracer. 
 3. Ensure all specified technologies and features (including specified security features) are  configured correctly and working.
 4.  Provide testing output as supporting evidence (e.g. output of relevant show commands) for  each feature. Note: Due to the number of devices you are requested to use packet tracer. Due to packet Tracer  limitations, some features may not be available or work as intended. If you have specified any such  features in your design you are to provide the configuration of the feature separately.  
+
 ### Deliverable – WAN Working Configuration (15%) 
+
 > You are to provide a working proof of concept lab within GNS3 (portable project) 
 
 1. Include all routers for the HO LAN, Provider edge, Liverpool, Fulham
-2. The HO LAN WAN edge distribution switches are to be included (to source the HO LAN  networks) however as GNS3 is resource intensive (CPU, mem) the following option can be  implemented to help minimise resource use. HO LAN Can be simulated with a single device that uses loopbacks to source the HO LAN networks as  required. Make sure these match any summary addresses you may already have created  within the HO LAN design. See appendix. 
+2. The HO LAN WAN edge distribution switches are to be included (to source the HO LAN  networks) however as GNS3 is resource intensive (CPU, mem) the following option can be implemented to help minimise resource use. HO LAN Can be simulated with a single device that uses loopbacks to source the HO LAN networks as  required. Make sure these match any summary addresses you may already have created  within the HO LAN design. See appendix. 
 3. Ensure all specified technologies and features (including specified security features) are  configured correctly and working.
 4.  Provide testing output as supporting evidence (e.g. output of relevant show commands) for  each feature.
 5. While the service provider core is stated as running MPLS, you do not need to provide any  MPLS configuration. 
-
