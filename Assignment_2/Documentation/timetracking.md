@@ -28,14 +28,21 @@
 | Task | Includes | Date_Started | Completed | Total (hrs) |
 | ---- | ------------ | --------- | ----------- | ----------- |
 | Initial Packet Tracer Set-up | Layout of devices, adding links between devices and  labelling devices | 30/03/22 | 17/04/22 | 1.5 |
-|  | labelling devices and ports | 17/04/22 |           | 1 |
-|Subnets|divide given IP into required subnets, documenting, and adding to PT notes| 17/04/22 | 17/04/22 | 1.5 |
-|      | Label networks allocated |              |           |             |
-|      |      |              |           |             |
-|      |      |              |           |             |
-|      |      |              |           |             |
-|      |      |              |           |             |
-|      |      |              |           |             |
+|  | labelling devices and ports | 17/04/22 |           | 2 |
+|Subnets|divide given IP into required subnets, documenting, and adding to PT notes| 17/04/22 | 25/04/22 | 3 |
+|      | Label networks allocated | 24/04/22 |           | 2 |
+| Device Basic Configuration | Access layer device configuration, adding commands to text file (backup), testing layer 3 configurations | 20/04/22 | 25/04/22 | 3.5 |
+|      | Access to Distribution Layer | 22/04/22 |           | 2 |
+|      | Distribution to Core |              |           |             |
+|      | Core to Distribution |              |           |             |
+|      | WAN Routers |              |           |             |
+| LAN Logical topology diagram (5%) | Access, distribution, core and WAN edge intermediary devices | | | |
+| | VLANs / Network addressing                                   | | | |
+| | Port numbering for infrastructure links (not access ports).  | | | |
+| | Routing domains / Autonomous systems / Areas                 | | | |
+| | Default gateways, Virtual IPs                                | | | |
+| | Show traffic flows (primary / backup paths) If needed the diagram can be split into multiple parts. The diagram must be separate to the supplied  packet tracer or VIRL configuration (though packet tracer or VIRL can be used as the basis). | | | |
+| Deliverable – LAN Working Configuration (15%) |                                                              | | | |
 
 ### WAN Configuration Timesheet
 

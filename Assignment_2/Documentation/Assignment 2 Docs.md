@@ -8,7 +8,7 @@ Where to hand in: submit to Michael Holtz via Teams
 
 Late Penalty: 10% per day late 
 
-# Learning Objectives 
+# Learning Objectives
 
 1. Understand, evaluate and implement designs for facilitating large scale wide area networks. 
 2. Plan and deploy mechanisms for secure network information exchange. 
@@ -59,27 +59,72 @@ The customer has requested that subnet allocations are easy to summarise, unders
 
 **Consider** how device management addressing will be allocated. Ensure some point-to-point /30  networks are set aside for the WAN design. 
 
-| Subnet Label| Device | Port(s) | Port Channel | Purpose | Address   | Mask | Dec Mask        | Assignable Range      | Broadcast |
-| ------------| ------------| ------------ | ------------ | --------- | --------- | ---- | --------------- | --------------------- | --------- |
-| A           | A           | A           |  A           | Connection between Access_SW1 and Dist_SW1 | 10.7.0.0  | /30  | 255.255.255.252 | 10.7.0.1 - 10.7.0.2   | 10.7.0.3  |
-| B           | B           | B           |  B           | Connection between Access_SW1 and Dist_SW2        | 10.7.0.4  | /30  | 255.255.255.252 | 10.7.0.5 - 10.7.0.6   | 10.7.0.7  |
-| C           | C           | C           |  C           | Connection between Access_SW2 and Dist_SW1        | 10.7.0.8  | /30  | 255.255.255.252 | 10.7.0.9 - 10.7.0.10  | 10.7.0.11 |
-| D           | D           | D           |  D           | Connection between Access_SW2 and Dist_SW2        | 10.7.0.12 | /30  | 255.255.255.252 | 10.7.0.13 - 10.7.0.14 | 10.7.0.15 |
-| E           | E           | E           |  E           | Connection between Access_SW3 and Dist_SW1        | 10.7.0.16 | /30  | 255.255.255.252 | 10.7.0.17 - 10.7.0.18 | 10.7.0.19 |
-| F           | F           | F           |  F           | Connection between Access_SW3 and Dist_SW2        | 10.7.0.20 | /30  | 255.255.255.252 | 10.7.0.21 - 10.7.0.22 | 10.7.0.23 |
-| G           | G           | G           |  G           |         | 10.7.0.24 | /30  | 255.255.255.252 | 10.7.0.25 - 10.7.0.26 | 10.7.0.27 |
-| H           | H           | H           |  H           |         | 10.7.0.28 | /30  | 255.255.255.252 | 10.7.0.29 - 10.7.0.30 | 10.7.0.31 |
-| I           | I           | I           |  I           |         | 10.7.0.32 | /30  | 255.255.255.252 | 10.7.0.33 - 10.7.0.34 | 10.7.0.35 |
-| J           | J           | J           |  J           |         | 10.7.0.36 | /30  | 255.255.255.252 | 10.7.0.37 - 10.7.0.38 | 10.7.0.39 |
-| K           | K           | K           |  K           |         | 10.7.0.40 | /30  | 255.255.255.252 | 10.7.0.41 - 10.7.0.42 | 10.7.0.43 |
-| L           | L           | L           |  L           |         | 10.7.0.44 | /30  | 255.255.255.252 | 10.7.0.45 - 10.7.0.46 | 10.7.0.47 |
-| M           | M           | M           |  M           |         | 10.7.0.48 | /30  | 255.255.255.252 | 10.7.0.49 - 10.7.0.50 | 10.7.0.51 |
-| N           | N           | N           |  N           |         | 10.7.0.52 | /30  | 255.255.255.252 | 10.7.0.53 - 10.7.0.54 | 10.7.0.55 |
-| O           | O           | O           |  O           |         | 10.7.0.56 | /30  | 255.255.255.252 | 10.7.0.57 - 10.7.0.58 | 10.7.0.59 |
-| P           | P           | P           |  P           |         | 10.7.0.60 | /30  | 255.255.255.252 | 10.7.0.61 - 10.7.0.62 | 10.7.0.63 |
-| Q           | Q           | Q           |  Q           |         | 10.7.0.64 | /30  | 255.255.255.252 | 10.7.0.65 - 10.7.0.66 | 10.7.0.67 |
-| R           | R           | R           |  R           |         | 10.7.0.68 | /30  | 255.255.255.252 | 10.7.0.69 - 10.7.0.70 | 10.7.0.71 |
-| S           | S           | S           |  S           |         | 10.7.0.72 | /30  | 255.255.255.252 | 10.7.0.73 - 10.7.0.74 | 10.7.0.75 |
+| A         | 2    | 2    | 10.7.0.0   | /30  | 255.255.255.252 | 10.7.0.1 - 10.7.0.2     | 10.7.0.3   |
+| --------- | ---- | ---- | ---------- | ---- | --------------- | ----------------------- | ---------- |
+| B         | 2    | 2    | 10.7.0.4   | /30  | 255.255.255.252 | 10.7.0.5 - 10.7.0.6     | 10.7.0.7   |
+| C         | 2    | 2    | 10.7.0.8   | /30  | 255.255.255.252 | 10.7.0.9 - 10.7.0.10    | 10.7.0.11  |
+| D         | 2    | 2    | 10.7.0.12  | /30  | 255.255.255.252 | 10.7.0.13 - 10.7.0.14   | 10.7.0.15  |
+| E         | 2    | 2    | 10.7.0.16  | /30  | 255.255.255.252 | 10.7.0.17 - 10.7.0.18   | 10.7.0.19  |
+| F         | 2    | 2    | 10.7.0.20  | /30  | 255.255.255.252 | 10.7.0.21 - 10.7.0.22   | 10.7.0.23  |
+| G         | 2    | 2    | 10.7.0.24  | /30  | 255.255.255.252 | 10.7.0.25 - 10.7.0.26   | 10.7.0.27  |
+| H         | 2    | 2    | 10.7.0.28  | /30  | 255.255.255.252 | 10.7.0.29 - 10.7.0.30   | 10.7.0.31  |
+| I         | 2    | 2    | 10.7.0.32  | /30  | 255.255.255.252 | 10.7.0.33 - 10.7.0.34   | 10.7.0.35  |
+| J         | 2    | 2    | 10.7.0.36  | /30  | 255.255.255.252 | 10.7.0.37 - 10.7.0.38   | 10.7.0.39  |
+| K         | 2    | 2    | 10.7.0.40  | /30  | 255.255.255.252 | 10.7.0.41 - 10.7.0.42   | 10.7.0.43  |
+| L         | 2    | 2    | 10.7.0.44  | /30  | 255.255.255.252 | 10.7.0.45 - 10.7.0.46   | 10.7.0.47  |
+| M         | 2    | 2    | 10.7.0.48  | /30  | 255.255.255.252 | 10.7.0.49 - 10.7.0.50   | 10.7.0.51  |
+| N         | 2    | 2    | 10.7.0.52  | /30  | 255.255.255.252 | 10.7.0.53 - 10.7.0.54   | 10.7.0.55  |
+| O         | 2    | 2    | 10.7.0.56  | /30  | 255.255.255.252 | 10.7.0.57 - 10.7.0.58   | 10.7.0.59  |
+| P         | 2    | 2    | 10.7.0.60  | /30  | 255.255.255.252 | 10.7.0.61 - 10.7.0.62   | 10.7.0.63  |
+| Q         | 2    | 2    | 10.7.0.64  | /30  | 255.255.255.252 | 10.7.0.65 - 10.7.0.66   | 10.7.0.67  |
+| R         | 2    | 2    | 10.7.0.68  | /30  | 255.255.255.252 | 10.7.0.69 - 10.7.0.70   | 10.7.0.71  |
+| S         | 2    | 2    | 10.7.0.72  | /30  | 255.255.255.252 | 10.7.0.73 - 10.7.0.74   | 10.7.0.75  |
+| Subnet027 | 2    | 2    | 10.7.0.76  | /30  | 255.255.255.252 | 10.7.0.77 - 10.7.0.78   | 10.7.0.79  |
+| Subnet028 | 2    | 2    | 10.7.0.80  | /30  | 255.255.255.252 | 10.7.0.81 - 10.7.0.82   | 10.7.0.83  |
+| Subnet029 | 2    | 2    | 10.7.0.84  | /30  | 255.255.255.252 | 10.7.0.85 - 10.7.0.86   | 10.7.0.87  |
+| Subnet030 | 2    | 2    | 10.7.0.88  | /30  | 255.255.255.252 | 10.7.0.89 - 10.7.0.90   | 10.7.0.91  |
+| Subnet031 | 2    | 2    | 10.7.0.92  | /30  | 255.255.255.252 | 10.7.0.93 - 10.7.0.94   | 10.7.0.95  |
+| Subnet032 | 2    | 2    | 10.7.0.96  | /30  | 255.255.255.252 | 10.7.0.97 - 10.7.0.98   | 10.7.0.99  |
+| Subnet033 | 2    | 2    | 10.7.0.100 | /30  | 255.255.255.252 | 10.7.0.101 - 10.7.0.102 | 10.7.0.103 |
+| Subnet034 | 2    | 2    | 10.7.0.104 | /30  | 255.255.255.252 | 10.7.0.105 - 10.7.0.106 | 10.7.0.107 |
+| Subnet035 | 2    | 2    | 10.7.0.108 | /30  | 255.255.255.252 | 10.7.0.109 - 10.7.0.110 | 10.7.0.111 |
+| Subnet036 | 2    | 2    | 10.7.0.112 | /30  | 255.255.255.252 | 10.7.0.113 - 10.7.0.114 | 10.7.0.115 |
+| Subnet037 | 2    | 2    | 10.7.0.116 | /30  | 255.255.255.252 | 10.7.0.117 - 10.7.0.118 | 10.7.0.119 |
+| Subnet038 | 2    | 2    | 10.7.0.120 | /30  | 255.255.255.252 | 10.7.0.121 - 10.7.0.122 | 10.7.0.123 |
+| Subnet039 | 2    | 2    | 10.7.0.124 | /30  | 255.255.255.252 | 10.7.0.125 - 10.7.0.126 | 10.7.0.127 |
+| Subnet040 | 2    | 2    | 10.7.0.128 | /30  | 255.255.255.252 | 10.7.0.129 - 10.7.0.130 | 10.7.0.131 |
+| Subnet041 | 2    | 2    | 10.7.0.132 | /30  | 255.255.255.252 | 10.7.0.133 - 10.7.0.134 | 10.7.0.135 |
+| Subnet042 | 2    | 2    | 10.7.0.136 | /30  | 255.255.255.252 | 10.7.0.137 - 10.7.0.138 | 10.7.0.139 |
+| Subnet043 | 2    | 2    | 10.7.0.140 | /30  | 255.255.255.252 | 10.7.0.141 - 10.7.0.142 | 10.7.0.143 |
+| Subnet044 | 2    | 2    | 10.7.0.144 | /30  | 255.255.255.252 | 10.7.0.145 - 10.7.0.146 | 10.7.0.147 |
+| Subnet045 | 2    | 2    | 10.7.0.148 | /30  | 255.255.255.252 | 10.7.0.149 - 10.7.0.150 | 10.7.0.151 |
+| Subnet046 | 2    | 2    | 10.7.0.152 | /30  | 255.255.255.252 | 10.7.0.153 - 10.7.0.154 | 10.7.0.155 |
+| Subnet047 | 2    | 2    | 10.7.0.156 | /30  | 255.255.255.252 | 10.7.0.157 - 10.7.0.158 | 10.7.0.159 |
+| Subnet048 | 2    | 2    | 10.7.0.160 | /30  | 255.255.255.252 | 10.7.0.161 - 10.7.0.162 | 10.7.0.163 |
+| Subnet049 | 2    | 2    | 10.7.0.164 | /30  | 255.255.255.252 | 10.7.0.165 - 10.7.0.166 | 10.7.0.167 |
+| Subnet050 | 2    | 2    | 10.7.0.168 | /30  | 255.255.255.252 | 10.7.0.169 - 10.7.0.170 | 10.7.0.171 |
+| Subnet051 | 2    | 2    | 10.7.0.172 | /30  | 255.255.255.252 | 10.7.0.173 - 10.7.0.174 | 10.7.0.175 |
+| Subnet052 | 2    | 2    | 10.7.0.176 | /30  | 255.255.255.252 | 10.7.0.177 - 10.7.0.178 | 10.7.0.179 |
+| Subnet053 | 2    | 2    | 10.7.0.180 | /30  | 255.255.255.252 | 10.7.0.181 - 10.7.0.182 | 10.7.0.183 |
+| Subnet054 | 2    | 2    | 10.7.0.184 | /30  | 255.255.255.252 | 10.7.0.185 - 10.7.0.186 | 10.7.0.187 |
+| Subnet055 | 2    | 2    | 10.7.0.188 | /30  | 255.255.255.252 | 10.7.0.189 - 10.7.0.190 | 10.7.0.191 |
+| Subnet056 | 2    | 2    | 10.7.0.192 | /30  | 255.255.255.252 | 10.7.0.193 - 10.7.0.194 | 10.7.0.195 |
+| Subnet057 | 2    | 2    | 10.7.0.196 | /30  | 255.255.255.252 | 10.7.0.197 - 10.7.0.198 | 10.7.0.199 |
+| Subnet058 | 2    | 2    | 10.7.0.200 | /30  | 255.255.255.252 | 10.7.0.201 - 10.7.0.202 | 10.7.0.203 |
+| Subnet059 | 2    | 2    | 10.7.0.204 | /30  | 255.255.255.252 | 10.7.0.205 - 10.7.0.206 | 10.7.0.207 |
+| Subnet060 | 2    | 2    | 10.7.0.208 | /30  | 255.255.255.252 | 10.7.0.209 - 10.7.0.210 | 10.7.0.211 |
+| Subnet061 | 2    | 2    | 10.7.0.212 | /30  | 255.255.255.252 | 10.7.0.213 - 10.7.0.214 | 10.7.0.215 |
+| Subnet062 | 2    | 2    | 10.7.0.216 | /30  | 255.255.255.252 | 10.7.0.217 - 10.7.0.218 | 10.7.0.219 |
+| Subnet063 | 2    | 2    | 10.7.0.220 | /30  | 255.255.255.252 | 10.7.0.221 - 10.7.0.222 | 10.7.0.223 |
+| Subnet064 | 2    | 2    | 10.7.0.224 | /30  | 255.255.255.252 | 10.7.0.225 - 10.7.0.226 | 10.7.0.227 |
+| Subnet065 | 2    | 2    | 10.7.0.228 | /30  | 255.255.255.252 | 10.7.0.229 - 10.7.0.230 | 10.7.0.231 |
+| T         | 2    | 2    | 10.7.0.232 | /30  | 255.255.255.252 | 10.7.0.233 - 10.7.0.234 | 10.7.0.235 |
+| U         | 2    | 2    | 10.7.0.236 | /30  | 255.255.255.252 | 10.7.0.237 - 10.7.0.238 | 10.7.0.239 |
+| V         | 2    | 2    | 10.7.0.240 | /30  | 255.255.255.252 | 10.7.0.241 - 10.7.0.242 | 10.7.0.243 |
+| W         | 2    | 2    | 10.7.0.244 | /30  | 255.255.255.252 | 10.7.0.245 - 10.7.0.246 | 10.7.0.247 |
+| X         | 2    | 2    | 10.7.0.248 | /30  | 255.255.255.252 | 10.7.0.249 - 10.7.0.250 | 10.7.0.251 |
+| Y         | 2    | 2    | 10.7.0.252 | /30  | 255.255.255.252 | 10.7.0.253 - 10.7.0.254 | 10.7.0.255 |
+
 
 ### Access
 
@@ -109,14 +154,14 @@ Each switch will have a dedicated user VLAN, this ensures traffic is separated. 
 
 **Note** this decision will influence if the link between the distribution switches is L2 or L3. 
 
-### Resilience 
+### Resilience
+
 The HO LAN is to provide redundant links and paths where possible while minimising convergence  time. The design needs to consider the impact of a switch failure.
 
-5. The customer requests you describe traffic flow and how it is affected by at least three  potential failure scenarios. Use diagrams to indicate primary and alternate traffic paths in  the event of device and or link failures.
+5. The customer requests you describe traffic flow and how it is affected by at least three potential failure scenarios. Use diagrams to indicate primary and alternate traffic paths in  the event of device and or link failures.
 6. You are to explain how you are using ether channel and if not why?
 7. Explain how have the core to distribution links been designed to minimise convergence? 
 8. Alternatively if you are using a layer 3 access then describe how you have done this including  the routing protocol used and how the routing metrics have been configured and why. How  does this impact the ability to have redundant host default gateways? 
-
 
 ### Routing
 
@@ -225,3 +270,15 @@ To ensure accurate billing you have been asked to record the time you spend on e
 
 ###  Deliverable – Grade your work
 You are to review the marking rubric against your work and provide a grade on a scale from F to A+  for each item.
+
+
+
+
+
+## Notes
+
+he hierarchical campus design has used a full mesh equal-cost path routing design leveraging Layer 3  switching in the core and between distribution layers of the network for many years. The current  generation of Cisco switches can “route” or switch voice and data packets using Layer 3 and Layer 4  information with neither an increase in latency nor loss of capacity in comparison with a pure Layer 2  switch. Because in current hardware, Layer 2 switching and Layer 3 routing perform with equal speed,  Cisco recommends a routed network core in all cases. Routed cores have numerous advantages,  including the following:  • High availability – Deterministic convergence times for any link or node failure in an equal-cost path Layer 3  design of less than 200 msec – No potential for Layer 2 Spanning Tree loops • Scalability and flexibility – Dynamic traffic load balancing with optimal path selection – Structured routing permits for use of modular design and ease of growth • Simplified management and troubleshooting – Simplified routing design eases operational support – Removal of the need to troubleshoot L2/L3 interactions in the core The many advantages of Layer 3 routing in the campus derive from the inherent behavior of the routing  protocols combined with the flexibility and performance of Layer 3 hardware switching. The increased  scalability and resilience of the Layer 3 distribution/core design has proven itself in many customer  networks over the years and continues to be the best practice recommendation for campus design.
+
+## Routing to the Edge  Advantages, 
+
+Yes in the Right Environment Advantages:  • Ease of implementation, less to get right • No matching of STP/HSRP/GLBP priority • No L2/L3 Multicast topology inconsistencies • Single Control Plane and well known tool set • traceroute, show ip route, show ip eigrp neighbour, etc.… • Most Catalysts support L3 Switching today • EIGRP converges in <200 msec • OSPF with sub-second tuning converges in <200 msec • RPVST+ convergence times dependent on GLBP / HSRP tuning Considerations:  • Do you have any Layer 2 VLAN adjacency requirements between access switches? • IP addressing—Do you have enough address space and the allocation plan to support a routed access design?
