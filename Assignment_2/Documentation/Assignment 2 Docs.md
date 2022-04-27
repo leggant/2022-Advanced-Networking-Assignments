@@ -8,6 +8,10 @@ Where to hand in: submit to Michael Holtz via Teams
 
 Late Penalty: 10% per day late 
 
+<img src="image-20220427161149719.png" alt="image-20220427161149719" style="zoom:67%;" />
+
+<img src="image-20220427162032261.png" alt="image-20220427162032261" style="zoom:67%;" />
+
 # Learning Objectives
 
 1. Understand, evaluate and implement designs for facilitating large scale wide area networks. 
@@ -146,6 +150,20 @@ The company’s existing LAN deployments utilise L2 VLANS and STP from the distr
 
     - Routing and switching is handled internally without the need to be transmitted to a router 
 
+    - The many potential advantages of using a Layer 3 access design include the following: • 
+
+    - Improved convergence • 
+
+    - Simplified multicast configuration • 
+
+    - Dynamic traffic load balancing • 
+
+    - Single control plane • 
+
+    - Single set of troubleshooting tools (for example, ping and traceroute)
+
+    - Of these, perhaps the most significant is the improvement in network convergence times possible when using a routed access design configured with EIGRP or OSPF as the routing protocol. Comparing the convergence times for an optimal Layer 2 access design (either with a spanning tree loop or without a loop) against that of the Layer 3 access design, you can obtain a four-fold improvement in convergence times, from 800–900msec for the Layer 2 design to less than 200 msec for the Layer 3 access.
+
     The additional cost of adding this hardware to the network is  investment 
 
 4. You are to decide if VLANs need to be spanned across access switches or if each access  switch will have a dedicated user VLAN. Why have you made this decision? 
@@ -169,7 +187,17 @@ You must specify an appropriate interior gateway protocol to be used for interna
 
 **OSPF selected**
 
+
+
 10. Explain why you have chosen the IGP?
+    - With OSPF, there is no limitation on the hop count.
+    - The intelligent use of VLSM is very useful in IP address allocation.
+    - OSPF uses IP multicast to send link-state updates. This ensures less processing on routers that are not listening to OSPF packets. Also, updates are only sent in case routing changes occur instead of periodically. This ensures a better use of bandwidth.
+    - OSPF has better convergence than RIP. This is because routing changes are propagated instantaneously and not periodically.
+    - OSPF allows for better load balancing.
+    - OSPF allows for a logical definition of networks where routers can be divided into areas. This limits the explosion of link state updates over the whole network. This also provides a mechanism for aggregating routes and cutting down on the unnecessary propagation of subnet information.
+    - OSPF allows for routing authentication by using different methods of password authentication.
+    - OSPF allows for the transfer and tagging of external routes injected into an Autonomous System. This keeps track of external routes injected by exterior protocols such as BGP.
 11. Explain how you have configured the IGP including methods you have employed to minimise  convergence time, optimise traffic flow and limit the wasting of bandwidth and CPU calculations. 
 
 ### Security

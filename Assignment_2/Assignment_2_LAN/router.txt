@@ -1,12 +1,10 @@
 en
 conf t
-hostname Distribution_SW1
+hostname WAN_R1
 service password-encryption
 no ip domain-lookup
 ip domain-name acme.nz
 banner motd # Unauthorised Access Is Prohibited #
-spanning-tree mode rapid-pvst
-spanning-tree portfast default
 line con 0
 logging synchronous
 exec-timeout 3 0
