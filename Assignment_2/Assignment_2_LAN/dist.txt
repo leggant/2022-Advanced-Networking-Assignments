@@ -1,12 +1,11 @@
 en
 conf t
-hostname Distribution_SW1
+hostname DIST_1
 service password-encryption
 no ip domain-lookup
 ip domain-name acme.nz
 banner motd # Unauthorised Access Is Prohibited #
 spanning-tree mode rapid-pvst
-spanning-tree portfast default
 line con 0
 logging synchronous
 exec-timeout 3 0
@@ -15,6 +14,43 @@ line vty 0 4
 logging synchronous
 exec-timeout 3 0
 exit
+vlan 51
+name Parking
+vlan 98
+name Management
+vlan 91
+name Native
+vlan 10
+name Admin
+vlan 20
+name Finance
+vlan 30
+name Sales_Marketing
+vlan 40
+name HR
+int range g1/0/1-4,g1/0/8-9,g1/1/1-4
+switchport access vlan 91
+exit
+int range g1/0/5-7,g1/0/10-24
+switchport mode access
+switchport access vlan 51
+spanning-tree bpduguard enable
+shut
+int g1/1/1
+no switchport
+description Link -->> WAN_1 G0/0/0
+ip add 10.7.0.1 255.255.255.252
+no shut
+int g1/1/2
+no switchport
+description Link -->> WAN_1 G0/1/0
+ip add 10.7.0.10 255.255.255.252
+no shut
+end
+wr
+
+
+
 vlan 103
 name Parking
 int range g1/0/1-2,g1/0/5-6,g1/0/10,g1/0/14-21
@@ -42,7 +78,7 @@ wr
 
 en
 conf t
-hostname Distribution_SW1
+hostname DIST_2
 service password-encryption
 no ip domain-lookup
 ip domain-name acme.nz
@@ -57,18 +93,15 @@ line vty 0 4
 logging synchronous
 exec-timeout 3 0
 exit
-vlan 103
-name Parking
-vlan 30
-name Finance
-int range f0/1-9,f0/11,f0/15-16,f0/20-24,g0/1-2
-spanning-tree bpduguard enable
-switchport access vlan 103
-shut
-int f0/10
-switchport mode access
-spanning-tree bpduguard enable
-switchport access vlan 30
+int g1/1/1
+no switchport
+description Link -->> WAN_2 G0/0/0
+ip add 10.7.0.6 255.255.255.252
+no shut
+int g1/1/2
+no switchport
+description Link -->> WAN_2 G0/1/0
+ip add 10.7.0.14 255.255.255.252
+no shut
 end
 wr
-

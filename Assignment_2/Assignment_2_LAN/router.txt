@@ -1,52 +1,20 @@
 en
 conf t
-hostname WAN_R1
-service password-encryption
-no ip domain-lookup
-ip domain-name acme.nz
-banner motd # Unauthorised Access Is Prohibited #
+
 line con 0
-logging synchronous
-exec-timeout 3 0
-exit
+password cisco
+login
 line vty 0 4
-logging synchronous
-exec-timeout 3 0
-exit
-vlan 103
-name Parking
-int range g1/0/1-2,g1/0/5-6,g1/0/10,g1/0/14-21
-spanning-tree bpduguard enable
-switchport access vlan 103
-shut
-int g1/1/1
-no switchport
-description Connection to Core_2 Router
-ip add ______.______.______.______
-no shut
-int range g1/1/2-4
-no switchport
-channel-group 1 mode on
-description Connection to Distribution_SW2
-no shut
-exit
-int po 1
-no switchport
-description Connection to Distribution_SW2
-ip add ______.______.______.______
-no shut
-end
-wr
+
 
 en
 conf t
-hostname Distribution_SW1
+hostname WAN_R1
+spanning-tree mode rapid-pvst
 service password-encryption
 no ip domain-lookup
 ip domain-name acme.nz
 banner motd # Unauthorised Access Is Prohibited #
-spanning-tree mode rapid-pvst
-spanning-tree portfast default
 line con 0
 logging synchronous
 exec-timeout 3 0
@@ -55,18 +23,80 @@ line vty 0 4
 logging synchronous
 exec-timeout 3 0
 exit
-vlan 103
-name Parking
-vlan 30
-name Finance
-int range f0/1-9,f0/11,f0/15-16,f0/20-24,g0/1-2
-spanning-tree bpduguard enable
-switchport access vlan 103
+int range g0/0-1
 shut
-int f0/10
-switchport mode access
-spanning-tree bpduguard enable
-switchport access vlan 30
+int g0/0/0
+description Link -->> DIST_1 G1/1/1
+ip add 10.7.0.1 255.255.255.252
+no shut
+int g0/1/0
+description Link -->> DIST_1 G1/1/2
+ip add 10.7.0.9 255.255.255.252
+no shut
 end
 wr
 
+DIST 1
+
+en
+conf t
+int g1/1/1
+no switchport
+description Link -->> WAN_1 G0/0/0
+ip add 10.7.0.1 255.255.255.252
+no shut
+int g1/1/2
+no switchport
+description Link -->> WAN_1 G0/1/0
+ip add 10.7.0.10 255.255.255.252
+no shut
+end
+wr
+
+
+en
+conf t
+hostname WAN_R2
+spanning-tree mode rapid-pvst
+service password-encryption
+no ip domain-lookup
+ip domain-name acme.nz
+banner motd # Unauthorised Access Is Prohibited #
+line con 0
+logging synchronous
+exec-timeout 3 0
+exit
+line vty 0 4
+logging synchronous
+exec-timeout 3 0
+exit
+int range g0/0-1
+shut
+int g0/0/0
+description Link -->> DIST_2 G1/1/1
+ip add 10.7.0.5 255.255.255.252
+no shut
+int g0/1/0
+description Link -->> DIST_2 G1/1/2
+ip add 10.7.0.13 255.255.255.252
+no shut
+end
+wr
+
+
+DIST 2
+
+en
+conf t
+int g1/1/1
+no switchport
+description Link -->> WAN_2 G0/0/0
+ip add 10.7.0.6 255.255.255.252
+no shut
+int g1/1/2
+no switchport
+description Link -->> WAN_2 G0/1/0
+ip add 10.7.0.14 255.255.255.252
+no shut
+end
+wr
