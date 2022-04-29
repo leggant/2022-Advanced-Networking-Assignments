@@ -1,3 +1,7 @@
+delete vlan.dat
+erase startup-config
+reload
+
 en
 conf t
 hostname DIST_1
@@ -6,6 +10,7 @@ no ip domain-lookup
 ip domain-name acme.nz
 banner motd # Unauthorised Access Is Prohibited #
 spanning-tree mode rapid-pvst
+spanning-tree portfast bpduguard default
 line con 0
 logging synchronous
 exec-timeout 3 0
@@ -14,12 +19,6 @@ line vty 0 4
 logging synchronous
 exec-timeout 3 0
 exit
-vlan 51
-name Parking
-vlan 98
-name Management
-vlan 91
-name Native
 vlan 10
 name Admin
 vlan 20
@@ -28,9 +27,10 @@ vlan 30
 name Sales_Marketing
 vlan 40
 name HR
-int range g1/0/1-4,g1/0/8-9,g1/1/1-4
-switchport access vlan 91
-exit
+vlan 51
+name Parking
+vlan 98
+name Management
 int range g1/0/5-7,g1/0/10-24
 switchport mode access
 switchport access vlan 51
@@ -46,35 +46,36 @@ no switchport
 description Link -->> WAN_1 G0/1/0
 ip add 10.7.0.10 255.255.255.252
 no shut
-end
-wr
-
-
-
-vlan 103
-name Parking
-int range g1/0/1-2,g1/0/5-6,g1/0/10,g1/0/14-21
-spanning-tree bpduguard enable
-switchport access vlan 103
-shut
-int g1/1/1
+int range g1/0/1-4
 no switchport
-description Connection to Core_2 Router
-ip add ______.______.______.______
-no shut
-int range g1/1/2-4
-no switchport
+description CH#1 Link -->> DIST_2
 channel-group 1 mode on
-description Connection to Distribution_SW2
-no shut
+exit
+int range g1/1/3-4
+no switchport
+description CH#2 Link -->> CORE_1
+channel-group 2 mode on
+exit
+int range g1/0/8-9
+no switchport
+description CH#3 Link -->> CORE_2
+channel-group 3 mode on
 exit
 int po 1
-no switchport
-description Connection to Distribution_SW2
-ip add ______.______.______.______
+description CH#1 -->> DIST_2
+ip add 10.7.0.17 255.255.255.252
+no shut
+int po 2
+description CH#2 -->> CORE_1
+ip add 10.7.0.21 255.255.255.252
+no shut
+int po 3
+description CH#3 -->> CORE_2
+ip add 10.7.0.33 255.255.255.252
 no shut
 end
 wr
+
 
 en
 conf t
@@ -84,7 +85,7 @@ no ip domain-lookup
 ip domain-name acme.nz
 banner motd # Unauthorised Access Is Prohibited #
 spanning-tree mode rapid-pvst
-spanning-tree portfast default
+spanning-tree portfast bpduguard default
 line con 0
 logging synchronous
 exec-timeout 3 0
@@ -93,6 +94,23 @@ line vty 0 4
 logging synchronous
 exec-timeout 3 0
 exit
+vlan 10
+name Admin
+vlan 20
+name Finance
+vlan 30
+name Sales_Marketing
+vlan 40
+name HR
+vlan 51
+name Parking
+vlan 98
+name Management
+int range g1/0/5-7,g1/0/10-24
+switchport mode access
+switchport access vlan 51
+spanning-tree bpduguard enable
+shut
 int g1/1/1
 no switchport
 description Link -->> WAN_2 G0/0/0
@@ -103,5 +121,33 @@ no switchport
 description Link -->> WAN_2 G0/1/0
 ip add 10.7.0.14 255.255.255.252
 no shut
+int range g1/0/1-4
+no switchport
+description CH#1 Link -->> DIST_1
+channel-group 1 mode on
+exit
+int range g1/1/3-4
+no switchport
+description CH#2 Link -->> CORE_2
+channel-group 2 mode on
+exit
+int range g1/0/8-9
+no switchport
+description CH#3 Link -->> CORE_1
+channel-group 3 mode on
+exit
+int po 1
+description CH#1 -->> DIST_1
+ip add 10.7.0.18 255.255.255.252
+no shut
+int po 2
+description CH#2 -->> CORE_2
+ip add 10.7.0.25 255.255.255.252
+no shut
+int po 3
+description CH#3 -->> CORE_1
+ip add 10.7.0.37 255.255.255.252
+no shut
 end
 wr
+

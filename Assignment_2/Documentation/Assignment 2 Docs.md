@@ -206,6 +206,10 @@ You must specify an appropriate interior gateway protocol to be used for interna
 
 The customer has asked you to consider security.
 12. Are there any security features that should be deployed within the new HO LAN? Explain  your choices. 
+    - ssh for remote management
+    - removal of ports from default vlan
+    - port security - mac address monitoring
+    - BPDU guard
 
 ## Customer Specifications - WAN Connectivity 
 
