@@ -15,59 +15,62 @@ line vty 0 4
 logging synchronous
 exec-timeout 3 0
 exit
-vlan 10
-name Admin
-vlan 20
-name Finance
-vlan 30
-name Sales_Marketing
-vlan 40
-name HR
 vlan 51
 name Parking
 vlan 98
 name Management
-int range g1/0/5-7,g1/0/10-24
+int range g1/0/5,g1/0/10-24
 switchport mode access
 switchport access vlan 51
 spanning-tree bpduguard enable
 shut
-int g1/1/1
-no switchport
-description Link -->> WAN_1 G0/0/0
-ip add 10.7.0.1 255.255.255.252
-no shut
-int g1/1/2
-no switchport
-description Link -->> WAN_1 G0/1/0
-ip add 10.7.0.10 255.255.255.252
-no shut
 int range g1/0/1-4
 no switchport
-description CH#1 Link -->> DIST_2
+description Link -->> CORE_2
 channel-group 1 mode on
 exit
+int po 1
+description CH#1 -->> CORE_2
+ip add 10.7.0.29 255.255.255.252
+no shut
 int range g1/1/3-4
 no switchport
-description CH#2 Link -->> CORE_1
+description Link -->> DIST_1
 channel-group 2 mode on
 exit
+int po 2
+description CH#2 -->> DIST_1
+ip add 10.7.0.22 255.255.255.252
+no shut
 int range g1/0/8-9
 no switchport
-description CH#3 Link -->> CORE_2
+description Link -->> DIST_2
 channel-group 3 mode on
 exit
-int po 1
-description CH#1 -->> DIST_2
-ip add 10.7.0.17 255.255.255.252
-no shut
-int po 2
-description CH#2 -->> CORE_1
-ip add 10.7.0.21 255.255.255.252
-no shut
 int po 3
-description CH#3 -->> CORE_2
-ip add 10.7.0.33 255.255.255.252
+description CH#3 -->> DIST_2
+ip add 10.7.0.38 255.255.255.252
+no shut
+int range g1/1/1-2
+no switchport
+description Link -->> DIST_SW1
+channel-group 4 mode on
+exit
+int po 4
+description CH#4 -->> DIST_SW1
+ip add 10.7.0.41 255.255.255.252
+no shut
+int range g1/0/6-7
+no switchport
+description Link -->> DIST_SW2
+channel-group 5 mode on
+exit
+int po 5
+description CH#5 -->> DIST_SW2
+ip add 10.7.0.57 255.255.255.252
+no shut
+int range g1/0/1-4,g1/0/6-9,g1/1/1-4
+shut 
 no shut
 end
 wr
@@ -75,7 +78,7 @@ wr
 
 en
 conf t
-hostname DIST_2
+hostname CORE_2
 service password-encryption
 no ip domain-lookup
 ip domain-name acme.nz
@@ -90,59 +93,69 @@ line vty 0 4
 logging synchronous
 exec-timeout 3 0
 exit
-vlan 10
-name Admin
-vlan 20
-name Finance
-vlan 30
-name Sales_Marketing
-vlan 40
-name HR
 vlan 51
 name Parking
 vlan 98
 name Management
-int range g1/0/5-7,g1/0/10-24
+int range g1/0/5,g1/0/10-24
 switchport mode access
 switchport access vlan 51
 spanning-tree bpduguard enable
 shut
-int g1/1/1
-no switchport
-description Link -->> WAN_2 G0/0/0
-ip add 10.7.0.6 255.255.255.252
-no shut
-int g1/1/2
-no switchport
-description Link -->> WAN_2 G0/1/0
-ip add 10.7.0.14 255.255.255.252
-no shut
 int range g1/0/1-4
 no switchport
-description CH#1 Link -->> DIST_1
+description Link -->> CORE_1
 channel-group 1 mode on
 exit
+int po 1
+description CH#1 -->> CORE_1
+ip add 10.7.0.30 255.255.255.252
+no shut
 int range g1/1/3-4
 no switchport
-description CH#2 Link -->> CORE_2
+description Link -->> DIST_2
 channel-group 2 mode on
 exit
+int po 2
+description CH#2 -->> DIST_2
+ip add 10.7.0.26 255.255.255.252
+no shut
 int range g1/0/8-9
 no switchport
-description CH#3 Link -->> CORE_1
+description Link -->> DIST_1
 channel-group 3 mode on
 exit
-int po 1
-description CH#1 -->> DIST_1
-ip add 10.7.0.18 255.255.255.252
-no shut
-int po 2
-description CH#2 -->> CORE_2
-ip add 10.7.0.25 255.255.255.252
-no shut
 int po 3
-description CH#3 -->> CORE_1
-ip add 10.7.0.37 255.255.255.252
+description CH#3 -->> DIST_1
+ip add 10.7.0.34 255.255.255.252
+no shut
+int range g1/1/1-2
+no switchport
+description Link -->> DIST_SW2
+channel-group 4 mode on
+exit
+int po 4
+description CH#4 -->> DIST_SW2
+ip add 10.7.0.45 255.255.255.252
+no shut
+int range g1/0/6-7
+no switchport
+description Link -->> DIST_SW1
+channel-group 5 mode on
+exit
+int po 5
+description CH#5 -->> DIST_SW1
+ip add 10.7.0.53 255.255.255.252
+no shut
+int range g1/0/1-4,g1/0/6-9,g1/1/1-4
+shut 
 no shut
 end
 wr
+
+
+
+
+
+
+

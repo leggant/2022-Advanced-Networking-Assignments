@@ -1,5 +1,191 @@
 en
 conf t
+hostname ACCESS_SW1
+service password-encryption
+no ip domain-lookup
+ip domain-name acme.nz
+banner motd # Unauthorised Access Is Prohibited #
+spanning-tree mode rapid-pvst
+spanning-tree portfast default
+line con 0
+logging synchronous
+exec-timeout 3 0
+exit
+line vty 0 4
+logging synchronous
+exec-timeout 3 0
+exit
+vlan 10
+name Sales_Marketing
+vlan 20
+name Admin
+vlan 30
+name Finance
+vlan 40
+name HR
+vlan 51
+name Parking
+vlan 98
+name Management
+int range f0/1-10,f0/16-20,f0/22-24,g0/1-2
+switchport mode access
+switchport access vlan 51
+spanning-tree bpduguard enable
+no spanning-tree portfast
+switchport port-security mac-address C1C1.C1C1.C1C1
+switchport port-security violation shutdown
+switchport port-security aging time 1
+shut
+int range g1/1/3-4
+no switchport
+description Link -->> DIST_SW2
+channel-group 1 mode on
+exit
+int po 1
+description CH#1 Link -->> DIST_SW2
+ip add 10.7.0.49 255.255.255.252
+no shut
+int range g1/0/6-7
+no switchport
+description Link -->> CORE_2
+channel-group 5 mode on
+exit
+int po 5
+description CH#5 -->> CORE_2
+ip add 10.7.0.54 255.255.255.252
+no shut
+int range g1/1/1-2
+no switchport
+description Link -->> CORE_1
+channel-group 4 mode on
+exit
+int po 4
+description CH#4 -->> CORE_1
+ip add 10.7.0.42 255.255.255.252
+no shut
+int range g1/0/12-13
+no switchport
+description Link -->> ACCESS_SW1
+channel-group 10 mode on
+exit
+int po 10
+description CH#10 -->> ACCESS_SW1
+ip add 10.7.0.61 255.255.255.252
+no shut
+int range g1/0/14-15
+no switchport
+description Link -->> ACCESS_SW2
+channel-group 12 mode on
+exit
+int po 12
+description CH#12 -->> ACCESS_SW2
+ip add 10.7.0.69 255.255.255.252
+no shut
+int range g1/0/18-19
+no switchport
+description Link -->> ACCESS_SW3
+channel-group 14 mode on
+exit
+int po 14
+description CH#14 -->> ACCESS_SW3
+ip add 10.7.0.77 255.255.255.252
+no shut
+int range g1/1/1-4,g1/0/18-19,g1/0/12-15
+shut 
+no shut
+end
+wr
+
+
+en
+conf t
+hostname DIST_SW2
+service password-encryption
+no ip domain-lookup
+ip domain-name acme.nz
+banner motd # Unauthorised Access Is Prohibited #
+spanning-tree mode rapid-pvst
+spanning-tree portfast bpduguard default
+line con 0
+logging synchronous
+exec-timeout 3 0
+exit
+line vty 0 4
+logging synchronous
+exec-timeout 3 0
+exit
+vlan 51
+name Parking
+vlan 98
+name Management
+int range g1/0/1-5,g1/0/8-13,g1/0/18-19,g1/0/22-24
+switchport mode access
+switchport access vlan 51
+spanning-tree bpduguard enable
+shut
+int range g1/1/3-4
+no switchport
+description Link -->> DIST_SW1
+channel-group 1 mode on
+exit
+int po 1
+description CH#1 Link -->> DIST_SW1
+ip add 10.7.0.50 255.255.255.252
+no shut
+int range g1/0/6-7
+no switchport
+description Link -->> CORE_1
+channel-group 5 mode on
+exit
+int po 5
+description CH#5 -->> CORE_1
+ip add 10.7.0.58 255.255.255.252
+no shut
+int range g1/1/1-2
+no switchport
+description Link -->> CORE_2
+channel-group 4 mode on
+exit
+int po 4
+description CH#4 -->> CORE_2
+ip add 10.7.0.46 255.255.255.252
+no shut
+int range g1/0/14-15
+no switchport
+description Link -->> ACCESS_SW1
+channel-group 11 mode on
+exit
+int po 11
+description CH#11 -->> ACCESS_SW1
+ip add 10.7.0.65 255.255.255.252
+no shut
+int range g1/0/16-17
+no switchport
+description Link -->> ACCESS_SW2
+channel-group 13 mode on
+exit
+int po 13
+description CH#13 -->> ACCESS_SW2
+ip add 10.7.0.73 255.255.255.252
+no shut
+int range g1/0/20-21
+no switchport
+description Link -->> ACCESS_SW3
+channel-group 15 mode on
+exit
+int po 15
+description CH#15 -->> ACCESS_SW3
+ip add 10.7.0.81 255.255.255.252
+no shut
+int range g1/1/1-4,g1/0/14-17,g1/0/6-7,g1/0/20-21
+shut 
+no shut
+end
+wr
+
+
+en
+conf t
 hostname Access_SW1
 service password-encryption
 no ip domain-lookup
