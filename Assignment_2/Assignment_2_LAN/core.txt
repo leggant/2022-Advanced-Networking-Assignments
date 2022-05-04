@@ -3,7 +3,7 @@ conf t
 hostname CORE_1
 service password-encryption
 no ip domain-lookup
-ip domain-name acme.nz
+ip domain-name tyrell.corp
 banner motd # Unauthorised Access Is Prohibited #
 spanning-tree mode rapid-pvst
 spanning-tree portfast bpduguard default
@@ -81,7 +81,7 @@ conf t
 hostname CORE_2
 service password-encryption
 no ip domain-lookup
-ip domain-name acme.nz
+ip domain-name tyrell.corp
 banner motd # Unauthorised Access Is Prohibited #
 spanning-tree mode rapid-pvst
 spanning-tree portfast bpduguard default
