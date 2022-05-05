@@ -15,83 +15,74 @@ line vty 0 4
 logging synchronous
 exec-timeout 3 0
 exit
-vlan 10
-name Sales_Marketing
 vlan 20
 name Admin
 vlan 30
 name Finance
-vlan 40
-name HR
 vlan 51
 name Parking
 vlan 98
 name Management
+exit
+int vlan 20
+ip add 10.7.2.1 255.255.255.0
+description Admin Gateway
+no shut
+int vlan 30
+ip add 10.7.3.1 255.255.255.0
+description Finance Gateway
+no shut
+exit
+int f0/11
+switchport mode access
+switchport access vlan 20
+spanning-tree bpduguard enable
+spanning-tree portfast
+switchport port-security maximum 2
+switchport port-security mac-address sticky
+switchport port-security violation shutdown
+switchport port-security aging time 1
+no shut
+exit
+int f0/21
+switchport mode access
+switchport access vlan 30
+spanning-tree bpduguard enable
+spanning-tree portfast
+switchport port-security maximum 2
+switchport port-security mac-address sticky
+switchport port-security violation shutdown
+switchport port-security aging time 1
+no shut
+exit
 int range f0/1-10,f0/16-20,f0/22-24,g0/1-2
 switchport mode access
 switchport access vlan 51
 spanning-tree bpduguard enable
 no spanning-tree portfast
-switchport port-security mac-address C1C1.C1C1.C1C1
+switchport port-security mac-address sticky
+switchport port-security maximum 1
 switchport port-security violation shutdown
 switchport port-security aging time 1
 shut
-int range g1/1/3-4
-no switchport
-description Link -->> DIST_SW2
-channel-group 1 mode on
 exit
-int po 1
-description CH#1 Link -->> DIST_SW2
-ip add 10.7.0.49 255.255.255.252
-no shut
-int range g1/0/6-7
+int range f0/12-13
 no switchport
-description Link -->> CORE_2
-channel-group 5 mode on
-exit
-int po 5
-description CH#5 -->> CORE_2
-ip add 10.7.0.54 255.255.255.252
-no shut
-int range g1/1/1-2
-no switchport
-description Link -->> CORE_1
-channel-group 4 mode on
-exit
-int po 4
-description CH#4 -->> CORE_1
-ip add 10.7.0.42 255.255.255.252
-no shut
-int range g1/0/12-13
-no switchport
-description Link -->> ACCESS_SW1
+description Link -->> DIST_SW1
 channel-group 10 mode on
 exit
 int po 10
-description CH#10 -->> ACCESS_SW1
-ip add 10.7.0.61 255.255.255.252
+description CH#10 -->> DIST_SW1
+ip add 10.7.0.62 255.255.255.252
 no shut
-int range g1/0/14-15
+int range f0/14-15
 no switchport
-description Link -->> ACCESS_SW2
-channel-group 12 mode on
+description Link -->> DIST_SW2
+channel-group 11 mode on
 exit
-int po 12
-description CH#12 -->> ACCESS_SW2
-ip add 10.7.0.69 255.255.255.252
-no shut
-int range g1/0/18-19
-no switchport
-description Link -->> ACCESS_SW3
-channel-group 14 mode on
-exit
-int po 14
-description CH#14 -->> ACCESS_SW3
-ip add 10.7.0.77 255.255.255.252
-no shut
-int range g1/1/1-4,g1/0/18-19,g1/0/12-15
-shut 
+int po 11
+description CH#10 -->> DIST_SW1
+ip add 10.7.0.62 255.255.255.252
 no shut
 end
 wr

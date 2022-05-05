@@ -1,19 +1,13 @@
 en
 conf t
 
-line con 0
-password cisco
-login
-line vty 0 4
-
-
 en
 conf t
 hostname WAN_R1
 spanning-tree mode rapid-pvst
 service password-encryption
 no ip domain-lookup
-ip domain-name acme.nz
+ip domain-name tyrell.corp
 banner motd # Unauthorised Access Is Prohibited #
 line con 0
 logging synchronous
@@ -60,7 +54,7 @@ hostname WAN_R2
 spanning-tree mode rapid-pvst
 service password-encryption
 no ip domain-lookup
-ip domain-name acme.nz
+ip domain-name tyrell.corp
 banner motd # Unauthorised Access Is Prohibited #
 line con 0
 logging synchronous
