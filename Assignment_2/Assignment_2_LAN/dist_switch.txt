@@ -3,6 +3,7 @@ conf t
 hostname DIST_SW1
 service password-encryption
 no ip domain-lookup
+ip routing
 ip domain-name tyrell.corp
 banner motd # Unauthorised Access Is Prohibited #
 spanning-tree mode rapid-pvst
