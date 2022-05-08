@@ -93,9 +93,7 @@ network 10.7.0.40 0.0.0.3 area 0
 network 10.7.0.52 0.0.0.3 area 0
 network 10.7.0.48 0.0.0.3 area 0
 network 10.7.10.3 0.0.0.0 area 0
-network 10.7.0.60 0.0.0.3 area 99
-network 10.7.0.76 0.0.0.3 area 99
-network 10.7.0.68 0.0.0.3 area 99
+area 99 range 10.7.0.0 255.255.248.0
 auto-cost reference-bandwidth 10000
 passive-interface loopback 0
 exit
@@ -237,9 +235,7 @@ network 10.7.0.44 0.0.0.3 area 0
 network 10.7.0.56 0.0.0.3 area 0
 network 10.7.0.48 0.0.0.3 area 0
 network 10.7.10.4 0.0.0.0 area 0
-network 10.7.0.64 0.0.0.3 area 99
-network 10.7.0.72 0.0.0.3 area 99
-network 10.7.0.80 0.0.0.3 area 99
+area 99 range 10.7.0.0 255.255.248.0
 auto-cost reference-bandwidth 10000
 passive-interface loopback 0
 exit
