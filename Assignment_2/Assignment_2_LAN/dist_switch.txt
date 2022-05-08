@@ -18,8 +18,10 @@ exec-timeout 3 0
 exit
 vlan 51
 name Parking
-vlan 98
-name Management
+int lo 0
+description Management
+ip add 10.7.10.3 255.255.255.255
+exit
 int range g1/0/1-5,g1/0/8-11,g1/0/16-17,g1/0/20-24
 switchport mode access
 switchport access vlan 51
@@ -82,6 +84,56 @@ no shut
 int range g1/1/1-4,g1/0/18-19,g1/0/12-15
 shut 
 no shut
+router ospf 1
+router-id 2.1.1.1
+area 0 authentication message-digest
+area 99 authentication message-digest
+log-adjacency-changes detail
+network 10.7.0.40 0.0.0.3 area 0
+network 10.7.0.52 0.0.0.3 area 0
+network 10.7.0.48 0.0.0.3 area 0
+network 10.7.10.3 0.0.0.0 area 0
+network 10.7.0.60 0.0.0.3 area 99
+network 10.7.0.76 0.0.0.3 area 99
+network 10.7.0.68 0.0.0.3 area 99
+auto-cost reference-bandwidth 10000
+exit
+int port-channel 4
+ip ospf 1 area 0
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+exit
+int port-channel 5
+ip ospf 1 area 0
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+exit
+int port-channel 5
+ip ospf 1 area 0
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+exit
+int port-channel 10
+ip ospf 1 area 99
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+exit
+int port-channel 12
+ip ospf 1 area 99
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+exit
+int port-channel 14
+ip ospf 1 area 99
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+exit
 end
 wr
 
@@ -91,6 +143,7 @@ conf t
 hostname DIST_SW2
 service password-encryption
 no ip domain-lookup
+ip routing
 ip domain-name tyrell.corp
 banner motd # Unauthorised Access Is Prohibited #
 spanning-tree mode rapid-pvst
@@ -105,8 +158,10 @@ exec-timeout 3 0
 exit
 vlan 51
 name Parking
-vlan 98
-name Management
+int lo 0
+description Management
+ip add 10.7.10.4 255.255.255.255
+exit
 int range g1/0/1-5,g1/0/8-13,g1/0/18-19,g1/0/22-24
 switchport mode access
 switchport access vlan 51
@@ -166,6 +221,57 @@ int po 15
 description CH#15 -->> ACCESS_SW3
 ip add 10.7.0.81 255.255.255.252
 no shut
+exit
+router ospf 1
+router-id 2.2.2.2
+area 0 authentication message-digest
+area 99 authentication message-digest
+log-adjacency-changes detail
+network 10.7.0.44 0.0.0.3 area 0
+network 10.7.0.56 0.0.0.3 area 0
+network 10.7.0.48 0.0.0.3 area 0
+network 10.7.10.4 0.0.0.0 area 0
+network 10.7.0.64 0.0.0.3 area 99
+network 10.7.0.72 0.0.0.3 area 99
+network 10.7.0.80 0.0.0.3 area 99
+auto-cost reference-bandwidth 10000
+exit
+int port-channel 1
+ip ospf 1 area 0
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+exit
+int port-channel 4
+ip ospf 1 area 0
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+exit
+int port-channel 5
+ip ospf 1 area 0
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+exit
+int port-channel 11
+ip ospf 1 area 99
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+exit
+int port-channel 13
+ip ospf 1 area 99
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+exit
+int port-channel 15
+ip ospf 1 area 99
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+exit
 int range g1/1/1-4,g1/0/14-17,g1/0/6-7,g1/0/20-21
 shut 
 no shut

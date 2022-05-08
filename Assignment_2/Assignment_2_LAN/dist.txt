@@ -17,8 +17,9 @@ exec-timeout 3 0
 exit
 vlan 51
 name Parking
-vlan 98
-name Management
+int lo 0
+description Management Interface
+ip add 
 int range g1/0/5-7,g1/0/10-24
 switchport mode access
 switchport access vlan 51

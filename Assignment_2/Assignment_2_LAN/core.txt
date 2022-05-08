@@ -18,8 +18,10 @@ exec-timeout 3 0
 exit
 vlan 51
 name Parking
-vlan 98
-name Management
+int lo 0
+description Management
+ip add 10.7.10.1 255.255.255.255
+exit
 int range g1/0/5,g1/0/10-24
 switchport mode access
 switchport access vlan 51
@@ -75,45 +77,47 @@ ip add 10.7.0.57 255.255.255.252
 no shut
 exit
 router ospf 1
-router-id 10.10.10.10
-log-adjacency-changes
+router-id 1.1.1.1
+log-adjacency-changes detail
 network 10.7.0.40 0.0.0.3 area 0
 network 10.7.0.56 0.0.0.3 area 0
 network 10.7.0.28 0.0.0.3 area 0
 network 10.7.0.36 0.0.0.3 area 0
 network 10.7.0.20 0.0.0.3 area 0
+network 10.7.10.1 0.0.0.0 area 0
 auto-cost reference-bandwidth 10000
+area 0 authentication message-digest 
 exit
 int port-channel 1
 ip ospf 1 area 0
 ip ospf priority 255
 ip ospf message-digest-key 1 md5 thisisnotsecure
 ip ospf hello-interval 3
-ip ospf dead-interval 10
+ip ospf dead-interval 8
 exit
 int port-channel 2
 ip ospf 1 area 0
 ip ospf message-digest-key 1 md5 thisisnotsecure
 ip ospf hello-interval 3
-ip ospf dead-interval 10
+ip ospf dead-interval 8
 exit
 int port-channel 3
 ip ospf 1 area 0
 ip ospf message-digest-key 1 md5 thisisnotsecure
 ip ospf hello-interval 3
-ip ospf dead-interval 10
+ip ospf dead-interval 8
 exit
 int port-channel 4
 ip ospf 1 area 0
 ip ospf message-digest-key 1 md5 thisisnotsecure
 ip ospf hello-interval 3
-ip ospf dead-interval 10
+ip ospf dead-interval 8
 exit
 int port-channel 5
 ip ospf 1 area 0
 ip ospf message-digest-key 1 md5 thisisnotsecure
 ip ospf hello-interval 3
-ip ospf dead-interval 10
+ip ospf dead-interval 8
 exit
 int range g1/0/1-4,g1/0/6-9,g1/1/1-4
 shut
@@ -142,8 +146,11 @@ exec-timeout 3 0
 exit
 vlan 51
 name Parking
-vlan 98
-name Management
+exit
+int lo 0
+description Management
+ip add 10.7.10.2 255.255.255.255
+exit
 int range g1/0/5,g1/0/10-24
 switchport mode access
 switchport access vlan 51
@@ -196,45 +203,47 @@ ip add 10.7.0.53 255.255.255.252
 no shut
 exit
 router ospf 1
-router-id 20.20.20.20
-log-adjacency-changes
+router-id 1.2.2.2
+log-adjacency-changes detail
 network 10.7.0.24 0.0.0.3 area 0
 network 10.7.0.32 0.0.0.3 area 0
 network 10.7.0.28 0.0.0.3 area 0
-network 10.7.0.44 0.0.0.3 area 0
 network 10.7.0.52 0.0.0.3 area 0
+network 10.7.0.44 0.0.0.3 area 0
+network 10.7.10.2 0.0.0.0 area 0
 auto-cost reference-bandwidth 10000
+area 0 authentication message-digest 
 exit
 int port-channel 1
 ip ospf 1 area 0
 ip ospf priority 200
 ip ospf message-digest-key 1 md5 thisisnotsecure
 ip ospf hello-interval 3
-ip ospf dead-interval 10
+ip ospf dead-interval 8
 exit
 int port-channel 2
 ip ospf 1 area 0
 ip ospf message-digest-key 1 md5 thisisnotsecure
 ip ospf hello-interval 3
-ip ospf dead-interval 10
+ip ospf dead-interval 8
 exit
 int port-channel 3
 ip ospf 1 area 0
 ip ospf message-digest-key 1 md5 thisisnotsecure
 ip ospf hello-interval 3
-ip ospf dead-interval 10
+ip ospf dead-interval 8
 exit
 int port-channel 4
 ip ospf 1 area 0
 ip ospf message-digest-key 1 md5 thisisnotsecure
 ip ospf hello-interval 3
-ip ospf dead-interval 10
+ip ospf dead-interval 8
 exit
 int port-channel 5
 ip ospf 1 area 0
 ip ospf message-digest-key 1 md5 thisisnotsecure
 ip ospf hello-interval 3
-ip ospf dead-interval 10
+ip ospf dead-interval 8
 exit
 int range g1/0/1-4,g1/0/6-9,g1/1/1-4
 shut 

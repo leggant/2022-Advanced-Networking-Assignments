@@ -23,8 +23,9 @@ vlan 30
 name Finance
 vlan 51
 name Parking
-vlan 98
-name Management
+int lo 0
+description Management
+ip add 10.7.10.1 255.255.255.255
 exit
 int vlan 20
 ip add 10.7.2.1 255.255.255.0
@@ -86,7 +87,41 @@ int po 11
 description CH#11 -->> DIST_SW1
 ip add 10.7.0.66 255.255.255.252
 no shut
-end
+exit
+router ospf 1
+router-id 3.1.1.1.
+area 99 authentication message-digest
+log-adjacency-changes detail
+network 10.7.2.0 0.0.0.255 area 99
+network 10.7.3.0 0.0.0.255 area 99
+network 10.7.0.60 0.0.0.3 area 99
+network 10.7.10.0 0.0.0.0 area 99
+auto-cost reference-bandwidth 10000
+exit
+int port-channel 10
+ip ospf 1 area 99
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+exit
+int port-channel 11
+ip ospf 1 area 99
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+exit
+int vlan 20
+ip ospf 1 area 99
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+exit
+int vlan 30
+ip ospf 1 area 99
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+exit
 wr
 
 en
@@ -112,8 +147,10 @@ vlan 10
 name Sales_Marketing
 vlan 51
 name Parking
-vlan 98
-name Management
+exit
+int lo 0
+description Management
+ip add 10.7.10.2 255.255.255.255
 exit
 int vlan 10
 ip add 10.7.1.1 255.255.255.0
@@ -189,8 +226,10 @@ vlan 40
 name HR
 vlan 51
 name Parking
-vlan 98
-name Management
+exit
+int lo 0
+description Management
+ip add 10.7.10.3 255.255.255.255
 exit
 int vlan 40
 ip add 10.7.4.1 255.255.255.0
@@ -239,5 +278,19 @@ description CH#15 -->> DIST_SW2
 ip add 10.7.0.82 255.255.255.252
 no shut
 exit
+router ospf 1
+router-id 1.30.30.30
+area 99 
+auto-cost reference-bandwidth 10000
+log-adjacency-changes detail
+network 10.70.0.80 0.0.0.3 area 99
+network 10.70.0.80 0.0.0.3 area 99
+network 10.7.4.0 0.0.0.255 area 99
+passive-interface vlan 40
+exit
+int po 14
+ip ospf 1 area 99
+ip ospf message-digest-key 99 md5 securethispassword
+
 end
 wr
