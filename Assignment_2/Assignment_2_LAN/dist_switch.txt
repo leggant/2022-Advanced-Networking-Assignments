@@ -97,14 +97,21 @@ network 10.7.0.60 0.0.0.3 area 99
 network 10.7.0.76 0.0.0.3 area 99
 network 10.7.0.68 0.0.0.3 area 99
 auto-cost reference-bandwidth 10000
+passive-interface loopback 0
 exit
-int port-channel 4
+int lo 0
 ip ospf 1 area 0
 ip ospf message-digest-key 1 md5 thisisnotsecure
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 exit
-int port-channel 5
+int port-channel 1
+ip ospf 1 area 0
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+exit
+int port-channel 4
 ip ospf 1 area 0
 ip ospf message-digest-key 1 md5 thisisnotsecure
 ip ospf hello-interval 3
@@ -136,7 +143,6 @@ ip ospf dead-interval 8
 exit
 end
 wr
-
 
 en
 conf t
@@ -235,6 +241,13 @@ network 10.7.0.64 0.0.0.3 area 99
 network 10.7.0.72 0.0.0.3 area 99
 network 10.7.0.80 0.0.0.3 area 99
 auto-cost reference-bandwidth 10000
+passive-interface loopback 0
+exit
+int lo 0
+ip ospf 1 area 0
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
 exit
 int port-channel 1
 ip ospf 1 area 0

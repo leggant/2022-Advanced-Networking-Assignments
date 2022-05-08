@@ -86,7 +86,14 @@ network 10.7.0.36 0.0.0.3 area 0
 network 10.7.0.20 0.0.0.3 area 0
 network 10.7.10.1 0.0.0.0 area 0
 auto-cost reference-bandwidth 10000
-area 0 authentication message-digest 
+area 0 authentication message-digest
+passive-interface loopback 0
+exit
+int lo 0
+ip ospf 1 area 0
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
 exit
 int port-channel 1
 ip ospf 1 area 0
@@ -212,7 +219,14 @@ network 10.7.0.52 0.0.0.3 area 0
 network 10.7.0.44 0.0.0.3 area 0
 network 10.7.10.2 0.0.0.0 area 0
 auto-cost reference-bandwidth 10000
-area 0 authentication message-digest 
+area 0 authentication message-digest
+passive-interface loopback 0
+exit
+int lo 0
+ip ospf 1 area 0
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
 exit
 int port-channel 1
 ip ospf 1 area 0
