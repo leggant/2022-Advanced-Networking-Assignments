@@ -20,7 +20,7 @@ vlan 51
 name Parking
 int lo 0
 description Management
-ip add 10.7.10.3 255.255.255.255
+ip add 10.7.10.5 255.255.255.255
 exit
 int range g1/0/1-5,g1/0/8-11,g1/0/16-17,g1/0/20-24
 switchport mode access
@@ -81,9 +81,7 @@ int po 14
 description CH#14 -->> ACCESS_SW3
 ip add 10.7.0.77 255.255.255.252
 no shut
-int range g1/1/1-4,g1/0/18-19,g1/0/12-15
-shut 
-no shut
+exit
 router ospf 1
 router-id 2.1.1.1
 area 0 authentication message-digest
@@ -91,20 +89,19 @@ area 99 authentication message-digest
 log-adjacency-changes detail
 network 10.7.0.40 0.0.0.3 area 0
 network 10.7.0.52 0.0.0.3 area 0
-network 10.7.0.48 0.0.0.3 area 0
-network 10.7.10.3 0.0.0.0 area 0
-area 99 range 10.7.0.0 255.255.248.0
+network 10.7.0.48 0.0.0.3 area 99
+network 10.7.0.48 0.0.0.3 area 99
 auto-cost reference-bandwidth 10000
 passive-interface loopback 0
 exit
 int lo 0
-ip ospf 1 area 0
+ip ospf 1 area 99
 ip ospf message-digest-key 1 md5 thisisnotsecure
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 exit
 int port-channel 1
-ip ospf 1 area 0
+ip ospf 1 area 99
 ip ospf message-digest-key 1 md5 thisisnotsecure
 ip ospf hello-interval 3
 ip ospf dead-interval 8
@@ -117,28 +114,35 @@ ip ospf dead-interval 8
 exit
 int port-channel 5
 ip ospf 1 area 0
+ip ospf network point-to-point
 ip ospf message-digest-key 1 md5 thisisnotsecure
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 exit
 int port-channel 10
 ip ospf 1 area 99
+ip ospf network point-to-point
 ip ospf message-digest-key 1 md5 thisisnotsecure
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 exit
 int port-channel 12
 ip ospf 1 area 99
+ip ospf network point-to-point
 ip ospf message-digest-key 1 md5 thisisnotsecure
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 exit
 int port-channel 14
 ip ospf 1 area 99
+ip ospf network point-to-point
 ip ospf message-digest-key 1 md5 thisisnotsecure
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 exit
+int range g1/1/1-4,g1/0/18-19,g1/0/12-15
+shut 
+no shut
 end
 wr
 
@@ -233,20 +237,18 @@ area 99 authentication message-digest
 log-adjacency-changes detail
 network 10.7.0.44 0.0.0.3 area 0
 network 10.7.0.56 0.0.0.3 area 0
-network 10.7.0.48 0.0.0.3 area 0
-network 10.7.10.4 0.0.0.0 area 0
-area 99 range 10.7.0.0 255.255.248.0
+area 99 range 10.7.0.0 255.255.240.0
 auto-cost reference-bandwidth 10000
 passive-interface loopback 0
 exit
 int lo 0
-ip ospf 1 area 0
+ip ospf 1 area 99
 ip ospf message-digest-key 1 md5 thisisnotsecure
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 exit
 int port-channel 1
-ip ospf 1 area 0
+ip ospf 1 area 99
 ip ospf message-digest-key 1 md5 thisisnotsecure
 ip ospf hello-interval 3
 ip ospf dead-interval 8
@@ -259,24 +261,28 @@ ip ospf dead-interval 8
 exit
 int port-channel 5
 ip ospf 1 area 0
+ip ospf network point-to-point
 ip ospf message-digest-key 1 md5 thisisnotsecure
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 exit
 int port-channel 11
 ip ospf 1 area 99
+ip ospf network point-to-point
 ip ospf message-digest-key 1 md5 thisisnotsecure
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 exit
 int port-channel 13
 ip ospf 1 area 99
+ip ospf network point-to-point
 ip ospf message-digest-key 1 md5 thisisnotsecure
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 exit
 int port-channel 15
 ip ospf 1 area 99
+ip ospf network point-to-point
 ip ospf message-digest-key 1 md5 thisisnotsecure
 ip ospf hello-interval 3
 ip ospf dead-interval 8
