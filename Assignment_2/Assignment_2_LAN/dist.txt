@@ -19,23 +19,38 @@ exit
 vlan 51
 name Parking
 int lo 0
-description Management Interface
-ip add 10.7.10.8 255.255.255.255
+description Management
+ip add 10.7.10.3 255.255.255.255
+ip ospf 1 area 0
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
 exit
 int range g1/0/5-7,g1/0/10-24
 switchport mode access
 switchport access vlan 51
 spanning-tree bpduguard enable
+switchport port-security maximum 1
+switchport port-security violation shutdown
+switchport port-security mac-address sticky
 shut
 int g1/1/1
 no switchport
 description Link -->> WAN_R1 G0/0/0
-ip add 10.7.0.2 255.255.255.252
+ip add 10.7.0.77 255.255.255.252
+ip ospf 1 area 51
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
 no shut
 int g1/1/2
 no switchport
 description Link -->> WAN_R1 G0/1/0
-ip add 10.7.0.10 255.255.255.252
+ip add 10.7.0.81 255.255.255.252
+ip ospf 1 area 51
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
 no shut
 int range g1/0/1-4
 no switchport
@@ -44,7 +59,12 @@ channel-group 1 mode on
 exit
 int po 1
 description CH#1 -->> DIST_2
-ip add 10.7.0.17 255.255.255.252
+ip add 10.7.0.65 255.255.255.252
+ip ospf 1 area 0
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+ip ospf network point-to-point
 no shut
 int range g1/1/3-4
 no switchport
@@ -53,7 +73,13 @@ channel-group 2 mode on
 exit
 int po 2
 description CH#2 -->> CORE_1
-ip add 10.7.0.21 255.255.255.252
+ip add 10.7.0.50 255.255.255.252
+ip ospf 1 area 0
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+ip ospf network point-to-point
+shut
 no shut
 int range g1/0/8-9
 no switchport
@@ -62,54 +88,30 @@ channel-group 3 mode on
 exit
 int po 3
 description CH#3 -->> CORE_2
-ip add 10.7.0.33 255.255.255.252
+ip add 10.7.0.58 255.255.255.252
+ip ospf 1 area 0
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+ip ospf network point-to-point
+shut
 no shut
 exit
 router ospf 1
-router-id 4.1.1.1
+router-id 3.3.3.3
 area 0 authentication message-digest
 area 51 authentication message-digest
 log-adjacency-changes detail
-network 10.7.0.20 0.0.0.3 area 0
-network 10.7.0.32 0.0.0.3 area 0
-network 10.7.0.16 0.0.0.3 area 0
-network 10.7.10.8 0.0.0.0 area 0
-network 10.7.0.0 0.0.0.3 area 51
-network 10.7.0.8 0.0.0.3 area 51
+network 10.7.0.48 0.0.0.3 area 0
+network 10.7.0.56 0.0.0.3 area 0
+network 10.7.0.64 0.0.0.3 area 0
+network 10.7.0.76 0.0.0.3 area 51
+network 10.7.0.80 0.0.0.3 area 51
+network 10.7.10.3 0.0.0.0 area 51
 auto-cost reference-bandwidth 10000
 passive-interface loopback 0
 exit
-int lo 0
-ip ospf 1 area 0
-ip ospf message-digest-key 1 md5 thisisnotsecure
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-exit
-int port-channel 1
-ip ospf 1 area 0
-ip ospf message-digest-key 1 md5 thisisnotsecure
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-exit
-int port-channel 2
-ip ospf 1 area 0
-ip ospf message-digest-key 1 md5 thisisnotsecure
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-exit
-int port-channel 3
-ip ospf 1 area 0
-ip ospf message-digest-key 1 md5 thisisnotsecure
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-exit
-int range g1/1/3-4
-ip ospf 1 area 51
-ip ospf message-digest-key 1 md5 thisisnotsecure
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-exit
-int range g1/1/1-4,g1/0/8-9,g1/0/1-4
+int range g1/1/1-2,g1/0/8-9,g1/1/3-4
 shut
 no shut
 end
@@ -136,24 +138,41 @@ exit
 vlan 51
 name Parking
 int lo 0
-description Management Interface
-ip add 10.7.10.9 255.255.255.255
+description Management
+ip add 10.7.10.4 255.255.255.255
+ip ospf 1 area 0
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
 exit
 int range g1/0/5-7,g1/0/10-24
 switchport mode access
 switchport access vlan 51
 spanning-tree bpduguard enable
+switchport port-security maximum 1
+switchport port-security violation shutdown
+switchport port-security mac-address sticky
 shut
 int g1/1/1
 no switchport
 description Link -->> WAN_R2 G0/0/0
-ip add 10.7.0.6 255.255.255.252
+ip add 10.7.0.69 255.255.255.252
+ip ospf 1 area 51
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
 no shut
+exit
 int g1/1/2
 no switchport
 description Link -->> WAN_R2 G0/1/0
-ip add 10.7.0.14 255.255.255.252
+ip add 10.7.0.73 255.255.255.252
+ip ospf 1 area 51
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
 no shut
+exit
 int range g1/0/1-4
 no switchport
 description Link -->> DIST_1
@@ -161,17 +180,14 @@ channel-group 1 mode on
 exit
 int po 1
 description CH#1 -->> DIST_1
-ip add 10.7.0.18 255.255.255.252
+ip add 10.7.0.66 255.255.255.252
+ip ospf 1 area 0
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+ip ospf network point-to-point
 no shut
-int range g1/1/3-4
-no switchport
-description Link -->> CORE_2
-channel-group 2 mode on
 exit
-int po 2
-description CH#2 -->> CORE_2
-ip add 10.7.0.25 255.255.255.252
-no shut
 int range g1/0/8-9
 no switchport
 description Link -->> CORE_1
@@ -179,59 +195,49 @@ channel-group 3 mode on
 exit
 int po 3
 description CH#3 -->> CORE_1
-ip add 10.7.0.37 255.255.255.252
+ip add 10.7.0.62 255.255.255.252
+ip ospf 1 area 0
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+ip ospf network point-to-point
+shut
 no shut
-int range g1/1/1-4,g1/0/1-4,g1/0/8-9
+exit
+int range g1/1/3-4
+no switchport
+description Link -->> CORE_2
+channel-group 2 mode on
+exit
+int po 2
+description CH#2-->> CORE_2
+ip add 10.7.0.54 255.255.255.252
+ip ospf 1 area 0
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+ip ospf network point-to-point
 shut
 no shut
 exit
 router ospf 1
-router-id 4.2.2.2
+router-id 4.4.4.4
 area 0 authentication message-digest
 area 51 authentication message-digest
 log-adjacency-changes detail
-network 10.7.0.16 0.0.0.3 area 0
-network 10.7.0.24 0.0.0.3 area 0
-network 10.7.0.36 0.0.0.3 area 0
-network 10.7.10.9 0.0.0.0 area 0
-network 10.7.0.4 0.0.0.3 area 51
-network 10.7.0.12 0.0.0.3 area 51
+network 10.7.0.64 0.0.0.3 area 0
+network 10.7.0.60 0.0.0.3 area 0
+network 10.7.0.52 0.0.0.3 area 0
+network 10.7.0.68 0.0.0.3 area 51
+network 10.7.0.72 0.0.0.3 area 51
+network 10.7.10.4 0.0.0.0 area 51
 auto-cost reference-bandwidth 10000
 passive-interface loopback 0
 exit
-int lo 0
-ip ospf 1 area 0
-ip ospf message-digest-key 1 md5 thisisnotsecure
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-exit
-int port-channel 1
-ip ospf 1 area 0
-ip ospf message-digest-key 1 md5 thisisnotsecure
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-exit
-int port-channel 2
-ip ospf 1 area 0
-ip ospf message-digest-key 1 md5 thisisnotsecure
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-exit
-int port-channel 3
-ip ospf 1 area 0
-ip ospf message-digest-key 1 md5 thisisnotsecure
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-exit
-int range g1/1/1-2
-ip ospf 1 area 51
-ip ospf message-digest-key 1 md5 thisisnotsecure
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-exit
-int range g1/1/1-4,g1/0/8-9,g1/0/1-4
+int range g1/1/1-2,g1/0/8-9,g1/1/3-4
 shut
 no shut
 end
 wr
+
 
