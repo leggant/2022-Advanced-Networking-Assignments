@@ -23,10 +23,6 @@ vlan 30
 name Finance
 vlan 51
 name Parking
-int lo 0
-description Management
-ip add 10.7.10.1 255.255.255.255
-exit
 int vlan 20
 ip add 10.7.2.1 255.255.255.0
 description Admin Gateway
@@ -73,34 +69,34 @@ int range f0/12-13
 no switchport
 description Link -->> DIST_SW1
 channel-group 10 mode on
+ip ospf network point-to-point
 exit
 int po 10
 description CH#10 -->> DIST_SW1
-ip add 10.7.0.62 255.255.255.252
+ip add 10.7.0.6 255.255.255.252
 no shut
 int range f0/14-15
 no switchport
 description Link -->> DIST_SW2
 channel-group 11 mode on
+ip ospf network point-to-point
 exit
 int po 11
-description CH#11 -->> DIST_SW1
-ip add 10.7.0.66 255.255.255.252
+description CH#11 -->> DIST_SW2
+ip add 10.7.0.10 255.255.255.252
 no shut
 exit
 router ospf 1
-router-id 3.1.1.1
+router-id 5.5.5.5
 area 99 authentication message-digest
 log-adjacency-changes detail
-network 10.7.2.0 0.0.0.255 area 99
+network 10.7.0.4 0.0.0.3 area 99
+network 10.7.0.8 0.0.0.3 area 99
 network 10.7.3.0 0.0.0.255 area 99
-network 10.7.0.60 0.0.0.3 area 99
-network 10.7.0.64 0.0.0.3 area 99
-network 10.7.10.1 0.0.0.0 area 99
+network 10.7.2.0 0.0.0.255 area 99
 auto-cost reference-bandwidth 10000
 passive-interface vlan 20
 passive-interface vlan 30
-passive-interface loopback 0
 exit
 int lo 0
 ip ospf 1 area 99
