@@ -26,7 +26,7 @@ name Parking
 int vlan 20
 ip add 10.7.2.1 255.255.255.0
 description Admin Gateway
-no shut
+exit
 int vlan 30
 ip add 10.7.3.1 255.255.255.0
 description Finance Gateway
@@ -69,25 +69,33 @@ int range f0/12-13
 no switchport
 description Link -->> DIST_SW1
 channel-group 10 mode on
-ip ospf network point-to-point
 exit
 int po 10
 description CH#10 -->> DIST_SW1
 ip add 10.7.0.6 255.255.255.252
+ip ospf 1 area 99
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
 no shut
+exit
 int range f0/14-15
 no switchport
 description Link -->> DIST_SW2
 channel-group 11 mode on
-ip ospf network point-to-point
 exit
 int po 11
 description CH#11 -->> DIST_SW2
 ip add 10.7.0.10 255.255.255.252
+ip ospf 1 area 99
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
 no shut
 exit
 router ospf 1
-router-id 5.5.5.5
+router-id 99.99.99.3
+area 0 authentication message-digest
 area 99 authentication message-digest
 log-adjacency-changes detail
 network 10.7.0.4 0.0.0.3 area 99
@@ -97,36 +105,8 @@ network 10.7.2.0 0.0.0.255 area 99
 auto-cost reference-bandwidth 10000
 passive-interface vlan 20
 passive-interface vlan 30
-exit
-int lo 0
-ip ospf 1 area 99
-ip ospf message-digest-key 1 md5 thisisnotsecure
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-exit
-int port-channel 10
-ip ospf 1 area 99
-ip ospf message-digest-key 1 md5 thisisnotsecure
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-exit
-int port-channel 11
-ip ospf 1 area 99
-ip ospf message-digest-key 1 md5 thisisnotsecure
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-exit
-int vlan 20
-ip ospf 1 area 99
-ip ospf message-digest-key 1 md5 thisisnotsecure
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-exit
-int vlan 30
-ip ospf 1 area 99
-ip ospf message-digest-key 1 md5 thisisnotsecure
-ip ospf hello-interval 3
-ip ospf dead-interval 8
+passive-interface f0/11
+passive-interface f0/21
 exit
 int range f0/1-24,g0/1-2
 shut
@@ -157,15 +137,9 @@ vlan 10
 name Sales_Marketing
 vlan 51
 name Parking
-exit
-int lo 0
-description Management
-ip add 10.7.10.2 255.255.255.255
-exit
 int vlan 10
 ip add 10.7.1.1 255.255.255.0
-description Sales and Marketing Dept Gateway
-no shut
+description Sales and Marketing Gateway
 exit
 int f0/21
 switchport mode access
@@ -196,7 +170,11 @@ channel-group 12 mode on
 exit
 int po 12
 description CH#12 -->> DIST_SW1
-ip add 10.7.0.70 255.255.255.252
+ip add 10.7.0.14 255.255.255.252
+ip ospf 1 area 99
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
 no shut
 exit
 int range f0/16-17
@@ -206,50 +184,31 @@ channel-group 13 mode on
 exit
 int po 13
 description CH#13 -->> DIST_SW2
-ip add 10.7.0.74 255.255.255.252
+ip add 10.7.0.18 255.255.255.252
+ip ospf 1 area 99
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
 no shut
 exit
 router ospf 1
-router-id 3.2.2.2
+router-id 99.99.99.4
+area 0 authentication message-digest
 area 99 authentication message-digest
 log-adjacency-changes detail
-network 10.7.0.68 0.0.0.3 area 99
-network 10.7.0.72 0.0.0.3 area 99
-network 10.7.10.2 0.0.0.0 area 99
+network 10.7.0.12 0.0.0.3 area 99
+network 10.7.0.16 0.0.0.3 area 99
 network 10.7.1.0 0.0.0.255 area 99
 auto-cost reference-bandwidth 10000
 passive-interface vlan 10
-passive-interface loopback 0
-exit
-int lo 0
-ip ospf 1 area 99
-ip ospf message-digest-key 1 md5 thisisnotsecure
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-exit
-int port-channel 12
-ip ospf 1 area 99
-ip ospf message-digest-key 1 md5 thisisnotsecure
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-exit
-int port-channel 13
-ip ospf 1 area 99
-ip ospf message-digest-key 1 md5 thisisnotsecure
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-exit
-int vlan 10
-ip ospf 1 area 99
-ip ospf message-digest-key 1 md5 thisisnotsecure
-ip ospf hello-interval 3
-ip ospf dead-interval 8
+passive-interface f0/21
 exit
 int range f0/1-24,g0/1-2
 shut
 no shut
 end
 wr
+
 
 en
 conf t
@@ -274,15 +233,9 @@ vlan 40
 name HR
 vlan 51
 name Parking
-exit
-int lo 0
-description Management
-ip add 10.7.10.3 255.255.255.255
-exit
 int vlan 40
 ip add 10.7.4.1 255.255.255.0
-description HR Dept Gateway
-no shut
+description HR Gateway
 exit
 int f0/10
 switchport mode access
@@ -313,7 +266,11 @@ channel-group 14 mode on
 exit
 int po 14
 description CH#14 -->> DIST_SW1
-ip add 10.7.0.78 255.255.255.252
+ip add 10.7.0.22 255.255.255.252
+ip ospf 1 area 99
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
 no shut
 exit
 int range f0/20-21
@@ -323,44 +280,24 @@ channel-group 15 mode on
 exit
 int po 15
 description CH#15 -->> DIST_SW2
-ip add 10.7.0.82 255.255.255.252
+ip add 10.7.0.26 255.255.255.252
+ip ospf 1 area 99
+ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf hello-interval 3
+ip ospf dead-interval 8
 no shut
 exit
 router ospf 1
-router-id 3.3.3.3
+router-id 99.99.99.5
+area 0 authentication message-digest
 area 99 authentication message-digest
 log-adjacency-changes detail
-network 10.7.0.76 0.0.0.3 area 99
-network 10.7.0.80 0.0.0.3 area 99
-network 10.7.10.7 0.0.0.0 area 99
+network 10.7.0.20 0.0.0.3 area 99
+network 10.7.0.24 0.0.0.3 area 99
 network 10.7.4.0 0.0.0.255 area 99
 auto-cost reference-bandwidth 10000
 passive-interface vlan 40
-passive-interface loopback 0
-exit
-int lo 0
-ip ospf 1 area 99
-ip ospf message-digest-key 1 md5 thisisnotsecure
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-exit
-int port-channel 14
-ip ospf 1 area 99
-ip ospf message-digest-key 1 md5 thisisnotsecure
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-exit
-int port-channel 15
-ip ospf 1 area 99
-ip ospf message-digest-key 1 md5 thisisnotsecure
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-exit
-int vlan 40
-ip ospf 1 area 99
-ip ospf message-digest-key 1 md5 thisisnotsecure
-ip ospf hello-interval 3
-ip ospf dead-interval 8
+passive-interface f0/10
 exit
 int range f0/1-24,g0/1-2
 shut
