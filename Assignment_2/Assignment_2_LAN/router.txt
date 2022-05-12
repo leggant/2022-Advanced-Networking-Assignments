@@ -18,6 +18,15 @@ exec-timeout 3 0
 exit
 int range g0/0-1
 shut
+int lo 1
+description Connection to Edge Router 1
+ip add 192.168.10.1 255.255.255.252
+ip ospf 1 area 51
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+exit
+ip route 0.0.0.0 0.0.0.0 lo 1 120
 int g0/0/0
 description Link -->> DIST_1 G1/1/1
 ip add 10.7.0.78 255.255.255.252
@@ -55,6 +64,13 @@ exit
 end
 wr
 
+BGP
+
+en
+conf t
+router bgp 65007
+neighbour
+
 en
 conf t
 hostname WAN_R2
@@ -75,6 +91,15 @@ exec-timeout 3 0
 exit
 int range g0/0-1
 shut
+int lo 1
+description Connection to Edge Router 2
+ip add 192.168.20.1 255.255.255.252
+ip ospf 1 area 51
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+exit
+ip route 0.0.0.0 0.0.0.0 lo 1 200
 int g0/0/0
 description Link -->> DIST_2 G1/1/1
 ip add 10.7.0.70 255.255.255.252
