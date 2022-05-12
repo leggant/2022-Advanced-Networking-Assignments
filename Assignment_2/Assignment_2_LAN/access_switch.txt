@@ -74,7 +74,7 @@ int po 10
 description CH#10 -->> DIST_SW1
 ip add 10.7.0.6 255.255.255.252
 ip ospf 1 area 99
-ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
@@ -88,7 +88,7 @@ int po 11
 description CH#11 -->> DIST_SW2
 ip add 10.7.0.10 255.255.255.252
 ip ospf 1 area 99
-ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
@@ -172,7 +172,7 @@ int po 12
 description CH#12 -->> DIST_SW1
 ip add 10.7.0.14 255.255.255.252
 ip ospf 1 area 99
-ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
@@ -186,7 +186,7 @@ int po 13
 description CH#13 -->> DIST_SW2
 ip add 10.7.0.18 255.255.255.252
 ip ospf 1 area 99
-ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
@@ -268,7 +268,7 @@ int po 14
 description CH#14 -->> DIST_SW1
 ip add 10.7.0.22 255.255.255.252
 ip ospf 1 area 99
-ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
@@ -282,7 +282,7 @@ int po 15
 description CH#15 -->> DIST_SW2
 ip add 10.7.0.26 255.255.255.252
 ip ospf 1 area 99
-ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut

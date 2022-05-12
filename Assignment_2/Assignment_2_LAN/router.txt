@@ -22,30 +22,28 @@ int g0/0/0
 description Link -->> DIST_1 G1/1/1
 ip add 10.7.0.78 255.255.255.252
 ip ospf 1 area 51
-ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
-ip ospf network point-to-point
 no shut
 int g0/1/0
 description Link -->> DIST_1 G1/1/2
 ip add 10.7.0.82 255.255.255.252
 ip ospf 1 area 51
-ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
-ip ospf network point-to-point
 no shut
 int lo 0 
 ip add 10.7.10.4 255.255.255.255
 ip ospf 1 area 51
-ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
 exit
 router ospf 1
-router-id 5.5.5.5
+router-id 250.250.250.250
 area 51 authentication message-digest
 log-adjacency-changes detail
 network 10.7.0.76 0.0.0.3 area 51
@@ -81,30 +79,28 @@ int g0/0/0
 description Link -->> DIST_2 G1/1/1
 ip add 10.7.0.70 255.255.255.252
 ip ospf 1 area 51
-ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
-ip ospf network point-to-point
 no shut
 int g0/1/0
 description Link -->> DIST_2 G1/1/2
 ip add 10.7.0.74 255.255.255.252
 ip ospf 1 area 51
-ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
-ip ospf network point-to-point
 no shut
 int lo 0 
 ip add 10.7.10.6 255.255.255.255
 ip ospf 1 area 51
-ip ospf message-digest-key 1 md5 thisisnotsecure
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
 exit
 router ospf 1
-router-id 6.6.6.6
+router-id 230.230.230.230
 area 51 authentication message-digest
 log-adjacency-changes detail
 network 10.7.0.68 0.0.0.3 area 51
