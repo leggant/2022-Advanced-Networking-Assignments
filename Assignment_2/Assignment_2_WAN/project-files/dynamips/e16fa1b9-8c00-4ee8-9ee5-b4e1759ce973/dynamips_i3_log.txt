@@ -1,0 +1,113 @@
+May 13 10:07:49.282 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+May 13 10:07:49.283 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 59504.
+May 13 10:07:49.767 HYPERVISOR: exec_cmd: hypervisor version 
+May 13 10:07:49.768 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips 
+May 13 10:07:49.768 GENERAL: working_dir=C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips
+May 13 10:07:49.768 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\3d5b22af-aafd-4748-827a-2653569d4c58 
+May 13 10:07:49.770 GENERAL: working_dir=C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\3d5b22af-aafd-4748-827a-2653569d4c58
+May 13 10:07:49.771 HYPERVISOR: exec_cmd: vm create Liverpool 4 c7200 
+May 13 10:07:49.774 VM: VM Liverpool created.
+May 13 10:07:49.775 HYPERVISOR: exec_cmd: vm set_con_tcp_port Liverpool 5004 
+May 13 10:07:49.776 HYPERVISOR: exec_cmd: c7200 get_mac_addr Liverpool 
+May 13 10:07:49.776 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 13 10:07:49.776 HYPERVISOR: exec_cmd: vm slot_add_binding Liverpool 0 0 C7200-IO-FE 
+May 13 10:07:49.777 HYPERVISOR: exec_cmd: vm set_disk0 Liverpool 0 
+May 13 10:07:49.778 HYPERVISOR: exec_cmd: vm set_exec_area Liverpool 64 
+May 13 10:07:49.778 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 13 10:07:49.778 HYPERVISOR: exec_cmd: vm set_idle_pc Liverpool 0x61ec17d4 
+May 13 10:07:49.779 HYPERVISOR: exec_cmd: vm set_ios Liverpool D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 13 10:07:49.779 HYPERVISOR: exec_cmd: c7200 set_mac_addr Liverpool ca04.3e18.0000 
+May 13 10:07:49.780 HYPERVISOR: exec_cmd: vm set_nvram Liverpool 512 
+May 13 10:07:49.780 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 13 10:07:49.780 HYPERVISOR: exec_cmd: vm slot_add_binding Liverpool 1 0 PA-GE 
+May 13 10:07:49.781 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 13 10:07:49.781 HYPERVISOR: exec_cmd: vm slot_add_binding Liverpool 2 0 PA-GE 
+May 13 10:07:49.781 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 13 10:07:49.782 HYPERVISOR: exec_cmd: vm slot_add_binding Liverpool 3 0 PA-GE 
+May 13 10:07:49.782 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 13 10:07:49.782 HYPERVISOR: exec_cmd: vm slot_add_binding Liverpool 4 0 PA-GE 
+May 13 10:07:53.760 HYPERVISOR: exec_cmd: nio create_udp udp-58e4b278-0823-4cdb-a6e5-e84e02fb0139 10040 127.0.0.1 10041 
+May 13 10:07:54.020 HYPERVISOR: exec_cmd: vm slot_add_nio_binding Liverpool 1 0 udp-58e4b278-0823-4cdb-a6e5-e84e02fb0139 
+May 13 10:07:54.021 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 13 10:18:08.982 HYPERVISOR: exec_cmd: vm create Ghost 0 c7200 
+May 13 10:18:08.983 VM: VM Ghost created.
+May 13 10:18:08.984 HYPERVISOR: exec_cmd: vm set_ios Ghost D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 13 10:18:08.984 HYPERVISOR: exec_cmd: vm set_ghost_status Ghost 1 
+May 13 10:18:08.985 HYPERVISOR: exec_cmd: vm set_ghost_file Ghost C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin-256.ghost 
+May 13 10:18:08.985 HYPERVISOR: exec_cmd: vm set_ram Ghost 256 
+May 13 10:18:08.986 HYPERVISOR: exec_cmd: vm get_status Ghost 
+May 13 10:18:08.989 HYPERVISOR: exec_cmd: vm set_config Ghost configs\i0_startup-config.cfg 
+May 13 10:18:08.990 HYPERVISOR: exec_cmd: vm start Ghost 
+May 13 10:18:09.335 HYPERVISOR: exec_cmd: vm get_status Ghost 
+May 13 10:18:09.340 HYPERVISOR: exec_cmd: vm stop Ghost 
+May 13 10:18:09.412 VM: VM Ghost shutdown.
+May 13 10:18:09.413 HYPERVISOR: exec_cmd: vm extract_config Ghost 
+May 13 10:18:09.414 HYPERVISOR: exec_cmd: vm clean_delete Ghost 
+May 13 10:18:09.414 VM: VM Ghost destroyed.
+May 13 10:18:09.422 HYPERVISOR: exec_cmd: vm set_ghost_status Liverpool 2 
+May 13 10:18:09.423 HYPERVISOR: exec_cmd: vm set_ghost_file Liverpool C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin-256.ghost 
+May 13 10:18:09.423 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 13 10:18:09.424 HYPERVISOR: exec_cmd: vm set_config Liverpool configs\i4_startup-config.cfg 
+May 13 10:18:09.424 HYPERVISOR: exec_cmd: vm start Liverpool 
+May 13 10:18:39.720 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 13 10:19:58.438 HYPERVISOR: exec_cmd: vm set_ios Liverpool D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 13 10:19:59.284 HYPERVISOR: exec_cmd: vm set_ios Liverpool D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 13 10:19:59.510 HYPERVISOR: exec_cmd: vm set_ios Liverpool D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 13 10:20:10.343 HYPERVISOR: exec_cmd: vm set_ios Liverpool D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 13 10:20:11.103 HYPERVISOR: exec_cmd: vm set_ios Liverpool D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 13 10:20:11.420 HYPERVISOR: exec_cmd: vm set_ios Liverpool D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 13 10:20:58.379 HYPERVISOR: exec_cmd: vm set_ios Liverpool D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 13 10:20:58.815 HYPERVISOR: exec_cmd: vm set_ios Liverpool D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 13 10:20:59.039 HYPERVISOR: exec_cmd: vm set_ios Liverpool D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 13 10:21:14.422 HYPERVISOR: exec_cmd: vm set_ios Liverpool D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 13 10:21:15.357 HYPERVISOR: exec_cmd: vm set_ios Liverpool D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 13 10:21:15.553 HYPERVISOR: exec_cmd: vm set_ios Liverpool D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 13 10:21:40.767 HYPERVISOR: exec_cmd: vm set_ios Liverpool D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 13 10:21:40.811 HYPERVISOR: exec_cmd: vm set_ios Liverpool D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 13 10:21:42.627 HYPERVISOR: exec_cmd: vm set_ios Liverpool D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 13 10:22:18.443 HYPERVISOR: exec_cmd: vm set_ios Liverpool D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 13 10:23:33.667 HYPERVISOR: exec_cmd: vm set_ios Liverpool D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 13 10:23:34.510 HYPERVISOR: exec_cmd: vm set_ios Liverpool D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 13 10:23:34.709 HYPERVISOR: exec_cmd: vm set_ios Liverpool D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 13 11:24:41.292 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 13 11:25:41.309 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 13 11:27:41.396 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 13 11:31:11.424 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 13 11:33:41.497 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 13 11:49:05.422 HYPERVISOR: exec_cmd: nio create_udp udp-ce3b2980-4e32-40d0-9be7-85410f25fd66 10054 127.0.0.1 10055 
+May 13 11:49:05.425 HYPERVISOR: exec_cmd: vm slot_add_nio_binding Liverpool 0 0 udp-ce3b2980-4e32-40d0-9be7-85410f25fd66 
+May 13 11:49:05.425 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 13 11:49:05.425 HYPERVISOR: exec_cmd: vm slot_enable_nio Liverpool 0 0 
+May 13 11:49:54.708 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 13 11:49:54.708 HYPERVISOR: exec_cmd: vm slot_disable_nio Liverpool 0 0 
+May 13 11:49:54.733 HYPERVISOR: exec_cmd: vm slot_remove_nio_binding Liverpool 0 0 
+May 13 11:49:54.735 HYPERVISOR: exec_cmd: nio delete udp-ce3b2980-4e32-40d0-9be7-85410f25fd66 
+May 13 11:50:03.967 HYPERVISOR: exec_cmd: nio create_udp udp-b1207fd2-70f7-47df-9b85-45e0f40203ea 10054 127.0.0.1 10055 
+May 13 11:50:03.970 HYPERVISOR: exec_cmd: vm slot_add_nio_binding Liverpool 0 0 udp-b1207fd2-70f7-47df-9b85-45e0f40203ea 
+May 13 11:50:03.970 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 13 11:50:03.970 HYPERVISOR: exec_cmd: vm slot_enable_nio Liverpool 0 0 
+May 13 11:53:41.871 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 13 11:57:11.981 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 13 12:00:42.034 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 13 12:09:42.254 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 13 12:28:12.710 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 13 12:30:42.745 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 13 12:36:51.819 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 13 12:36:51.819 HYPERVISOR: exec_cmd: vm slot_disable_nio Liverpool 0 0 
+May 13 12:36:51.832 HYPERVISOR: exec_cmd: vm slot_remove_nio_binding Liverpool 0 0 
+May 13 12:36:51.833 HYPERVISOR: exec_cmd: nio delete udp-b1207fd2-70f7-47df-9b85-45e0f40203ea 
+May 13 12:37:20.716 HYPERVISOR: exec_cmd: vm set_ios Liverpool D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 13 12:37:20.765 HYPERVISOR: exec_cmd: vm set_ios Liverpool D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 13 12:37:24.910 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 13 12:37:24.910 HYPERVISOR: exec_cmd: vm slot_disable_nio Liverpool 1 0 
+May 13 12:37:24.936 HYPERVISOR: exec_cmd: vm slot_remove_nio_binding Liverpool 1 0 
+May 13 12:37:24.938 HYPERVISOR: exec_cmd: nio delete udp-58e4b278-0823-4cdb-a6e5-e84e02fb0139 
+May 13 12:37:25.185 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 13 12:37:25.185 HYPERVISOR: exec_cmd: vm stop Liverpool 
+May 13 12:37:25.291 VM: VM Liverpool shutdown.
+May 13 12:37:25.291 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 13 12:37:25.300 HYPERVISOR: exec_cmd: vm delete Liverpool 
+May 13 12:37:25.300 VM: VM Liverpool destroyed.
+May 13 12:37:25.301 HYPERVISOR: exec_cmd: hypervisor stop 
+May 13 12:37:25.630 HYPERVISOR: Stopped.
+May 13 12:37:25.630 GENERAL: reset done.
