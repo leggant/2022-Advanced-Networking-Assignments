@@ -26,10 +26,19 @@ name Parking
 int vlan 20
 ip add 10.7.2.1 255.255.255.0
 description Admin Gateway
+ip ospf 1 area 99
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+no shut
 exit
 int vlan 30
 ip add 10.7.3.1 255.255.255.0
 description Finance Gateway
+ip ospf 1 area 99
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
 no shut
 exit
 int f0/11
@@ -95,22 +104,29 @@ no shut
 exit
 router ospf 1
 router-id 99.99.99.3
-area 0 authentication message-digest
-area 99 authentication message-digest
 log-adjacency-changes detail
+network 10.7.0.32 0.0.0.3 area 0
+network 10.7.0.28 0.0.0.3 area 0
 network 10.7.0.4 0.0.0.3 area 99
 network 10.7.0.8 0.0.0.3 area 99
 network 10.7.3.0 0.0.0.255 area 99
 network 10.7.2.0 0.0.0.255 area 99
+network 10.7.2.1 0.0.0.0 area 99
+network 10.7.3.1 0.0.0.0 area 99
 auto-cost reference-bandwidth 10000
 passive-interface vlan 20
 passive-interface vlan 30
-passive-interface f0/11
-passive-interface f0/21
+area 0 authentication message-digest
+area 99 authentication message-digest
+area 51 authentication message-digest
 exit
 int range f0/1-24,g0/1-2
 shut
 no shut
+exit
+exit
+clear ip ospf process
+y
 end
 wr
 
@@ -140,6 +156,11 @@ name Parking
 int vlan 10
 ip add 10.7.1.1 255.255.255.0
 description Sales and Marketing Gateway
+ip ospf 1 area 99
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+no shut
 exit
 int f0/21
 switchport mode access
@@ -201,7 +222,6 @@ network 10.7.0.16 0.0.0.3 area 99
 network 10.7.1.0 0.0.0.255 area 99
 auto-cost reference-bandwidth 10000
 passive-interface vlan 10
-passive-interface f0/21
 exit
 int range f0/1-24,g0/1-2
 shut
