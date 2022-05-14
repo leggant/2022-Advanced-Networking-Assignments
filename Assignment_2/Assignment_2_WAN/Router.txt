@@ -1,216 +1,12 @@
-
-en
-conf t
-hostname HO_LAN
-service password-encryption
-no ip domain-lookup
-ip domain-name tyrell.corp
-banner motd # Unauthorised Access Is Prohibited #
-line con 0
-logging synchronous
-exec-timeout 3 0
-exit
-line vty 0 4
-logging synchronous
-exec-timeout 3 0
-exit
-no int lo 0
-int f0/0
-ip add 10.7.0.1 0.0.0.255
-description HO LAN
-ip ospf 1 area 0
-ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-no shut
-exit
-router ospf 1
-router-id 250.250.250.250
-area 0 authentication message-digest
-log-adjacency-changes detail
-network 0.0.0.0 0.0.0.0 area 0
-network 172.16.0.0 0.0.255.255 area 0
-auto-cost reference-bandwidth 10000
-exit
-end
-wr
-
-Liverpool
-A	200	254	10.8.0.0	/24	255.255.255.0	10.8.0.1 - 10.8.0.254	10.8.0.255
-B	200	254	10.8.1.0	/24	255.255.255.0	10.8.1.1 - 10.8.1.254	10.8.1.255
-
-
-en
-conf t
-hostname Liverpool
-service password-encryption
-no ip domain-lookup
-ip domain-name tyrell.corp
-banner motd # Unauthorised Access Is Prohibited #
-line con 0
-logging synchronous
-exec-timeout 3 0
-exit
-line vty 0 4
-logging synchronous
-exec-timeout 3 0
-exit
-int lo 1
-ip add 10.8.0.1 255.255.255.255
-keepalive
-description Liverpool LAN
-no shut
-int lo 0
-ip add 10.8.255.255 255.255.255.255
-no shut
-
-int f0/0
-ip add 10.8.0.10 255.255.255.0
-description Liverpool LAN
-keepalive
-no shut
-exit
-int g1/0
-description Connection to EDGE_R1 AS4700
-ip add 172.16.17.14 255.255.255.252
-ip hold-time eigrp 4700 8
-ip hello-interval eigrp 4700 4
-no shut
-router bgp 65008
-network 10.8.0.0 mask 255.255.255.0
-network 172.16.17.12 mask 255.255.255.252
-neighbor 172.16.17.13 remote-as 4700
-exit
-end
-wr
-
-A	200	254	10.9.0.0	/24	255.255.255.0	10.9.0.1 - 10.9.0.254	10.9.0.255
-B	200	254	10.9.1.0	/24	255.255.255.0	10.9.1.1 - 10.9.1.254	10.9.1.255
-
-en
-conf t
-hostname Fulham
-service password-encryption
-no ip domain-lookup
-ip domain-name tyrell.corp
-banner motd # Unauthorised Access Is Prohibited #
-line con 0
-logging synchronous
-exec-timeout 3 0
-exit
-line vty 0 4
-logging synchronous
-exec-timeout 3 0
-exit
-int lo 0
-ip add 10.9.0.1 255.255.255.0
-description Fulham LAN
-no shut
-exit
-int g3/0
-description Connection to EDGE_R2 AS4700
-ip add 172.16.17.18 255.255.255.252
-no shut
-router bgp 65009
-network 10.9.0.0 mask 255.255.255.0
-neighbor 172.16.17.17 remote-as 4700
-exit
-end
-wr
-
-
-en
-conf t
-hostname Edge_1
-service password-encryption
-no ip domain-lookup
-banner motd # Unauthorised Access Is Prohibited #
-line con 0
-logging synchronous
-exec-timeout 3 0
-exit
-line vty 0 4
-logging synchronous
-exec-timeout 3 0
-exit
-int g1/0
-description Connection to Liverpool AS65008
-ip add 172.16.12.13 255.255.255.252
-ip hold-time eigrp 4700 8
-ip hello-interval eigrp 4700 4
-no shut
-int g2/0
-description Connection to Edge_2 AS4700
-ip add 172.16.17.9 255.255.255.252
-no shut
-int g3/0
-description Connection to WAN_R1 AS65007
-ip add 172.16.17.1 255.255.255.252
-no ip hold-time eigrp 4700 8
-no ip hello-interval eigrp 4700 4
-ip hold-time eigrp 65008 8
-ip hello-interval eigrp 65008 4
-no shut
-router bgp 4700
-neighbor 172.16.17.14 remote-as 65008
-neighbor 172.16.17.10 remote-as 4700
-neighbor 172.16.17.2 remote-as 65007
-exit
-end
-wr
-
-en
-conf t
-hostname Edge_2
-service password-encryption
-no ip domain-lookup
-banner motd # Unauthorised Access Is Prohibited #
-line con 0
-logging synchronous
-exec-timeout 3 0
-exit
-line vty 0 4
-logging synchronous
-exec-timeout 3 0
-exit
-int g1/0
-description Connection to Fulham AS65009
-ip add 172.16.12.13 255.255.255.252
-no shut
-int g2/0
-description Connection to Edge_2 AS4700
-ip add 172.16.17.9 255.255.255.252
-no shut
-int g3/0
-description Connection to WAN_R1 AS65007
-ip add 172.16.17.1 255.255.255.252
-no shut
-router bgp 4700
-neighbor 172.16.17.14 remote-as 65008
-neighbor 172.16.17.10 remote-as 4700
-neighbor 172.16.17.2 remote-as 65007
-exit
-end
-wr
-
-
-
-
-
-
-
-
-
-
-
 en
 conf t
 hostname WAN_R1
 service password-encryption
 no ip domain-lookup
-ip routing
 ip domain-name tyrell.corp
 banner motd # Unauthorised Access Is Prohibited #
+spanning-tree mode rapid-pvst
+spanning-tree portfast bpduguard default
 line con 0
 logging synchronous
 exec-timeout 3 0
@@ -219,24 +15,21 @@ line vty 0 4
 logging synchronous
 exec-timeout 3 0
 exit
-int lo 0 
-ip add 10.7.0.0 0.0.0.0
-description HO LAN
-ip ospf 1 area 0
-ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-no shut
-exit
+int range g0/0-1
+shut
+int g0/2/0
+shut
+int g0/3/0
+shut
 int lo 1
 description Connection to Edge Router 1
-ip add 192.168.10.1 255.255.255.252
+ip add 172.16.17.14 255.255.255.252
 ip ospf 1 area 51
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 exit
-ip route 0.0.0.0 0.0.0.0 lo 1 120
+ip route 0.0.0.0 0.0.0.0 lo 1 1
 int g0/0/0
 description Link -->> DIST_1 G1/1/1
 ip add 10.7.0.78 255.255.255.252
@@ -253,26 +46,18 @@ ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
-
 router ospf 1
 router-id 250.250.250.250
 area 51 authentication message-digest
 log-adjacency-changes detail
 network 10.7.0.76 0.0.0.3 area 51
 network 10.7.0.80 0.0.0.3 area 51
-network 10.7.10.4 0.0.0.0 area 51
+network 172.16.17.12 0.0.0.3 area 51
 auto-cost reference-bandwidth 10000
-passive-interface loopback 0
+default-information originate
 exit
 end
 wr
-
-BGP
-
-en
-conf t
-router bgp 65007
-neighbour
 
 en
 conf t
@@ -294,15 +79,19 @@ exec-timeout 3 0
 exit
 int range g0/0-1
 shut
+int g0/2/0
+shut
+int g0/3/0
+shut
 int lo 1
 description Connection to Edge Router 2
-ip add 192.168.20.1 255.255.255.252
+ip add 172.16.17.18 255.255.255.252
 ip ospf 1 area 51
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 exit
-ip route 0.0.0.0 0.0.0.0 lo 1 200
+ip route 0.0.0.0 0.0.0.0 lo 1 1
 int g0/0/0
 description Link -->> DIST_2 G1/1/1
 ip add 10.7.0.70 255.255.255.252
@@ -319,13 +108,6 @@ ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
-int lo 0 
-ip add 10.7.10.6 255.255.255.255
-ip ospf 1 area 51
-ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-no shut
 exit
 router ospf 1
 router-id 230.230.230.230
@@ -333,9 +115,9 @@ area 51 authentication message-digest
 log-adjacency-changes detail
 network 10.7.0.68 0.0.0.3 area 51
 network 10.7.0.72 0.0.0.3 area 51
-network 10.7.10.6 0.0.0.0 area 51
+network 172.16.17.16 0.0.0.3 area 51
 auto-cost reference-bandwidth 10000
-passive-interface loopback 0
+default-information originate
 exit
 end
 wr
