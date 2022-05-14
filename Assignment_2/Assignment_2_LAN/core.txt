@@ -113,7 +113,6 @@ network 10.7.0.40 0.0.0.3 area 0
 network 10.7.0.44 0.0.0.3 area 0
 network 10.7.0.60 0.0.0.3 area 0
 network 10.7.0.48 0.0.0.3 area 0
-network 10.7.10.1 0.0.0.0 area 0
 area 0 authentication message-digest
 passive-interface loopback 0
 exit
@@ -244,15 +243,13 @@ network 10.7.0.56 0.0.0.3 area 0
 network 10.7.0.44 0.0.0.3 area 0
 network 10.7.0.32 0.0.0.3 area 0
 network 10.7.0.36 0.0.0.3 area 0
-network 10.7.10.2 0.0.0.0 area 0
 auto-cost reference-bandwidth 10000
 area 0 authentication message-digest
 passive-interface loopback 0
 exit
 int range g1/0/1-4,g1/0/6-9,g1/1/1-4
-shut 
+shut
 no shut
-exit
 exit
 clear ip ospf process
 y
