@@ -41,7 +41,8 @@ ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
 exit
-int f0/11
+!int f0/11
+int g1/0/11
 switchport mode access
 switchport access vlan 20
 spanning-tree bpduguard enable
@@ -52,7 +53,8 @@ switchport port-security violation restrict
 switchport port-security aging time 1
 no shut
 exit
-int f0/21
+!int f0/21
+int g1/0/21
 switchport mode access
 switchport access vlan 30
 spanning-tree bpduguard enable
@@ -63,7 +65,8 @@ switchport port-security violation restrict
 switchport port-security aging time 1
 no shut
 exit
-int range f0/1-10,f0/16-20,f0/22-24,g0/1-2
+!int range f0/1-10,f0/16-20,f0/22-24,g0/1-2
+int range g1/0/1-10,g1/0/16-20,g1/0/22-24,g1/1/1-4
 switchport mode access
 switchport access vlan 51
 spanning-tree bpduguard enable
@@ -74,7 +77,8 @@ switchport port-security violation shutdown
 switchport port-security aging time 1
 shut
 exit
-int range f0/12-13
+!int range f0/12-13
+int range g1/0/12-13
 no switchport
 description Link -->> DIST_SW1
 channel-group 10 mode on
@@ -88,7 +92,8 @@ ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
 exit
-int range f0/14-15
+!int range f0/14-15
+int range g1/0/14-15
 no switchport
 description Link -->> DIST_SW2
 channel-group 11 mode on
@@ -105,8 +110,6 @@ exit
 router ospf 1
 router-id 99.99.99.3
 log-adjacency-changes detail
-network 10.7.0.32 0.0.0.3 area 0
-network 10.7.0.28 0.0.0.3 area 0
 network 10.7.0.4 0.0.0.3 area 99
 network 10.7.0.8 0.0.0.3 area 99
 network 10.7.3.0 0.0.0.255 area 99
@@ -114,15 +117,7 @@ network 10.7.2.0 0.0.0.255 area 99
 network 10.7.2.1 0.0.0.0 area 99
 network 10.7.3.1 0.0.0.0 area 99
 auto-cost reference-bandwidth 10000
-passive-interface vlan 20
-passive-interface vlan 30
-area 0 authentication message-digest
 area 99 authentication message-digest
-area 51 authentication message-digest
-exit
-int range f0/1-24,g0/1-2
-shut
-no shut
 exit
 exit
 clear ip ospf process
@@ -162,7 +157,8 @@ ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
 exit
-int f0/21
+!int f0/21
+int g1/0/21
 switchport mode access
 switchport access vlan 10
 spanning-tree bpduguard enable
@@ -173,7 +169,8 @@ switchport port-security violation restrict
 switchport port-security aging time 1
 no shut
 exit
-int range f0/1-13,f0/18-20,f0/22-24,g0/1-2
+!int range f0/1-13,f0/18-20,f0/22-24,g0/1-2
+int range g1/0/1-13,g1/0/18-20,g1/0/22-24,g1/1/1-4
 switchport mode access
 switchport access vlan 51
 spanning-tree bpduguard enable
@@ -184,7 +181,8 @@ switchport port-security violation shutdown
 switchport port-security aging time 1
 shut
 exit
-int range f0/14-15
+!int range f0/14-15
+int range g1/0/14-15
 no switchport
 description Link -->> DIST_SW1
 channel-group 12 mode on
@@ -198,7 +196,8 @@ ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
 exit
-int range f0/16-17
+!int range f0/16-17
+int range g1/0/16-17
 no switchport
 description Link -->> DIST_SW2
 channel-group 13 mode on
@@ -214,18 +213,17 @@ no shut
 exit
 router ospf 1
 router-id 99.99.99.4
-area 0 authentication message-digest
 area 99 authentication message-digest
 log-adjacency-changes detail
 network 10.7.0.12 0.0.0.3 area 99
 network 10.7.0.16 0.0.0.3 area 99
 network 10.7.1.0 0.0.0.255 area 99
 auto-cost reference-bandwidth 10000
-passive-interface vlan 10
+no passive-interface vlan 10
 exit
-int range f0/1-24,g0/1-2
-shut
-no shut
+exit
+clear ip ospf process
+y
 end
 wr
 
@@ -257,7 +255,7 @@ int vlan 40
 ip add 10.7.4.1 255.255.255.0
 description HR Gateway
 exit
-int f0/10
+int g1/0/10
 switchport mode access
 switchport access vlan 40
 spanning-tree bpduguard enable
@@ -268,7 +266,7 @@ switchport port-security violation restrict
 switchport port-security aging time 1
 no shut
 exit
-int range f0/1-9,f0/11-17,f0/22-24,g0/1-2
+int range g1/0/1-9,g1/0/11-17,g1/0/22-24,g1/1/1-4
 switchport mode access
 switchport access vlan 51
 spanning-tree bpduguard enable
@@ -279,7 +277,7 @@ switchport port-security violation shutdown
 switchport port-security aging time 1
 shut
 exit
-int range f0/18-19
+int range g1/0/18-19
 no switchport
 description Link -->> DIST_SW1
 channel-group 14 mode on
@@ -293,7 +291,7 @@ ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
 exit
-int range f0/20-21
+int range g1/0/20-21
 no switchport
 description Link -->> DIST_SW2
 channel-group 15 mode on
@@ -309,18 +307,16 @@ no shut
 exit
 router ospf 1
 router-id 99.99.99.5
-area 0 authentication message-digest
 area 99 authentication message-digest
 log-adjacency-changes detail
 network 10.7.0.20 0.0.0.3 area 99
 network 10.7.0.24 0.0.0.3 area 99
 network 10.7.4.0 0.0.0.255 area 99
 auto-cost reference-bandwidth 10000
-passive-interface vlan 40
-passive-interface f0/10
 exit
-int range f0/1-24,g0/1-2
-shut
-no shut
+exit
+clear ip ospf process
+y
+exit
 end
 wr
