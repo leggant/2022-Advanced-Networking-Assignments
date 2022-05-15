@@ -24,6 +24,10 @@ int g1/0
 description Connection to Provider R1
 ip add 172.16.17.13 255.255.255.252
 no shut
+exit
+int lo 0 
+ip add 10.8.250.10 255.255.255.255
+exit
 end
 wr
 
@@ -53,6 +57,10 @@ int g1/0
 description Connection to Provider R2
 ip add 172.16.17.17 255.255.255.252
 no shut
+exit
+int lo 0
+ip add 10.9.250.1 255.255.255.255
+exit
 end
 wr
 
