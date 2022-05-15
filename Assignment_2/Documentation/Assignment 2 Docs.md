@@ -142,10 +142,12 @@ Use 172.16.17.8/30 for the link between the Provider Edge routers.
 
 The remote Liverpool site is included for routing testing purposes. The LAN IP address range is 10.8.0.0/16. You will specify this range in any policy, filtering, routing etc  as needed. 
 
-### Fulham Site 
+### Fulham Site
+
 The remote Fulham site is included for routing testing purposes. The LAN IP address range is 10.9.0.0/16. You will specify this range in any policy, filtering, routing etc  as needed. 
 
 ### BGP AS Numbering
+
 The MPLS Core BGP AS is 4700 The Head Office has been allocated BGP AS 65007 Liverpool has been allocated BGP AS 65008 Fulham has been allocated BGP AS 65009
 
 ### Routing - HO LAN to Service Provider
