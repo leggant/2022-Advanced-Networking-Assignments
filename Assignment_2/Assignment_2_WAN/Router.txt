@@ -241,6 +241,7 @@ log-adjacency-changes detail
 network 10.7.0.68 0.0.0.3 area 51
 network 10.7.0.72 0.0.0.3 area 51
 network 172.16.17.4 0.0.0.3 area 51
+area 51 range 10.7.0.0 0.0.15.255
 auto-cost reference-bandwidth 10000
 default-information originate
 exit
@@ -324,7 +325,7 @@ network 10.7.0.76 0.0.0.3 area 51
 network 10.7.0.80 0.0.0.3 area 51
 network 10.7.0.68 0.0.0.3 area 51
 network 10.7.0.72 0.0.0.3 area 51
-area 0 range 10.7.0.0 0.0.15.255
+area 0 range 10.7.0.0 0.0.0.127
 auto-cost reference-bandwidth 10000
 default-information originate
 exit

@@ -104,6 +104,7 @@ network 10.7.0.56 0.0.0.3 area 0
 network 10.7.0.64 0.0.0.3 area 0
 network 10.7.0.76 0.0.0.3 area 51
 network 10.7.0.80 0.0.0.3 area 51
+area 0 range 10.7.0.0 0.0.
 auto-cost reference-bandwidth 10000
 default-information originate
 passive-interface loopback 0
