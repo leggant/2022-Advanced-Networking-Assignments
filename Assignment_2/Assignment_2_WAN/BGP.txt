@@ -9,7 +9,6 @@ router bgp 65008
 bgp router-id 10.8.250.10
 timers bgp 10 20
 bgp log-neighbor-changes
-network 10.8.250.10 mask 255.255.255.255
 network 10.8.0.0 mask 255.255.255.0
 neighbor 10.8.0.0 remote-as 65008
 neighbor 10.8.0.0 update-source loopback0
@@ -53,6 +52,9 @@ network 172.16.17.12 mask 255.255.255.252
 neighbor 10.8.250.10 remote-as 65008
 neighbor 10.8.250.10 update-source loopback0
 neighbor 10.8.250.10 ebgp-multihop 2
+neighbor 10.8.0.0 remote-as 65008
+neighbor 10.8.0.0 update-source loopback0
+neighbor 10.8.0.0 ebgp-multihop 3
 neighbor 50.50.50.50 remote-as 4700
 neighbor 50.50.50.50 update-source loopback0
 neighbor 50.50.50.50 ebgp-multihop 2
