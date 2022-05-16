@@ -16,8 +16,9 @@ logging synchronous
 exec-timeout 3 0
 exit
 int lo 1
-description Connection to Liverpool
+description Connection to Liverpool Office
 ip add 10.8.0.1 255.255.255.0
+keepalive
 no shut
 exit
 int g1/0
@@ -86,7 +87,7 @@ ip add 172.16.17.14 255.255.255.252
 no shut
 exit
 int g4/0
-description Connection to R2
+description Connection to Edge R2
 ip add 172.16.17.9 255.255.255.252
 no shut
 exit
@@ -182,7 +183,7 @@ ip add 172.16.17.18 255.255.255.252
 no shut
 exit
 int g4/0
-description Connection to R1
+description Connection to Edge R1
 ip add 172.16.17.10 255.255.255.252
 no shut
 exit
