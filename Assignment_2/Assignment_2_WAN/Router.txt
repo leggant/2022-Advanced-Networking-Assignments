@@ -6,7 +6,6 @@ no ip domain-lookup
 ip domain-name tyrell.corp
 ip routing
 banner motd # Unauthorised Access Is Prohibited #
-spanning-tree portfast bpduguard default
 line con 0
 logging synchronous
 exec-timeout 3 0
@@ -29,6 +28,10 @@ exit
 int lo 0 
 ip add 10.8.200.10 255.255.255.255
 exit
+end
+wr
+
+
 router bgp 65008
 bgp router-id 10.8.200.10
 network 10.8.0.0 mask 255.255.255.0
@@ -42,6 +45,10 @@ ip route 172.16.250.200 255.255.255.255 172.16.17.14
 end
 wr
 
+
+#############################################################
+
+
 en
 conf t
 hostname EDGE_R1
@@ -49,7 +56,6 @@ service password-encryption
 no ip domain-lookup
 ip routing
 banner motd # Unauthorised Access Is Prohibited #
-spanning-tree portfast bpduguard default
 line con 0
 logging synchronous
 exec-timeout 3 0
@@ -76,6 +82,10 @@ exit
 int lo 0
 ip add 172.16.250.200 255.255.255.255
 exit
+end
+wr
+
+
 router bgp 4700
 bgp router-id 172.16.250.200
 network 172.16.17.8 mask 255.255.255.252
@@ -93,6 +103,7 @@ ip route 172.16.17.10 255.255.255.255 g4/0
 end
 wr
 
+############################################################
 
 en
 conf t
@@ -101,7 +112,6 @@ service password-encryption
 no ip domain-lookup
 ip routing
 banner motd # Unauthorised Access Is Prohibited #
-spanning-tree portfast bpduguard default
 line con 0
 logging synchronous
 exec-timeout 3 0
@@ -128,6 +138,10 @@ exit
 int lo 0
 ip add 172.16.250.100 255.255.255.255
 exit
+end
+wr
+
+
 router bgp 4700
 bgp router-id 172.16.250.100
 network 172.16.17.8 mask 255.255.255.252
@@ -145,22 +159,7 @@ ip route 172.16.17.9 255.255.255.255 g4/0
 end
 wr
 
-
-
-
 #####################################################################
-
-
-
-
-
-
-
-
-
-
-
-
 
 en
 conf t
@@ -170,7 +169,6 @@ no ip domain-lookup
 ip domain-name tyrell.corp
 ip routing
 banner motd # Unauthorised Access Is Prohibited #
-spanning-tree portfast bpduguard default
 line con 0
 logging synchronous
 exec-timeout 3 0
@@ -180,7 +178,7 @@ logging synchronous
 exec-timeout 3 0
 exit
 int g4/0
-description Connection to Liverpool Office
+description Connection to Fulham Office
 ip add 10.9.0.1 255.255.255.0
 keepalive
 no shut
@@ -193,14 +191,22 @@ exit
 int lo 0 
 ip add 10.9.200.10 255.255.255.255
 exit
+end
+wr
+
+
 router bgp 65009
 bgp router-id 10.9.200.10
 network 10.9.0.0 mask 255.255.255.0
-network 172.16.17.16 mask 255.255.255.252
 timers bgp 10 20
 bgp log-neighbor-changes
-neighbor 172.16.250.100 remote-as 4700
-neighbor 172.16.250.100 update-source loopback0
+neighbor 172.16.17.18 remote-as 4700
+neighbor 172.16.17.18 update-source loopback0
+network 172.16.17.16 mask 255.255.255.252
+exit
+end
+wr
+
 neighbor 172.16.250.100 ebgp-multihop 2
 neighbor 10.9.0.0 remote-as 65009
 neighbor 10.9.0.0 update-source loopback0
@@ -209,6 +215,8 @@ ip route 172.16.250.100 255.255.255.255 g1/0
 end
 wr
 
+#############################################################
+
 en
 conf t
 hostname EDGE_R2
@@ -216,7 +224,6 @@ service password-encryption
 no ip domain-lookup
 ip routing
 banner motd # Unauthorised Access Is Prohibited #
-spanning-tree portfast bpduguard default
 line con 0
 logging synchronous
 exec-timeout 3 0
@@ -246,28 +253,20 @@ no shut
 exit
 router bgp 4700
 bgp router-id 172.16.250.100
-network 172.16.17.8 mask 255.255.255.252
 timers bgp 10 20
 bgp log-neighbor-changes
-neighbor 10.9.200.10 remote-as 65009
-neighbor 10.9.200.10 update-source loopback0
-neighbor 10.9.200.10 ebgp-multihop 2
+network 172.16.17.16 mask 255.255.255.252
+no neighbor 172.16.17.16 remote-as 65009
+neighbor 172.16.17.17 remote-as 65009
+neighbor 172.16.17.17 update-source loopback0
+neighbor 172.16.17.17 ebgp-multihop 2
 exit
 ip route 10.9.200.10 255.255.255.255 g1/0
 ip route 172.16.250.100 255.255.255.255 172.16.17.9
 end
 wr
 
-
-
-
-
-
-
-
-
-
-
+##############################################################
 
 en
 conf t
