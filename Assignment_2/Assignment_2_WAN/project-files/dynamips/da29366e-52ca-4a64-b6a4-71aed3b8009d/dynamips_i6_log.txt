@@ -1,0 +1,82 @@
+May 17 10:34:29.417 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+May 17 10:34:29.418 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 64857.
+May 17 10:34:29.422 HYPERVISOR: exec_cmd: hypervisor version 
+May 17 10:34:29.423 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\Ant\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips 
+May 17 10:34:29.423 GENERAL: working_dir=C:\Users\Ant\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips
+May 17 10:34:29.423 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\Ant\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\13697802-542b-4574-b3dc-775913342736 
+May 17 10:34:29.423 GENERAL: working_dir=C:\Users\Ant\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\13697802-542b-4574-b3dc-775913342736
+May 17 10:34:29.423 HYPERVISOR: exec_cmd: vm create Liverpool 4 c7200 
+May 17 10:34:29.425 VM: VM Liverpool created.
+May 17 10:34:29.425 HYPERVISOR: exec_cmd: vm set_con_tcp_port Liverpool 5004 
+May 17 10:34:29.425 HYPERVISOR: exec_cmd: c7200 get_mac_addr Liverpool 
+May 17 10:34:29.425 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 17 10:34:29.425 HYPERVISOR: exec_cmd: vm slot_add_binding Liverpool 0 0 C7200-IO-FE 
+May 17 10:34:29.426 HYPERVISOR: exec_cmd: vm set_disk0 Liverpool 0 
+May 17 10:34:29.426 HYPERVISOR: exec_cmd: vm set_exec_area Liverpool 64 
+May 17 10:34:29.426 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 17 10:34:29.426 HYPERVISOR: exec_cmd: vm set_idle_pc Liverpool 0x6239b700 
+May 17 10:34:29.427 HYPERVISOR: exec_cmd: vm set_ios Liverpool D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 17 10:34:29.427 HYPERVISOR: exec_cmd: c7200 set_mac_addr Liverpool ca04.22cc.0000 
+May 17 10:34:29.428 HYPERVISOR: exec_cmd: vm set_nvram Liverpool 512 
+May 17 10:34:29.428 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 17 10:34:29.428 HYPERVISOR: exec_cmd: vm slot_add_binding Liverpool 1 0 PA-GE 
+May 17 10:34:29.428 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 17 10:34:29.428 HYPERVISOR: exec_cmd: vm slot_add_binding Liverpool 2 0 PA-GE 
+May 17 10:34:29.429 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 17 10:34:29.429 HYPERVISOR: exec_cmd: vm slot_add_binding Liverpool 3 0 PA-GE 
+May 17 10:34:29.429 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 17 10:34:29.429 HYPERVISOR: exec_cmd: vm slot_add_binding Liverpool 4 0 PA-GE 
+May 17 10:34:32.660 HYPERVISOR: exec_cmd: nio create_udp udp-330292b7-b670-4c41-bef9-24234ebc91dc 10044 127.0.0.1 10045 
+May 17 10:34:32.900 HYPERVISOR: exec_cmd: vm slot_add_nio_binding Liverpool 1 0 udp-330292b7-b670-4c41-bef9-24234ebc91dc 
+May 17 10:34:32.901 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 17 10:34:33.240 HYPERVISOR: exec_cmd: nio create_udp udp-202f90f2-03f7-41b3-8ca7-e5df356737cf 10056 127.0.0.1 10057 
+May 17 10:34:33.242 HYPERVISOR: exec_cmd: vm slot_add_nio_binding Liverpool 4 0 udp-202f90f2-03f7-41b3-8ca7-e5df356737cf 
+May 17 10:34:33.243 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 17 10:35:49.649 HYPERVISOR: exec_cmd: vm set_ghost_status Liverpool 2 
+May 17 10:35:49.649 HYPERVISOR: exec_cmd: vm set_ghost_file Liverpool C:\Users\Ant\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin-256.ghost 
+May 17 10:35:49.650 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 17 10:35:49.651 HYPERVISOR: exec_cmd: vm set_config Liverpool configs\i4_startup-config.cfg configs\i4_private-config.cfg 
+May 17 10:35:49.652 HYPERVISOR: exec_cmd: vm start Liverpool 
+May 17 10:36:20.438 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 11:09:21.072 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 11:50:21.919 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 11:51:51.951 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 11:57:22.022 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 12:04:22.149 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 13:53:58.817 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 13:54:58.813 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 14:00:28.943 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 14:01:58.971 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 14:05:29.051 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 14:17:59.367 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 14:25:29.519 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 14:25:59.519 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 14:50:00.024 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 14:50:30.020 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 14:56:00.057 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 15:10:30.333 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 15:17:30.378 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 15:18:00.383 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 15:33:00.637 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 15:42:30.693 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 15:43:00.689 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 15:48:30.813 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 15:50:30.859 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 15:54:30.895 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 15:58:00.886 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 16:00:00.917 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 16:04:00.992 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 16:11:01.027 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 16:31:01.254 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 16:33:31.313 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 16:35:01.368 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 16:35:31.360 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 16:39:31.399 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 16:48:31.515 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 16:53:01.510 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 16:54:01.524 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 17:06:01.684 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 17:06:25.812 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 17 17:06:25.812 HYPERVISOR: exec_cmd: vm stop Liverpool 
+May 17 17:06:25.984 VM: VM Liverpool shutdown.
+May 17 17:06:25.984 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
