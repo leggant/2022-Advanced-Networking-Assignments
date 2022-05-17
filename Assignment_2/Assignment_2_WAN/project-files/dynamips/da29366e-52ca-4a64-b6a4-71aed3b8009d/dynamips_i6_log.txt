@@ -80,3 +80,12 @@ May 17 17:06:25.812 HYPERVISOR: exec_cmd: vm get_status Liverpool
 May 17 17:06:25.812 HYPERVISOR: exec_cmd: vm stop Liverpool 
 May 17 17:06:25.984 VM: VM Liverpool shutdown.
 May 17 17:06:25.984 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 17:19:58.070 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 17 17:19:58.071 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 17:19:58.405 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 17 17:19:58.406 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 17 17:19:58.407 HYPERVISOR: exec_cmd: vm delete Liverpool 
+May 17 17:19:58.407 VM: VM Liverpool destroyed.
+May 17 17:19:58.409 HYPERVISOR: exec_cmd: hypervisor stop 
+May 17 17:19:58.818 HYPERVISOR: Stopped.
+May 17 17:19:58.818 GENERAL: reset done.
