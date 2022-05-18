@@ -23,6 +23,7 @@ no int lo 5
 no int lo 6
 int lo 0 
 ip add 58.58.58.58 255.255.255.255
+ip ospf 47 area 0
 ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
 ip ospf hello-interval 3
 ip ospf dead-interval 8
@@ -31,101 +32,71 @@ exit
 int g1/0
 description Connection to Provider R1
 ip add 172.16.17.13 255.255.255.252
-no ip ospf 47 area 58
 ip ospf 47 area 0
-no ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
 ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
-exitdo 
+exit
 router ospf 47
 router-id 58.58.58.58
 area 0 authentication message-digest
+area 58 authentication message-digest
 log-adjacency-changes detail
 exit
 int lo 1 
-ip add 10.8.2.1 255.255.255.0
+ip add 10.8.1.1 255.255.255.0
 keepalive
-ip ospf 1 area 0
-ip ospf message-digest-key 1 md5 [Z,Q@n6eSY\*R,7$
+ip ospf 47 area 58
+ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
 exit
-router ospf 1
-network 10.8.2.0 0.0.0.255 area 0
-area 0 authentication message-digest
-exit
-no int lo 2 
 int lo 2 
 ip add 10.8.2.1 255.255.255.0
 keepalive
-ip ospf 1 area 0
-ip ospf message-digest-key 1 md5 [Z,Q@n6eSY\*R,7$
+ip ospf 47 area 58
+ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
 exit
-router ospf 1
-network 10.8.2.0 0.0.0.255 area 0
-area 0 authentication message-digest
-exit
-no int lo 3 
 int lo 3
 ip add 10.8.3.1 255.255.255.0
 keepalive
-ip ospf 1 area 0
-ip ospf message-digest-key 1 md5 [Z,Q@n6eSY\*R,7$
+ip ospf 47 area 58
+ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
 exit
-router ospf 1
-network 10.8.3.0 0.0.0.255 area 0
-area 0 authentication message-digest
-exit
-no int lo 4 
 int lo 4 
 ip add 10.8.4.1 255.255.255.0
 keepalive
-ip ospf 1 area 0
-ip ospf message-digest-key 1 md5 [Z,Q@n6eSY\*R,7$
+ip ospf 47 area 58
+ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
 exit
-router ospf 1
-network 10.8.4.0 0.0.0.255 area 0
-area 0 authentication message-digest
-exit
-no int lo 5 
 int lo 5 
 ip add 10.8.5.1 255.255.255.0
 keepalive
-ip ospf 1 area 1
-ip ospf message-digest-key 1 md5 [Z,Q@n6eSY\*R,7$
+ip ospf 47 area 58
+ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
 exit
-router ospf 1
-network 10.8.5.0 0.0.0.255 area 0
-area 0 authentication message-digest
-exit
-no int lo 6 
 int lo 6
 ip add 10.8.6.10 255.255.255.0
 keepalive
-ip ospf 1 area 0
-ip ospf message-digest-key 1 md5 [Z,Q@n6eSY\*R,7$
+ip ospf 47 area 58
+ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
-exit
-router ospf 1
-network 10.8.6.0 0.0.0.255 area 0
-area 0 authentication message-digest
 exit
 end
 wr
@@ -163,6 +134,7 @@ exec-timeout 3 0
 exit
 int lo 0
 ip add 47.1.1.1 255.255.255.255
+ip ospf 47 area 0
 ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
 ip ospf hello-interval 3
 ip ospf dead-interval 8
@@ -176,19 +148,10 @@ ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
 exit
-router ospf 47
-router-id 47.1.1.1
-network 47.1.1.1 0.0.0.0 area 0
-no network 172.16.17.8 0.0.0.3 area 0
-area 0 authentication message-digest
-log-adjacency-changes detail
-exit
 int g1/0
 description Connection to Tyrell Corp. Liverpool R1
 ip add 172.16.17.14 255.255.255.252
-no ip ospf 47 area 0
-ip ospf 47 area 58
-no ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
+ip ospf 47 area 0
 ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
 ip ospf hello-interval 3
 ip ospf dead-interval 8
@@ -209,6 +172,13 @@ ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
+exit
+router ospf 47
+router-id 47.1.1.1
+network 47.1.1.1 0.0.0.0 area 0
+no network 172.16.17.8 0.0.0.3 area 0
+area 0 authentication message-digest
+log-adjacency-changes detail
 exit
 end
 wr
@@ -249,10 +219,9 @@ line vty 0 4
 logging synchronous
 exec-timeout 3 0
 exit
-no int lo 0
-no router ospf 47
 int lo 0
 ip add 47.2.2.2 255.255.255.255
+ip ospf 47 area 0
 ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
 ip ospf hello-interval 3
 ip ospf dead-interval 8
@@ -265,13 +234,6 @@ ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
-exit
-router ospf 47
-router-id 47.2.2.2
-network 47.2.2.2 0.0.0.0 area 0
-network 172.16.17.8 0.0.0.3 area 0
-area 0 authentication message-digest
-log-adjacency-changes detail
 exit
 int g1/0
 description Connection to Tyrell Corp. Fulham R1
@@ -290,6 +252,11 @@ ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
+exit
+router ospf 47
+router-id 47.2.2.2
+area 0 authentication message-digest
+log-adjacency-changes detail
 exit
 end
 wr
@@ -336,6 +303,7 @@ no int lo 5
 no int lo 6
 int lo 0 
 ip add 59.59.59.59 255.255.255.255
+ip ospf 47 area 0
 ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
 ip ospf hello-interval 3
 ip ospf dead-interval 8
@@ -345,16 +313,11 @@ int g1/0
 description Connection to Provider R2
 ip add 172.16.17.17 255.255.255.252
 ip ospf 47 area 0
+no ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
 ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
-exit
-router ospf 47
-router-id 59.59.59.59
-network 59.59.59.59 0.0.0.0 area 0
-area 0 authentication message-digest
-log-adjacency-changes detail
 exit
 int lo 1 
 ip add 10.9.1.1 255.255.255.0
@@ -365,11 +328,6 @@ ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
 exit
-router ospf 47
-no network 10.8.2.0 0.0.0.255 area 59
-network 10.9.1.0 0.0.0.255 area 59
-area 59 authentication message-digest
-exit
 int lo 2 
 ip add 10.9.2.1 255.255.255.0
 keepalive
@@ -378,10 +336,6 @@ ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
-exit
-router ospf 47
-network 10.9.2.0 0.0.0.255 area 59
-area 59 authentication message-digest
 exit
 int lo 3 
 ip add 10.9.3.1 255.255.255.0
@@ -392,10 +346,6 @@ ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
 exit
-router ospf 47
-network 10.9.3.0 0.0.0.255 area 59
-area 59 authentication message-digest
-exit
 int lo 4 
 ip add 10.9.4.1 255.255.255.0
 keepalive
@@ -405,10 +355,6 @@ ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
 exit
-router ospf 47
-network 10.9.4.0 0.0.0.255 area 59
-area 59 authentication message-digest
-exit
 int lo 5 
 ip add 10.9.5.1 255.255.255.0
 keepalive
@@ -417,10 +363,6 @@ ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
-exit
-router ospf 47
-network 10.9.5.0 0.0.0.255 area 59
-area 59 authentication message-digest
 exit
 int lo 6 
 ip add 10.9.6.10 255.255.255.0
@@ -432,8 +374,10 @@ ip ospf dead-interval 8
 no shut
 exit
 router ospf 47
-network 10.9.6.0 0.0.0.255 area 59
+router-id 59.59.59.59
+area 0 authentication message-digest
 area 59 authentication message-digest
+log-adjacency-changes detail
 exit
 end
 wr
