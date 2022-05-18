@@ -26,16 +26,21 @@ name Parking
 int vlan 20
 ip add 10.7.2.1 255.255.255.0
 description Admin Gateway
-ip ospf 1 area 99
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
 exit
+int lo 0
+description Management
+ip add 10.7.10.3 255.255.255.255
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+no shut
 int vlan 30
 ip add 10.7.3.1 255.255.255.0
 description Finance Gateway
-ip ospf 1 area 99
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
@@ -82,7 +87,6 @@ exit
 int po 10
 description CH#10 -->> DIST_SW1
 ip add 10.7.0.6 255.255.255.252
-ip ospf 1 area 99
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
@@ -96,7 +100,6 @@ exit
 int po 11
 description CH#11 -->> DIST_SW2
 ip add 10.7.0.10 255.255.255.252
-ip ospf 1 area 99
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
@@ -105,13 +108,15 @@ exit
 router ospf 1
 router-id 99.99.99.3
 log-adjacency-changes detail
-network 10.7.0.4 0.0.0.3 area 99
-network 10.7.0.8 0.0.0.3 area 99
+network 10.7.0.6 0.0.0.0 area 99
+network 10.7.0.10 0.0.0.0 area 99
 network 10.7.3.0 0.0.0.255 area 99
 network 10.7.2.0 0.0.0.255 area 99
+network 10.7.10.3 0.0.0.0 area 99
 auto-cost reference-bandwidth 10000
 passive-interface vlan 20
 passive-interface vlan 30
+passive-interface lo 0
 area 99 authentication message-digest
 exit
 int range g1/0/11-15,g1/0/21
@@ -147,10 +152,17 @@ vlan 10
 name Sales_Marketing
 vlan 51
 name Parking
+int lo 0
+ip add 10.7.10.4 255.255.255.255
+description Management
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+no shut
+exit
 int vlan 10
 ip add 10.7.1.1 255.255.255.0
 description Sales and Marketing Gateway
-ip ospf 1 area 99
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
@@ -186,7 +198,6 @@ exit
 int po 12
 description CH#12 -->> DIST_SW1
 ip add 10.7.0.14 255.255.255.252
-ip ospf 1 area 99
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
@@ -200,7 +211,6 @@ exit
 int po 13
 description CH#13 -->> DIST_SW2
 ip add 10.7.0.18 255.255.255.252
-ip ospf 1 area 99
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
@@ -210,11 +220,13 @@ router ospf 1
 router-id 99.99.99.4
 area 99 authentication message-digest
 log-adjacency-changes detail
-network 10.7.0.12 0.0.0.3 area 99
-network 10.7.0.16 0.0.0.3 area 99
+network 10.7.0.14 0.0.0.0 area 99
+network 10.7.0.18 0.0.0.0 area 99
 network 10.7.1.0 0.0.0.255 area 99
+network 10.7.10.4 0.0.0.255 area 99
 auto-cost reference-bandwidth 10000
 passive-interface vlan 10
+passive-interface lo 0
 exit
 exit
 clear ip ospf process
@@ -246,10 +258,14 @@ vlan 40
 name HR
 vlan 51
 name Parking
+int lo 0
+name Management
+ip add 10.7.10.5 255.255.255.255
+no shut
+exit
 int vlan 40
 ip add 10.7.4.1 255.255.255.0
 description HR Gateway
-ip ospf 1 area 99
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
@@ -284,7 +300,6 @@ exit
 int po 14
 description CH#14 -->> DIST_SW1
 ip add 10.7.0.22 255.255.255.252
-ip ospf 1 area 99
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
@@ -298,7 +313,6 @@ exit
 int po 15
 description CH#15 -->> DIST_SW2
 ip add 10.7.0.26 255.255.255.252
-ip ospf 1 area 99
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
@@ -308,11 +322,13 @@ router ospf 1
 router-id 99.99.99.5
 area 99 authentication message-digest
 log-adjacency-changes detail
-network 10.7.0.20 0.0.0.3 area 99
-network 10.7.0.24 0.0.0.3 area 99
+network 10.7.0.22 0.0.0.0 area 99
+network 10.7.0.26 0.0.0.0 area 99
 network 10.7.4.0 0.0.0.255 area 99
+network 10.7.10.5 0.0.0.0 area 99
 auto-cost reference-bandwidth 10000
 passive-interface vlan 40
+passive-interface lo 0
 exit
 int range g1/0/10,g1/0/18-21
 shut 

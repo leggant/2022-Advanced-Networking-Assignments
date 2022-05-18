@@ -1,0 +1,10 @@
+conf t
+router ospf 1
+no network 10.7.2.1 0.0.0.0 area 99
+no network 10.7.3.1 0.0.0.0 area 99
+no network 10.7.0.4 0.0.0.3 area 99
+no network 10.7.0.8 0.0.0.3 area 99
+no network 10.7.3.0 0.0.0.255 area 99
+no network 10.7.2.0 0.0.0.255 area 99
+end
+wr
