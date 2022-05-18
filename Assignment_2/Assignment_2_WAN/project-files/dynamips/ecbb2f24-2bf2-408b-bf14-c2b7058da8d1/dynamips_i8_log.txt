@@ -1,0 +1,28 @@
+May 18 13:16:49.071 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+May 18 13:16:49.072 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 51683.
+May 18 13:16:49.557 HYPERVISOR: exec_cmd: hypervisor version 
+May 18 13:16:49.558 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips 
+May 18 13:16:49.558 GENERAL: working_dir=C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips
+May 18 13:16:49.559 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\f058e72f-7bd9-4205-b71a-51ebc7420693 
+May 18 13:16:49.561 GENERAL: working_dir=C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\f058e72f-7bd9-4205-b71a-51ebc7420693
+May 18 13:16:49.561 HYPERVISOR: exec_cmd: vm create Edge_2 7 c7200 
+May 18 13:16:49.564 VM: VM Edge_2 created.
+May 18 13:16:49.565 HYPERVISOR: exec_cmd: vm set_con_tcp_port Edge_2 5007 
+May 18 13:16:49.565 HYPERVISOR: exec_cmd: c7200 get_mac_addr Edge_2 
+May 18 13:16:49.566 HYPERVISOR: exec_cmd: vm get_status Edge_2 
+May 18 13:16:49.566 HYPERVISOR: exec_cmd: vm slot_add_binding Edge_2 0 0 C7200-IO-FE 
+May 18 13:16:49.567 HYPERVISOR: exec_cmd: vm set_disk0 Edge_2 0 
+May 18 13:16:49.568 HYPERVISOR: exec_cmd: vm set_exec_area Edge_2 64 
+May 18 13:16:49.569 HYPERVISOR: exec_cmd: vm get_status Edge_2 
+May 18 13:16:49.569 HYPERVISOR: exec_cmd: vm set_idle_pc Edge_2 0x61ec17d4 
+May 18 13:16:49.571 HYPERVISOR: exec_cmd: vm set_ios Edge_2 D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 18 13:16:49.572 HYPERVISOR: exec_cmd: c7200 set_mac_addr Edge_2 ca07.07cc.0000 
+May 18 13:16:49.572 HYPERVISOR: exec_cmd: vm set_nvram Edge_2 512 
+May 18 13:16:49.573 HYPERVISOR: exec_cmd: vm get_status Edge_2 
+May 18 13:16:49.573 HYPERVISOR: exec_cmd: vm slot_add_binding Edge_2 1 0 PA-GE 
+May 18 13:16:49.573 HYPERVISOR: exec_cmd: vm get_status Edge_2 
+May 18 13:16:49.573 HYPERVISOR: exec_cmd: vm slot_add_binding Edge_2 2 0 PA-GE 
+May 18 13:16:49.574 HYPERVISOR: exec_cmd: vm get_status Edge_2 
+May 18 13:16:49.574 HYPERVISOR: exec_cmd: vm slot_add_binding Edge_2 3 0 PA-GE 
+May 18 13:16:49.574 HYPERVISOR: exec_cmd: vm get_status Edge_2 
+May 18 13:16:49.575 HYPERVISOR: exec_cmd: vm slot_add_binding Edge_2 4 0 PA-GE 
