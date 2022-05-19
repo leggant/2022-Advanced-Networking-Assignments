@@ -129,6 +129,38 @@ y
 end
 wr
 
+conf t
+access-list 130 deny ip 10.7.3.0 0.0.0.255 10.7.10.0 0.0.0.255
+access-list 130 permit ip any any
+int vlan 30
+ip access-group 130 in
+end
+wr
+
+conf t
+access-list 120 deny ip 10.7.2.0 0.0.0.255 10.7.10.0 0.0.0.255
+access-list 120 permit ip any any
+int vlan 20
+ip access-group 120 in
+end
+wr
+
+conf t
+access-list 140 deny ip 10.7.4.0 0.0.0.255 10.7.10.0 0.0.0.255
+access-list 140 permit ip any any
+int vlan 40
+ip access-group 140 in
+end
+wr
+
+conf t
+access-list 110 deny ip 10.7.1.0 0.0.0.255 10.7.10.0 0.0.0.255
+access-list 110 permit ip any any
+int vlan 10
+ip access-group 110 in
+end
+wr
+
 en
 conf t
 hostname ACCESS_SW2
@@ -340,3 +372,11 @@ y
 exit
 end
 wr
+
+
+
+
+
+no access-list 110 deny ip 10.7.1.0 0.0.0.255 10.7.2.0 0.0.0.255
+no access-list 110 deny ip 10.7.1.0 0.0.0.255 10.7.4.0 0.0.0.255
+access-list 110 permit ip any any
