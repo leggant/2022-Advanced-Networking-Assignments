@@ -169,6 +169,7 @@ network 47.1.1.1 0.0.0.0 area 0
 no network 172.16.17.8 0.0.0.3 area 0
 area 0 authentication message-digest
 log-adjacency-changes detail
+auto-cost reference-bandwidth 10000
 exit
 
 
@@ -180,12 +181,6 @@ ip ospf message-digest-key 61 md5 [HG22H/gvG/BM{-{
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
-exit
-router ospf 61
-router-id 47.61.61.61
-area 0 authentication message-digest
-network 172.16.17.2 0.0.0.0 area 0
-log-adjacency-changes detail
 exit
 end
 wr
@@ -272,6 +267,7 @@ router ospf 47
 router-id 47.2.2.2
 area 0 authentication message-digest
 log-adjacency-changes detail
+auto-cost reference-bandwidth 10000
 exit
 end
 wr
@@ -393,6 +389,7 @@ router-id 59.59.59.59
 area 0 authentication message-digest
 area 59 authentication message-digest
 log-adjacency-changes detail
+auto-cost reference-bandwidth 10000
 exit
 end
 wr
@@ -414,65 +411,50 @@ line vty 0 4
 logging synchronous
 exec-timeout 3 0
 exit
-no int lo 0
-no router bgp 65007
-no ip route 0.0.0.0 0.0.0.0 G2/0
-int g4/0
-no ip ospf message-digest-key 1
-int g1/0
-no ip ospf message-digest-key 1
-exit
 int lo 0
-ip add 65.1.1.1 255.255.255.255
-ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
+ip add 65.7.7.1 255.255.255.255
+ip ospf 1 area 51
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 exit
-
+int g1/0
+description Connection to Tyrell_HO_LAN_G1/0
+ip add 172.16.17.78 255.255.255.252
+ip ospf 1 area 51
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+no shut
+exit
+int g4/0
+description Connection to Tyrell_HO_LAN_G4/0
+ip add 172.16.17.82 255.255.255.252
+ip ospf 1 area 51
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+no shut
+exit
 int g2/0
 description Connection to Edge Router 1
 ip add 172.16.17.1 255.255.255.252
-ip ospf 61 area 0
-ip ospf message-digest-key 61 md5 [HG22H/gvG/BM{-{
-ip ospf hello-interval 3
-ip ospf dead-interval 8
 no shut
 exit
-
-router ospf 61
-router-id 65.61.61.61
-area 0 authentication message-digest
-log-adjacency-changes detail
-exit
-
 router ospf 1
-router-id 65.1.1.1
+router-id 65.7.7.1
 area 51 authentication message-digest
-area 0 authentication message-digest
+network 10.7.0.78 0.0.0.0 area 51
+network 10.7.0.82 0.0.0.0 area 51
+network 65.7.7.1 0.0.0.0 area 51
 log-adjacency-changes detail
-exit
-
-
-int g1/0
-description Connection to Tyrell Corp. Fulham R1
-ip add 172.16.17.18 255.255.255.252
-ip ospf 47 area 0
-ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-no shut
-exit
-int g2/0
-description Connection to Tyrell Corp. Head Office WAN_R2
-ip add 172.16.17.6 255.255.255.252
-ip ospf 47 area 0
-ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-no shut
+no auto-cost reference-bandwidth 10000
 exit
 end
 wr
+
+
+
 
 ##############################################################
 
@@ -493,55 +475,45 @@ line vty 0 4
 logging synchronous
 exec-timeout 3 0
 exit
-int g2/0
-description Connection to Edge Router 2
-ip add 172.16.17.5 255.255.255.252
-ip ospf 71 area 0
-ip ospf message-digest-key 71 md5 [HG22H/gvG/BM{-{
+no int lo 0
+int lo 0
+ip add 65.7.7.2 255.255.255.255
+ip ospf 1 area 51
+no ip ospf message-digest-key 1
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
-no shut
 exit
-router ospf 71
-router-id 65.71.71.71
-area 0 authentication message-digest
-log-adjacency-changes detail
-exit
-
-
-
-ip route 0.0.0.0 0.0.0.0 g2/0 1
 int g1/0
-description Link -->> DIST_2 G2/0
-ip add 10.7.0.70 255.255.255.252
+description Connection to Tyrell_HO_LAN_G2/0
+ip add 172.16.17.70 255.255.255.252
 ip ospf 1 area 51
+no ip ospf message-digest-key 1
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
 exit
 int g3/0
-description Link -->> DIST_2 G3/0
-ip add 10.7.0.74 255.255.255.252
+description Connection to Tyrell_HO_LAN_G3/0
+ip add 172.16.17.74 255.255.255.252
 ip ospf 1 area 51
+no ip ospf message-digest-key 1
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
 exit
+int g2/0
+description Connection to Edge Router 1
+ip add 172.16.17.5 255.255.255.252
+no shut
+exit
 router ospf 1
-router-id 230.230.230.230
+router-id 65.7.7.2
 area 51 authentication message-digest
 log-adjacency-changes detail
-network 10.7.0.68 0.0.0.3 area 51
-network 10.7.0.72 0.0.0.3 area 51
-network 172.16.17.4 0.0.0.3 area 51
-area 51 range 10.7.0.0 0.0.15.255
 auto-cost reference-bandwidth 10000
-default-information originate
-exit
-int lo 0
-ip add 10.10.10.10 255.255.255.255
 exit
 end
 wr
@@ -580,6 +552,7 @@ int g4/0
 description Link -->> WAN_R1 G4/0
 ip add 10.7.0.81 255.255.255.252
 ip ospf 1 area 51
+no ip ospf message-digest-key 1
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
@@ -589,6 +562,7 @@ int g2/0
 description Link -->> WAN_R2 G1/0
 ip add 10.7.0.69 255.255.255.252
 ip ospf 1 area 51
+no ip ospf message-digest-key 1
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
@@ -598,29 +572,86 @@ int g3/0
 description Link -->> WAN_R2 G3/0
 ip add 10.7.0.73 255.255.255.252
 ip ospf 1 area 51
+no ip ospf message-digest-key 1
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
 exit
+
+
 int lo 0
 description HO Network
-ip add 10.7.0.1 255.255.255.240
+ip add 10.7.0.1 255.255.255.255
+ip ospf 1 area 0
+no ip ospf message-digest-key 1
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+keepalive
+no shut
+exit
+
+int lo 1
+description HO Network
+ip add 10.7.1.1 255.255.255.255
 ip ospf 1 area 0
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 keepalive
+no shut
+exit
+
+int lo 2
+description HO Network
+ip add 10.7.2.1 255.255.255.255
+ip ospf 1 area 0
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+keepalive
+no shut
+exit
+
+int lo 3
+description HO Network
+ip add 10.7.3.1 255.255.255.255
+ip ospf 1 area 0
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+keepalive
+no shut
+exit
+
+int lo 4
+description HO Network
+ip add 10.7.4.1 255.255.255.255
+ip ospf 1 area 0
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+keepalive
+no shut
 exit
 
 router ospf 1
 router-id 255.250.250.250
 area 0 authentication message-digest
 area 51 authentication message-digest
+network 10.7.0.0 0.0.0.255 area 0 
+network 10.7.1.0 0.0.0.255 area 0 
+network 10.7.2.0 0.0.0.255 area 0 
+network 10.7.3.0 0.0.0.255 area 0 
+network 10.7.4.0 0.0.0.255 area 0 
+network 10.7.0.77 0.0.0.0 area 51
+network 10.7.0.81 0.0.0.0 area 51
+network 10.7.0.69 0.0.0.0 area 51
+network 10.7.0.73 0.0.0.0 area 51
 log-adjacency-changes detail
-area 0 range 10.7.0.0 0.0.0.127
-auto-cost reference-bandwidth 10000
-default-information originate
+no auto-cost reference-bandwidth 10000
+no default-information originate
 exit
 exit
 
@@ -629,9 +660,8 @@ network 10.7.0.76 0.0.0.3 area 51
 network 10.7.0.80 0.0.0.3 area 51
 network 10.7.0.68 0.0.0.3 area 51
 network 10.7.0.72 0.0.0.3 area 51
-area 0 range 10.7.0.0 0.0.0.127
-auto-cost reference-bandwidth 10000
-default-information originate
+no auto-cost reference-bandwidth 10000
+no default-information originate
 exit
 exit
 clear ip ospf process

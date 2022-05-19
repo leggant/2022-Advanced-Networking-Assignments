@@ -64,7 +64,7 @@
             },
             {
                 "drawing_id": "7872519d-9f86-4a26-90de-f9b51340e749",
-                "locked": false,
+                "locked": true,
                 "rotation": 0,
                 "svg": "<svg height=\"31\" width=\"137\"><text fill=\"#009f00\" fill-opacity=\"1.0\" font-family=\"Arial Black\" font-size=\"12.0\" font-weight=\"bold\">172.16.17.4/30</text></svg>",
                 "x": 6,
@@ -73,7 +73,7 @@
             },
             {
                 "drawing_id": "bb0a38c6-79d7-4f31-a10c-0ce63db54289",
-                "locked": false,
+                "locked": true,
                 "rotation": 0,
                 "svg": "<svg height=\"31\" width=\"137\"><text fill=\"#009f00\" fill-opacity=\"1.0\" font-family=\"Arial Black\" font-size=\"12.0\" font-weight=\"bold\">172.16.17.0/30</text></svg>",
                 "x": -293,
@@ -100,7 +100,7 @@
             },
             {
                 "drawing_id": "5dc24c6c-ab00-48ba-a1ac-c297724e70ce",
-                "locked": false,
+                "locked": true,
                 "rotation": 0,
                 "svg": "<svg height=\"274\" width=\"311\"><rect fill=\"#ffffff\" fill-opacity=\"1.0\" height=\"274\" stroke=\"#000000\" stroke-width=\"2\" width=\"311\" /></svg>",
                 "x": -881,
