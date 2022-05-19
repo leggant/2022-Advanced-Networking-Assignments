@@ -1,0 +1,123 @@
+en
+conf t
+hostname WAN_R1
+service password-encryption
+no ip domain-lookup
+ip domain-name tyrell.corp
+banner motd # Unauthorised Access Is Prohibited #
+spanning-tree mode rapid-pvst
+spanning-tree portfast bpduguard default
+line con 0
+logging synchronous
+exec-timeout 3 0
+exit
+line vty 0 4
+logging synchronous
+exec-timeout 3 0
+exit
+int range g0/0-1
+shut
+int g0/2/0
+shut
+int g0/3/0
+shut
+int lo 1
+description Connection to Edge Router 1
+ip add 172.16.17.1 255.255.255.252
+ip ospf 1 area 51
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+exit
+ip route 0.0.0.0 0.0.0.0 lo 1 1
+int g0/0/0
+description Link -->> DIST_1 G1/1/1
+ip add 10.7.0.78 255.255.255.252
+ip ospf 1 area 51
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+no shut
+int g0/1/0
+description Link -->> DIST_1 G1/1/2
+ip add 10.7.0.82 255.255.255.252
+ip ospf 1 area 51
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+no shut
+router ospf 1
+router-id 250.250.250.250
+area 51 authentication message-digest
+log-adjacency-changes detail
+network 10.7.0.76 0.0.0.3 area 51
+network 10.7.0.80 0.0.0.3 area 51
+network 172.16.17.0 0.0.0.3 area 51
+auto-cost reference-bandwidth 10000
+default-information originate
+exit
+end
+wr
+
+en
+conf t
+hostname WAN_R2
+service password-encryption
+no ip domain-lookup
+ip routing
+ip domain-name tyrell.corp
+banner motd # Unauthorised Access Is Prohibited #
+spanning-tree mode rapid-pvst
+spanning-tree portfast bpduguard default
+line con 0
+logging synchronous
+exec-timeout 3 0
+exit
+line vty 0 4
+logging synchronous
+exec-timeout 3 0
+exit
+int range g0/0-1
+shut
+int g0/2/0
+shut
+int g0/3/0
+shut
+int lo 1
+description Connection to Edge Router 2
+ip add 172.16.17.5 255.255.255.252
+ip ospf 1 area 51
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+exit
+ip route 0.0.0.0 0.0.0.0 lo 1 1
+int g0/0/0
+description Link -->> DIST_2 G1/1/1
+ip add 10.7.0.70 255.255.255.252
+ip ospf 1 area 51
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+no shut
+int g0/1/0
+description Link -->> DIST_2 G1/1/2
+ip add 10.7.0.74 255.255.255.252
+ip ospf 1 area 51
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+no shut
+exit
+router ospf 1
+router-id 230.230.230.230
+area 51 authentication message-digest
+log-adjacency-changes detail
+network 10.7.0.68 0.0.0.3 area 51
+network 10.7.0.72 0.0.0.3 area 51
+network 172.16.17.4 0.0.0.3 area 51
+auto-cost reference-bandwidth 10000
+default-information originate
+exit
+end
+wr

@@ -1,0 +1,51 @@
+May 19 12:25:28.040 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+May 19 12:25:28.040 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 63739.
+May 19 12:25:28.530 HYPERVISOR: exec_cmd: hypervisor version 
+May 19 12:25:28.530 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\Ant\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips 
+May 19 12:25:28.530 GENERAL: working_dir=C:\Users\Ant\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips
+May 19 12:25:28.530 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\Ant\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\ecbb2f24-2bf2-408b-bf14-c2b7058da8d1 
+May 19 12:25:28.530 GENERAL: working_dir=C:\Users\Ant\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\ecbb2f24-2bf2-408b-bf14-c2b7058da8d1
+May 19 12:25:28.530 HYPERVISOR: exec_cmd: vm create HO_LAN 8 c7200 
+May 19 12:25:28.530 VM: VM HO_LAN created.
+May 19 12:25:28.530 HYPERVISOR: exec_cmd: vm set_con_tcp_port HO_LAN 5008 
+May 19 12:25:28.530 HYPERVISOR: exec_cmd: c7200 get_mac_addr HO_LAN 
+May 19 12:25:28.530 HYPERVISOR: exec_cmd: vm get_status HO_LAN 
+May 19 12:25:28.530 HYPERVISOR: exec_cmd: vm slot_add_binding HO_LAN 0 0 C7200-IO-FE 
+May 19 12:25:28.530 HYPERVISOR: exec_cmd: vm set_disk0 HO_LAN 0 
+May 19 12:25:28.530 HYPERVISOR: exec_cmd: vm set_exec_area HO_LAN 64 
+May 19 12:25:28.530 HYPERVISOR: exec_cmd: vm get_status HO_LAN 
+May 19 12:25:28.530 HYPERVISOR: exec_cmd: vm set_idle_pc HO_LAN 0x6239b700 
+May 19 12:25:28.530 HYPERVISOR: exec_cmd: vm set_ios HO_LAN D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 19 12:25:28.530 HYPERVISOR: exec_cmd: c7200 set_mac_addr HO_LAN ca08.396c.0000 
+May 19 12:25:28.530 HYPERVISOR: exec_cmd: vm set_nvram HO_LAN 512 
+May 19 12:25:28.530 HYPERVISOR: exec_cmd: vm get_status HO_LAN 
+May 19 12:25:28.530 HYPERVISOR: exec_cmd: vm slot_add_binding HO_LAN 1 0 PA-GE 
+May 19 12:25:28.530 HYPERVISOR: exec_cmd: vm get_status HO_LAN 
+May 19 12:25:28.530 HYPERVISOR: exec_cmd: vm slot_add_binding HO_LAN 2 0 PA-GE 
+May 19 12:25:28.530 HYPERVISOR: exec_cmd: vm get_status HO_LAN 
+May 19 12:25:28.530 HYPERVISOR: exec_cmd: vm slot_add_binding HO_LAN 3 0 PA-GE 
+May 19 12:25:28.530 HYPERVISOR: exec_cmd: vm get_status HO_LAN 
+May 19 12:25:28.530 HYPERVISOR: exec_cmd: vm slot_add_binding HO_LAN 4 0 PA-GE 
+May 19 12:25:30.977 HYPERVISOR: exec_cmd: nio create_udp udp-916954d6-5e2a-449a-a6b1-d3760b8cb738 10004 127.0.0.1 10005 
+May 19 12:25:31.230 HYPERVISOR: exec_cmd: vm slot_add_nio_binding HO_LAN 1 0 udp-916954d6-5e2a-449a-a6b1-d3760b8cb738 
+May 19 12:25:31.230 HYPERVISOR: exec_cmd: vm get_status HO_LAN 
+May 19 12:25:31.530 HYPERVISOR: exec_cmd: nio create_udp udp-3f834404-d011-4467-9a47-78c8c0e1bbdf 10010 127.0.0.1 10011 
+May 19 12:25:31.530 HYPERVISOR: exec_cmd: vm slot_add_nio_binding HO_LAN 3 0 udp-3f834404-d011-4467-9a47-78c8c0e1bbdf 
+May 19 12:25:31.530 HYPERVISOR: exec_cmd: vm get_status HO_LAN 
+May 19 12:25:31.592 HYPERVISOR: exec_cmd: nio create_udp udp-476f86ed-6d47-4453-bbfa-cc120fb44379 10016 127.0.0.1 10017 
+May 19 12:25:31.592 HYPERVISOR: exec_cmd: vm slot_add_nio_binding HO_LAN 4 0 udp-476f86ed-6d47-4453-bbfa-cc120fb44379 
+May 19 12:25:31.592 HYPERVISOR: exec_cmd: vm get_status HO_LAN 
+May 19 12:25:31.655 HYPERVISOR: exec_cmd: nio create_udp udp-a154d0f5-228c-4ba9-8f1d-effc05236186 10020 127.0.0.1 10021 
+May 19 12:25:31.655 HYPERVISOR: exec_cmd: vm slot_add_nio_binding HO_LAN 2 0 udp-a154d0f5-228c-4ba9-8f1d-effc05236186 
+May 19 12:25:31.655 HYPERVISOR: exec_cmd: vm get_status HO_LAN 
+May 19 12:33:35.215 HYPERVISOR: exec_cmd: vm set_ghost_status HO_LAN 2 
+May 19 12:33:35.216 HYPERVISOR: exec_cmd: vm set_ghost_file HO_LAN C:\Users\Ant\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin-256.ghost 
+May 19 12:33:35.216 HYPERVISOR: exec_cmd: vm get_status HO_LAN 
+May 19 12:33:35.218 HYPERVISOR: exec_cmd: vm set_config HO_LAN configs\i8_startup-config.cfg configs\i8_private-config.cfg 
+May 19 12:33:35.219 HYPERVISOR: exec_cmd: vm start HO_LAN 
+May 19 12:34:05.569 HYPERVISOR: exec_cmd: vm extract_config HO_LAN 
+May 19 12:55:06.054 HYPERVISOR: exec_cmd: vm extract_config HO_LAN 
+May 19 15:00:02.005 HYPERVISOR: exec_cmd: vm get_status HO_LAN 
+May 19 15:00:02.021 HYPERVISOR: exec_cmd: vm stop HO_LAN 
+May 19 15:00:02.224 VM: VM HO_LAN shutdown.
+May 19 15:00:02.224 HYPERVISOR: exec_cmd: vm extract_config HO_LAN 

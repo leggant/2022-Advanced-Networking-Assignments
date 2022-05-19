@@ -1,0 +1,72 @@
+May 19 12:25:27.485 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+May 19 12:25:27.486 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 63736.
+May 19 12:25:27.995 HYPERVISOR: exec_cmd: hypervisor version 
+May 19 12:25:27.996 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\Ant\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips 
+May 19 12:25:27.996 GENERAL: working_dir=C:\Users\Ant\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips
+May 19 12:25:27.996 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\Ant\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\f058e72f-7bd9-4205-b71a-51ebc7420693 
+May 19 12:25:27.996 GENERAL: working_dir=C:\Users\Ant\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\f058e72f-7bd9-4205-b71a-51ebc7420693
+May 19 12:25:27.996 HYPERVISOR: exec_cmd: vm create EDGE_2 7 c7200 
+May 19 12:25:27.998 VM: VM EDGE_2 created.
+May 19 12:25:27.998 HYPERVISOR: exec_cmd: vm set_con_tcp_port EDGE_2 5007 
+May 19 12:25:27.998 HYPERVISOR: exec_cmd: c7200 get_mac_addr EDGE_2 
+May 19 12:25:27.998 HYPERVISOR: exec_cmd: vm get_status EDGE_2 
+May 19 12:25:27.999 HYPERVISOR: exec_cmd: vm slot_add_binding EDGE_2 0 0 C7200-IO-FE 
+May 19 12:25:27.999 HYPERVISOR: exec_cmd: vm set_disk0 EDGE_2 0 
+May 19 12:25:27.999 HYPERVISOR: exec_cmd: vm set_exec_area EDGE_2 64 
+May 19 12:25:27.999 HYPERVISOR: exec_cmd: vm get_status EDGE_2 
+May 19 12:25:27.999 HYPERVISOR: exec_cmd: vm set_idle_pc EDGE_2 0x6239b700 
+May 19 12:25:28.000 HYPERVISOR: exec_cmd: vm set_ios EDGE_2 D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 19 12:25:28.000 HYPERVISOR: exec_cmd: c7200 set_mac_addr EDGE_2 ca07.07cc.0000 
+May 19 12:25:28.001 HYPERVISOR: exec_cmd: vm set_nvram EDGE_2 512 
+May 19 12:25:28.001 HYPERVISOR: exec_cmd: vm get_status EDGE_2 
+May 19 12:25:28.001 HYPERVISOR: exec_cmd: vm slot_add_binding EDGE_2 1 0 PA-GE 
+May 19 12:25:28.001 HYPERVISOR: exec_cmd: vm get_status EDGE_2 
+May 19 12:25:28.001 HYPERVISOR: exec_cmd: vm slot_add_binding EDGE_2 2 0 PA-GE 
+May 19 12:25:28.002 HYPERVISOR: exec_cmd: vm get_status EDGE_2 
+May 19 12:25:28.002 HYPERVISOR: exec_cmd: vm slot_add_binding EDGE_2 3 0 PA-GE 
+May 19 12:25:28.002 HYPERVISOR: exec_cmd: vm get_status EDGE_2 
+May 19 12:25:28.002 HYPERVISOR: exec_cmd: vm slot_add_binding EDGE_2 4 0 PA-GE 
+May 19 12:25:31.971 HYPERVISOR: exec_cmd: nio create_udp udp-217691d4-6da2-4a74-a9dc-f7752bb5af02 10028 127.0.0.1 10029 
+May 19 12:25:32.224 HYPERVISOR: exec_cmd: vm slot_add_nio_binding EDGE_2 4 0 udp-217691d4-6da2-4a74-a9dc-f7752bb5af02 
+May 19 12:25:32.224 HYPERVISOR: exec_cmd: vm get_status EDGE_2 
+May 19 12:25:32.567 HYPERVISOR: exec_cmd: nio create_udp udp-c0034d08-ee7d-463e-b419-2a40546e25ff 10038 127.0.0.1 10039 
+May 19 12:25:32.582 HYPERVISOR: exec_cmd: vm slot_add_nio_binding EDGE_2 1 0 udp-c0034d08-ee7d-463e-b419-2a40546e25ff 
+May 19 12:25:32.582 HYPERVISOR: exec_cmd: vm get_status EDGE_2 
+May 19 12:25:32.988 HYPERVISOR: exec_cmd: nio create_udp udp-706bfc99-b842-45c7-8fec-048258fd46bd 10052 127.0.0.1 10053 
+May 19 12:25:32.988 HYPERVISOR: exec_cmd: vm slot_add_nio_binding EDGE_2 2 0 udp-706bfc99-b842-45c7-8fec-048258fd46bd 
+May 19 12:25:32.988 HYPERVISOR: exec_cmd: vm get_status EDGE_2 
+May 19 12:33:34.181 HYPERVISOR: exec_cmd: vm create Ghost 0 c7200 
+May 19 12:33:34.182 VM: VM Ghost created.
+May 19 12:33:34.183 HYPERVISOR: exec_cmd: vm set_ios Ghost D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 19 12:33:34.183 HYPERVISOR: exec_cmd: vm set_ghost_status Ghost 1 
+May 19 12:33:34.183 HYPERVISOR: exec_cmd: vm set_ghost_file Ghost C:\Users\Ant\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin-256.ghost 
+May 19 12:33:34.184 HYPERVISOR: exec_cmd: vm set_ram Ghost 256 
+May 19 12:33:34.184 HYPERVISOR: exec_cmd: vm get_status Ghost 
+May 19 12:33:34.186 HYPERVISOR: exec_cmd: vm set_config Ghost configs\i0_startup-config.cfg 
+May 19 12:33:34.187 HYPERVISOR: exec_cmd: vm start Ghost 
+May 19 12:33:34.721 HYPERVISOR: exec_cmd: vm get_status Ghost 
+May 19 12:33:34.722 HYPERVISOR: exec_cmd: vm stop Ghost 
+May 19 12:33:34.862 VM: VM Ghost shutdown.
+May 19 12:33:34.863 HYPERVISOR: exec_cmd: vm extract_config Ghost 
+May 19 12:33:34.864 HYPERVISOR: exec_cmd: vm clean_delete Ghost 
+May 19 12:33:34.864 VM: VM Ghost destroyed.
+May 19 12:33:34.871 HYPERVISOR: exec_cmd: vm set_ghost_status EDGE_2 2 
+May 19 12:33:34.871 HYPERVISOR: exec_cmd: vm set_ghost_file EDGE_2 C:\Users\Ant\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin-256.ghost 
+May 19 12:33:34.872 HYPERVISOR: exec_cmd: vm get_status EDGE_2 
+May 19 12:33:34.873 HYPERVISOR: exec_cmd: vm set_config EDGE_2 configs\i7_startup-config.cfg configs\i7_private-config.cfg 
+May 19 12:33:34.873 HYPERVISOR: exec_cmd: vm start EDGE_2 
+May 19 12:33:39.586 HYPERVISOR: exec_cmd: vm get_status EDGE_2 
+May 19 12:33:39.586 HYPERVISOR: exec_cmd: vm set_idle_pc_online EDGE_2 0 0x0 
+May 19 12:33:39.586 HYPERVISOR: exec_cmd: vm get_status EDGE_2 
+May 19 12:33:39.587 HYPERVISOR: exec_cmd: vm get_status EDGE_2 
+May 19 12:33:39.594 HYPERVISOR: exec_cmd: vm get_idle_pc_prop EDGE_2 0 
+May 19 12:33:55.148 HYPERVISOR: exec_cmd: vm get_status EDGE_2 
+May 19 12:33:55.148 HYPERVISOR: exec_cmd: vm set_idle_pc_online EDGE_2 0 0x6239b700 
+May 19 12:33:55.148 HYPERVISOR: exec_cmd: vm cpu_usage EDGE_2 0 
+May 19 12:33:58.168 HYPERVISOR: exec_cmd: vm cpu_usage EDGE_2 0 
+May 19 12:34:05.210 HYPERVISOR: exec_cmd: vm extract_config EDGE_2 
+May 19 14:55:33.520 HYPERVISOR: exec_cmd: vm extract_config EDGE_2 
+May 19 15:00:01.814 HYPERVISOR: exec_cmd: vm get_status EDGE_2 
+May 19 15:00:01.814 HYPERVISOR: exec_cmd: vm stop EDGE_2 
+May 19 15:00:02.005 VM: VM EDGE_2 shutdown.
+May 19 15:00:02.005 HYPERVISOR: exec_cmd: vm extract_config EDGE_2 

@@ -153,15 +153,6 @@
                 "z": 2
             },
             {
-                "drawing_id": "d3a4f92f-17ea-4769-ae33-6dd49be2b1ae",
-                "locked": true,
-                "rotation": 0,
-                "svg": "<svg height=\"40\" width=\"199\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">lo 0 10.7.0.1 255.255.255.240\nHO Summary 10.7.0.0/20</text></svg>",
-                "x": 25,
-                "y": 180,
-                "z": 2
-            },
-            {
                 "drawing_id": "b4139fde-6c40-45e3-8ca3-539c4c16f7b0",
                 "locked": true,
                 "rotation": 0,
@@ -280,7 +271,7 @@
             },
             {
                 "drawing_id": "ac32e17f-39bf-46c3-93d2-94764026bd39",
-                "locked": false,
+                "locked": true,
                 "rotation": 0,
                 "svg": "<svg height=\"24\" width=\"20\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">.1</text></svg>",
                 "x": -260,
@@ -668,8 +659,8 @@
                             "rotation": 0,
                             "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
                             "text": "g2/0",
-                            "x": 33,
-                            "y": -18
+                            "x": 40,
+                            "y": -30
                         },
                         "node_id": "96469677-41c2-421d-8499-fbbc400fce8a",
                         "port_number": 0
@@ -1211,5 +1202,5 @@
     "type": "topology",
     "variables": null,
     "version": "2.2.32",
-    "zoom": 83
+    "zoom": 99
 }
