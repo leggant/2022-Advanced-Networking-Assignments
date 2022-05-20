@@ -97,7 +97,7 @@ Each switch will have a dedicated user VLAN, this ensures traffic is separated. 
 
 The HO LAN is to provide redundant links and paths where possible while minimising convergence  time. The design needs to consider the impact of a switch failure.
 
-5. The customer requests you describe traffic flow and how it is affected by at least three potential failure scenarios. Use diagrams to indicate primary and alternate traffic paths in  the event of device and or link failures.
+5. The customer requests you describe traffic flow and how it is affected by at least three potential failure scenarios. Use diagrams to indicate primary and alternate traffic paths in the event of device and or link failures.
 6. You are to explain how you are using ether channel and if not why?
 7. Explain how have the core to distribution links been designed to minimise convergence? 
 8. Alternatively if you are using a layer 3 access then describe how you have done this including  the routing protocol used and how the routing metrics have been configured and why. How  does this impact the ability to have redundant host default gateways? 
@@ -118,7 +118,8 @@ You must specify an appropriate interior gateway protocol to be used for interna
     - OSPF allows for routing authentication by using different methods of password authentication.
     - OSPF allows for the transfer and tagging of external routes injected into an Autonomous System. This keeps track of external routes injected by exterior protocols such as BGP.
 11. Explain how you have configured the IGP including methods you have employed to minimise  convergence time, optimise traffic flow and limit the wasting of bandwidth and CPU calculations. 
-
+- layer 3 etherchannel links configured with no negotiation protocol. 
+-  
 ### Security
 
 The customer has asked you to consider security.
