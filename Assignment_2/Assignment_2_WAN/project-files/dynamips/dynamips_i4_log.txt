@@ -1,0 +1,40 @@
+May 20 10:21:53.244 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+May 20 10:21:53.245 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 50904.
+May 20 10:21:53.751 HYPERVISOR: exec_cmd: hypervisor version 
+May 20 10:21:53.751 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips 
+May 20 10:21:53.752 GENERAL: working_dir=C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips
+May 20 10:21:53.752 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\ecbb2f24-2bf2-408b-bf14-c2b7058da8d1 
+May 20 10:21:53.755 GENERAL: working_dir=C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\ecbb2f24-2bf2-408b-bf14-c2b7058da8d1
+May 20 10:21:53.755 HYPERVISOR: exec_cmd: vm create HO_LAN 8 c7200 
+May 20 10:21:53.758 VM: VM HO_LAN created.
+May 20 10:21:53.758 HYPERVISOR: exec_cmd: vm set_con_tcp_port HO_LAN 5008 
+May 20 10:21:53.758 HYPERVISOR: exec_cmd: c7200 get_mac_addr HO_LAN 
+May 20 10:21:53.759 HYPERVISOR: exec_cmd: vm get_status HO_LAN 
+May 20 10:21:53.759 HYPERVISOR: exec_cmd: vm slot_add_binding HO_LAN 0 0 C7200-IO-FE 
+May 20 10:21:53.759 HYPERVISOR: exec_cmd: vm set_disk0 HO_LAN 0 
+May 20 10:21:53.759 HYPERVISOR: exec_cmd: vm set_exec_area HO_LAN 64 
+May 20 10:21:53.760 HYPERVISOR: exec_cmd: vm get_status HO_LAN 
+May 20 10:21:53.760 HYPERVISOR: exec_cmd: vm set_idle_pc HO_LAN 0x61ec17d4 
+May 20 10:21:53.761 HYPERVISOR: exec_cmd: vm set_ios HO_LAN D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 20 10:21:53.761 HYPERVISOR: exec_cmd: c7200 set_mac_addr HO_LAN ca08.396c.0000 
+May 20 10:21:53.761 HYPERVISOR: exec_cmd: vm set_nvram HO_LAN 512 
+May 20 10:21:53.762 HYPERVISOR: exec_cmd: vm get_status HO_LAN 
+May 20 10:21:53.762 HYPERVISOR: exec_cmd: vm slot_add_binding HO_LAN 1 0 PA-GE 
+May 20 10:21:53.762 HYPERVISOR: exec_cmd: vm get_status HO_LAN 
+May 20 10:21:53.763 HYPERVISOR: exec_cmd: vm slot_add_binding HO_LAN 2 0 PA-GE 
+May 20 10:21:53.763 HYPERVISOR: exec_cmd: vm get_status HO_LAN 
+May 20 10:21:53.763 HYPERVISOR: exec_cmd: vm slot_add_binding HO_LAN 3 0 PA-GE 
+May 20 10:21:53.764 HYPERVISOR: exec_cmd: vm get_status HO_LAN 
+May 20 10:21:53.764 HYPERVISOR: exec_cmd: vm slot_add_binding HO_LAN 4 0 PA-GE 
+May 20 10:21:55.806 HYPERVISOR: exec_cmd: nio create_udp udp-68f76b0b-a4be-48fd-bbb0-27c6c7c4d6c6 10004 127.0.0.1 10005 
+May 20 10:21:56.072 HYPERVISOR: exec_cmd: vm slot_add_nio_binding HO_LAN 1 0 udp-68f76b0b-a4be-48fd-bbb0-27c6c7c4d6c6 
+May 20 10:21:56.073 HYPERVISOR: exec_cmd: vm get_status HO_LAN 
+May 20 10:21:56.377 HYPERVISOR: exec_cmd: nio create_udp udp-d4953b09-eae5-40d9-b16e-4becf6d897bc 10010 127.0.0.1 10011 
+May 20 10:21:56.380 HYPERVISOR: exec_cmd: vm slot_add_nio_binding HO_LAN 3 0 udp-d4953b09-eae5-40d9-b16e-4becf6d897bc 
+May 20 10:21:56.380 HYPERVISOR: exec_cmd: vm get_status HO_LAN 
+May 20 10:21:56.431 HYPERVISOR: exec_cmd: nio create_udp udp-43653fcb-4edd-4ece-a159-4d682bf262b3 10016 127.0.0.1 10017 
+May 20 10:21:56.434 HYPERVISOR: exec_cmd: vm slot_add_nio_binding HO_LAN 4 0 udp-43653fcb-4edd-4ece-a159-4d682bf262b3 
+May 20 10:21:56.434 HYPERVISOR: exec_cmd: vm get_status HO_LAN 
+May 20 10:21:56.473 HYPERVISOR: exec_cmd: nio create_udp udp-d1a599ea-1e05-4440-8d9f-21f7ef7c28a3 10020 127.0.0.1 10021 
+May 20 10:21:56.475 HYPERVISOR: exec_cmd: vm slot_add_nio_binding HO_LAN 2 0 udp-d1a599ea-1e05-4440-8d9f-21f7ef7c28a3 
+May 20 10:21:56.475 HYPERVISOR: exec_cmd: vm get_status HO_LAN 

@@ -1,0 +1,37 @@
+May 20 10:21:53.808 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+May 20 10:21:53.808 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 50907.
+May 20 10:21:54.297 HYPERVISOR: exec_cmd: hypervisor version 
+May 20 10:21:54.298 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips 
+May 20 10:21:54.298 GENERAL: working_dir=C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips
+May 20 10:21:54.298 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\8b088c1f-8dfb-46c9-831c-651178a5f0e2 
+May 20 10:21:54.300 GENERAL: working_dir=C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\8b088c1f-8dfb-46c9-831c-651178a5f0e2
+May 20 10:21:54.300 HYPERVISOR: exec_cmd: vm create EDGE_1 3 c7200 
+May 20 10:21:54.301 VM: VM EDGE_1 created.
+May 20 10:21:54.302 HYPERVISOR: exec_cmd: vm set_con_tcp_port EDGE_1 5009 
+May 20 10:21:54.302 HYPERVISOR: exec_cmd: c7200 get_mac_addr EDGE_1 
+May 20 10:21:54.302 HYPERVISOR: exec_cmd: vm get_status EDGE_1 
+May 20 10:21:54.303 HYPERVISOR: exec_cmd: vm slot_add_binding EDGE_1 0 0 C7200-IO-FE 
+May 20 10:21:54.303 HYPERVISOR: exec_cmd: vm set_disk0 EDGE_1 0 
+May 20 10:21:54.303 HYPERVISOR: exec_cmd: vm set_exec_area EDGE_1 64 
+May 20 10:21:54.304 HYPERVISOR: exec_cmd: vm get_status EDGE_1 
+May 20 10:21:54.304 HYPERVISOR: exec_cmd: vm set_idle_pc EDGE_1 0x61ec17d4 
+May 20 10:21:54.304 HYPERVISOR: exec_cmd: vm set_ios EDGE_1 D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 20 10:21:54.305 HYPERVISOR: exec_cmd: c7200 set_mac_addr EDGE_1 ca03.23f0.0000 
+May 20 10:21:54.305 HYPERVISOR: exec_cmd: vm set_nvram EDGE_1 512 
+May 20 10:21:54.305 HYPERVISOR: exec_cmd: vm get_status EDGE_1 
+May 20 10:21:54.306 HYPERVISOR: exec_cmd: vm slot_add_binding EDGE_1 1 0 PA-GE 
+May 20 10:21:54.306 HYPERVISOR: exec_cmd: vm get_status EDGE_1 
+May 20 10:21:54.306 HYPERVISOR: exec_cmd: vm slot_add_binding EDGE_1 2 0 PA-GE 
+May 20 10:21:54.307 HYPERVISOR: exec_cmd: vm get_status EDGE_1 
+May 20 10:21:54.307 HYPERVISOR: exec_cmd: vm slot_add_binding EDGE_1 3 0 PA-GE 
+May 20 10:21:54.307 HYPERVISOR: exec_cmd: vm get_status EDGE_1 
+May 20 10:21:54.307 HYPERVISOR: exec_cmd: vm slot_add_binding EDGE_1 4 0 PA-GE 
+May 20 10:21:56.524 HYPERVISOR: exec_cmd: nio create_udp udp-576c46d8-1066-4cc7-bfe5-8acbdf6d065a 10026 127.0.0.1 10027 
+May 20 10:21:56.785 HYPERVISOR: exec_cmd: vm slot_add_nio_binding EDGE_1 4 0 udp-576c46d8-1066-4cc7-bfe5-8acbdf6d065a 
+May 20 10:21:56.787 HYPERVISOR: exec_cmd: vm get_status EDGE_1 
+May 20 10:21:57.392 HYPERVISOR: exec_cmd: nio create_udp udp-6b890134-6be4-4fd3-87ff-d2850acbcfa3 10034 127.0.0.1 10035 
+May 20 10:21:57.396 HYPERVISOR: exec_cmd: vm slot_add_nio_binding EDGE_1 1 0 udp-6b890134-6be4-4fd3-87ff-d2850acbcfa3 
+May 20 10:21:57.396 HYPERVISOR: exec_cmd: vm get_status EDGE_1 
+May 20 10:21:57.750 HYPERVISOR: exec_cmd: nio create_udp udp-5c7303eb-d156-447d-af75-647eacb94151 10046 127.0.0.1 10047 
+May 20 10:21:57.752 HYPERVISOR: exec_cmd: vm slot_add_nio_binding EDGE_1 2 0 udp-5c7303eb-d156-447d-af75-647eacb94151 
+May 20 10:21:57.753 HYPERVISOR: exec_cmd: vm get_status EDGE_1 

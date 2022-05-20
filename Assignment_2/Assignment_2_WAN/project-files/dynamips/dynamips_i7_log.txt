@@ -1,0 +1,31 @@
+May 20 10:21:54.915 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+May 20 10:21:54.916 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 50913.
+May 20 10:21:55.400 HYPERVISOR: exec_cmd: hypervisor version 
+May 20 10:21:55.400 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips 
+May 20 10:21:55.400 GENERAL: working_dir=C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips
+May 20 10:21:55.400 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\da29366e-52ca-4a64-b6a4-71aed3b8009d 
+May 20 10:21:55.403 GENERAL: working_dir=C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\da29366e-52ca-4a64-b6a4-71aed3b8009d
+May 20 10:21:55.403 HYPERVISOR: exec_cmd: vm create Fulham 6 c7200 
+May 20 10:21:55.404 VM: VM Fulham created.
+May 20 10:21:55.405 HYPERVISOR: exec_cmd: vm set_con_tcp_port Fulham 5013 
+May 20 10:21:55.405 HYPERVISOR: exec_cmd: c7200 get_mac_addr Fulham 
+May 20 10:21:55.405 HYPERVISOR: exec_cmd: vm get_status Fulham 
+May 20 10:21:55.405 HYPERVISOR: exec_cmd: vm slot_add_binding Fulham 0 0 C7200-IO-FE 
+May 20 10:21:55.406 HYPERVISOR: exec_cmd: vm set_disk0 Fulham 0 
+May 20 10:21:55.406 HYPERVISOR: exec_cmd: vm set_exec_area Fulham 64 
+May 20 10:21:55.407 HYPERVISOR: exec_cmd: vm get_status Fulham 
+May 20 10:21:55.407 HYPERVISOR: exec_cmd: vm set_idle_pc Fulham 0x61ec17d4 
+May 20 10:21:55.408 HYPERVISOR: exec_cmd: vm set_ios Fulham D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 20 10:21:55.408 HYPERVISOR: exec_cmd: c7200 set_mac_addr Fulham ca06.1d34.0000 
+May 20 10:21:55.409 HYPERVISOR: exec_cmd: vm set_nvram Fulham 512 
+May 20 10:21:55.409 HYPERVISOR: exec_cmd: vm get_status Fulham 
+May 20 10:21:55.409 HYPERVISOR: exec_cmd: vm slot_add_binding Fulham 1 0 PA-GE 
+May 20 10:21:55.410 HYPERVISOR: exec_cmd: vm get_status Fulham 
+May 20 10:21:55.410 HYPERVISOR: exec_cmd: vm slot_add_binding Fulham 2 0 PA-GE 
+May 20 10:21:55.410 HYPERVISOR: exec_cmd: vm get_status Fulham 
+May 20 10:21:55.411 HYPERVISOR: exec_cmd: vm slot_add_binding Fulham 3 0 PA-GE 
+May 20 10:21:55.411 HYPERVISOR: exec_cmd: vm get_status Fulham 
+May 20 10:21:55.411 HYPERVISOR: exec_cmd: vm slot_add_binding Fulham 4 0 PA-GE 
+May 20 10:21:57.446 HYPERVISOR: exec_cmd: nio create_udp udp-c7431540-c058-4c03-b02a-66fbb69d2a39 10040 127.0.0.1 10041 
+May 20 10:21:57.699 HYPERVISOR: exec_cmd: vm slot_add_nio_binding Fulham 1 0 udp-c7431540-c058-4c03-b02a-66fbb69d2a39 
+May 20 10:21:57.700 HYPERVISOR: exec_cmd: vm get_status Fulham 

@@ -1,0 +1,37 @@
+May 20 10:21:51.878 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+May 20 10:21:51.879 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 50888.
+May 20 10:21:52.075 HYPERVISOR: exec_cmd: hypervisor version 
+May 20 10:21:52.076 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips 
+May 20 10:21:52.083 GENERAL: working_dir=C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips
+May 20 10:21:52.084 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\96469677-41c2-421d-8499-fbbc400fce8a 
+May 20 10:21:52.084 GENERAL: working_dir=C:\Users\leggtc1\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\96469677-41c2-421d-8499-fbbc400fce8a
+May 20 10:21:52.085 HYPERVISOR: exec_cmd: vm create WAN_Router_1 1 c7200 
+May 20 10:21:52.089 VM: VM WAN_Router_1 created.
+May 20 10:21:52.089 HYPERVISOR: exec_cmd: vm set_con_tcp_port WAN_Router_1 5005 
+May 20 10:21:52.090 HYPERVISOR: exec_cmd: c7200 get_mac_addr WAN_Router_1 
+May 20 10:21:52.090 HYPERVISOR: exec_cmd: vm get_status WAN_Router_1 
+May 20 10:21:52.091 HYPERVISOR: exec_cmd: vm slot_add_binding WAN_Router_1 0 0 C7200-IO-FE 
+May 20 10:21:52.092 HYPERVISOR: exec_cmd: vm set_disk0 WAN_Router_1 0 
+May 20 10:21:52.092 HYPERVISOR: exec_cmd: vm set_exec_area WAN_Router_1 64 
+May 20 10:21:52.093 HYPERVISOR: exec_cmd: vm get_status WAN_Router_1 
+May 20 10:21:52.093 HYPERVISOR: exec_cmd: vm set_idle_pc WAN_Router_1 0x61ec17d4 
+May 20 10:21:52.095 HYPERVISOR: exec_cmd: vm set_ios WAN_Router_1 D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 20 10:21:52.095 HYPERVISOR: exec_cmd: c7200 set_mac_addr WAN_Router_1 ca01.0c44.0000 
+May 20 10:21:52.096 HYPERVISOR: exec_cmd: vm set_nvram WAN_Router_1 512 
+May 20 10:21:52.096 HYPERVISOR: exec_cmd: vm get_status WAN_Router_1 
+May 20 10:21:52.097 HYPERVISOR: exec_cmd: vm slot_add_binding WAN_Router_1 1 0 PA-GE 
+May 20 10:21:52.097 HYPERVISOR: exec_cmd: vm get_status WAN_Router_1 
+May 20 10:21:52.097 HYPERVISOR: exec_cmd: vm slot_add_binding WAN_Router_1 2 0 PA-GE 
+May 20 10:21:52.098 HYPERVISOR: exec_cmd: vm get_status WAN_Router_1 
+May 20 10:21:52.098 HYPERVISOR: exec_cmd: vm slot_add_binding WAN_Router_1 3 0 PA-GE 
+May 20 10:21:52.099 HYPERVISOR: exec_cmd: vm get_status WAN_Router_1 
+May 20 10:21:52.099 HYPERVISOR: exec_cmd: vm slot_add_binding WAN_Router_1 4 0 PA-GE 
+May 20 10:21:55.450 HYPERVISOR: exec_cmd: nio create_udp udp-a1cbd13d-5f52-4a62-b8c6-69e0df236616 10002 127.0.0.1 10003 
+May 20 10:21:55.799 HYPERVISOR: exec_cmd: vm slot_add_nio_binding WAN_Router_1 1 0 udp-a1cbd13d-5f52-4a62-b8c6-69e0df236616 
+May 20 10:21:55.799 HYPERVISOR: exec_cmd: vm get_status WAN_Router_1 
+May 20 10:21:56.423 HYPERVISOR: exec_cmd: nio create_udp udp-043c91f1-f646-4eac-a9af-d07008f6db75 10014 127.0.0.1 10015 
+May 20 10:21:56.425 HYPERVISOR: exec_cmd: vm slot_add_nio_binding WAN_Router_1 4 0 udp-043c91f1-f646-4eac-a9af-d07008f6db75 
+May 20 10:21:56.425 HYPERVISOR: exec_cmd: vm get_status WAN_Router_1 
+May 20 10:21:57.740 HYPERVISOR: exec_cmd: nio create_udp udp-5069bcae-4fe5-41f4-9b04-99670c07a093 10044 127.0.0.1 10045 
+May 20 10:21:57.743 HYPERVISOR: exec_cmd: vm slot_add_nio_binding WAN_Router_1 2 0 udp-5069bcae-4fe5-41f4-9b04-99670c07a093 
+May 20 10:21:57.743 HYPERVISOR: exec_cmd: vm get_status WAN_Router_1 

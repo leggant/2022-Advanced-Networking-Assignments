@@ -43,8 +43,8 @@ router-id 58.58.58.58
 area 0 authentication message-digest
 area 58 authentication message-digest
 log-adjacency-changes detail
+auto-cost reference-bandwidth 1000
 exit
-int lo 1 
 ip add 10.8.1.1 255.255.255.0
 keepalive
 ip ospf 47 area 58
@@ -158,26 +158,14 @@ ip ospf dead-interval 8
 no shut
 exit
 router ospf 47
-network 172.16.17.12 0.0.0.3 area 0
-network 172.16.17.0 0.0.0.3 area 0
-area 0 authentication message-digest
-log-adjacency-changes detail
-exit
-router ospf 47
 router-id 47.1.1.1
-network 47.1.1.1 0.0.0.0 area 0
-no network 172.16.17.8 0.0.0.3 area 0
 area 0 authentication message-digest
 log-adjacency-changes detail
-auto-cost reference-bandwidth 10000
+auto-cost reference-bandwidth 1000
 exit
 int g2/0
 description Connection to Tyrell Corp. Head Office WAN_R1
 ip add 172.16.17.2 255.255.255.252
-ip ospf 61 area 0
-ip ospf message-digest-key 61 md5 [HG22H/gvG/BM{-{
-ip ospf hello-interval 3
-ip ospf dead-interval 8
 no shut
 exit
 end
@@ -411,7 +399,7 @@ ip ospf dead-interval 8
 exit
 int g1/0
 description Connection to Tyrell_HO_LAN_G1/0
-ip add 172.16.17.78 255.255.255.252
+ip add 10.7.0.78 255.255.255.252
 ip ospf 1 area 51
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
@@ -420,7 +408,7 @@ no shut
 exit
 int g4/0
 description Connection to Tyrell_HO_LAN_G4/0
-ip add 172.16.17.82 255.255.255.252
+ip add 10.7.0.82 255.255.255.252
 ip ospf 1 area 51
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
@@ -435,11 +423,8 @@ exit
 router ospf 1
 router-id 65.7.7.1
 area 51 authentication message-digest
-network 10.7.0.78 0.0.0.0 area 51
-network 10.7.0.82 0.0.0.0 area 51
-network 65.7.7.1 0.0.0.0 area 51
 log-adjacency-changes detail
-no auto-cost reference-bandwidth 10000
+auto-cost reference-bandwidth 10000
 exit
 end
 wr
@@ -474,7 +459,7 @@ ip ospf dead-interval 8
 exit
 int g1/0
 description Connection to Tyrell_HO_LAN_G2/0
-ip add 172.16.17.70 255.255.255.252
+ip add 10.7.0.70 255.255.255.252
 ip ospf 1 area 51
 no ip ospf message-digest-key 1
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
@@ -484,7 +469,7 @@ no shut
 exit
 int g3/0
 description Connection to Tyrell_HO_LAN_G3/0
-ip add 172.16.17.74 255.255.255.252
+ip add 10.7.0.74 255.255.255.252
 ip ospf 1 area 51
 no ip ospf message-digest-key 1
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
@@ -527,6 +512,13 @@ line vty 0 4
 logging synchronous
 exec-timeout 3 0
 exit
+router ospf 1
+router-id 250.250.250.250
+area 0 authentication message-digest
+area 51 authentication message-digest
+log-adjacency-changes detail
+auto-cost reference-bandwidth 10000
+exit
 int g1/0
 description Link -->> WAN_R1 G1/0
 ip add 10.7.0.77 255.255.255.252
@@ -564,8 +556,40 @@ ip ospf dead-interval 8
 no shut
 exit
 int lo 0
-description HO Network
-ip add 10.7.0.1 255.255.255.255
+ip add 200.200.200.200 255.255.255.255
+ip ospf 1 area 0
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+no shut
+exit
+int lo 101
+ip add 10.7.10.1 255.255.255.0
+description HO Management
+ip ospf 1 area 0
+ip ospf network point-to-point
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+int lo 10
+ip add 10.7.1.1 255.255.255.0
+description Sales and Marketing Gateway
+ip ospf 1 area 0
+ip ospf network point-to-point
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+int lo 20
+ip add 10.7.2.1 255.255.255.0
+description Admin Gateway
+ip ospf 1 area 0
+ip ospf network point-to-point
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+int lo 30
+ip add 10.7.3.1 255.255.255.0
+description Finance Gateway
 ip ospf 1 area 0
 ip ospf network point-to-point
 no ip ospf message-digest-key 1
@@ -573,61 +597,85 @@ ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
-exit
-int lo 1
-description HO Network
-ip add 10.7.1.1 255.255.255.0
-ip ospf 1 area 0
-ip ospf network point-to-point
-ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-no shut
-exit
-int lo 2
-description HO Network
-ip add 10.7.2.1 255.255.255.0
-ip ospf 1 area 0
-ip ospf network point-to-point
-ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-no shut
-exit
-int lo 3
-description HO Network
-ip add 10.7.3.1 255.255.255.0
-ip ospf 1 area 0
-ip ospf network point-to-point
-ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-no shut
-exit
-int lo 4
-description HO Network
+int lo 40
 ip add 10.7.4.1 255.255.255.0
+description HR Gateway
 ip ospf 1 area 0
 ip ospf network point-to-point
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf hello-interval 3
 ip ospf dead-interval 8
-no shut
+int lo 21
+ip add 10.7.2.11 255.255.255.255
+description Admin User 1
+ip ospf 1 area 0
+ip ospf network point-to-point
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+int lo 31
+ip add 10.7.3.21 255.255.255.0
+description Finance User
+ip ospf 1 area 0
+ip ospf network point-to-point
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+int lo 11
+ip add 10.7.1.21 255.255.255.255
+description Sales User
+ip ospf 1 area 0
+ip ospf network point-to-point
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+keepalive
+int lo 41
+ip add 10.7.4.21 255.255.255.0
+description HR User
+ip ospf 1 area 0
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 3
+ip ospf dead-interval 8
 exit
 
-router ospf 1
-router-id 250.250.250.250
-area 0 authentication message-digest
-area 51 authentication message-digest
-network 10.7.0.0 0.0.0.255 area 0 
-network 10.7.1.0 0.0.0.255 area 0 
-network 10.7.2.0 0.0.0.255 area 0 
-network 10.7.3.0 0.0.0.255 area 0 
-network 10.7.4.0 0.0.0.255 area 0 
-network 10.7.0.77 0.0.0.0 area 51
-network 10.7.0.81 0.0.0.0 area 51
-network 10.7.0.69 0.0.0.0 area 51
-network 10.7.0.73 0.0.0.0 area 51
-log-adjacency-changes detail
-auto-cost reference-bandwidth 10000
-exit
+int lo 40
+ip add 10.7.10.1 255.255.255.255
+description Management
+int lo 41
+ip add 10.7.10.2 255.255.255.255
+description Management
+int lo 43
+ip add 10.7.10.3 255.255.255.255
+description Management
+int lo 44
+ip add 10.7.10.4 255.255.255.255
+description Management
+int lo 45
+ip add 10.7.10.5 255.255.255.255
+description Management
+int lo 46
+ip add 10.7.10.6 255.255.255.255
+description Management
+int lo 47
+ip add 10.7.10.7 255.255.255.255
+description Management
+int lo 48
+ip add 10.7.10.8 255.255.255.255
+description Management
+int lo 49
+ip add 10.7.10.9 255.255.255.255
+description Management
+int lo 40
+ip add 10.7.10.1 255.255.255.255
+description Management
+int lo 2
+int lo 3
+int lo 4
+int lo 5
+int lo 6
+int lo 7
+int lo 8
+int lo 9
+description HR User
+ip add 10.7.10.1-9 255.255.255.255
