@@ -80,13 +80,12 @@ int po 10
 description CH#10 -->> Access_SW1
 ip add 10.7.0.2 255.255.255.252
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-mls qos trust dscp
 ip ospf hello-interval 2
 ip ospf dead-interval 5
 ip ospf priority 255
 no shut
 exit
-int range g1/0/3-5,g1/0/8-11,g1/0/16-17,g1/0/20-24,g1/1/4
+int range g1/0/3-5,g1/0/8-11,g1/0/16-17,g1/0/20-24
 switchport mode access
 switchport access vlan 51
 spanning-tree bpduguard enable
@@ -105,7 +104,6 @@ int po 12
 description CH#12 -->> ACCESS_SW2
 ip add 10.7.0.10 255.255.255.252
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-mls qos trust dscp
 ip ospf hello-interval 2
 ip ospf dead-interval 5
 ip ospf priority 255
@@ -121,7 +119,6 @@ int po 14
 description CH#14 -->> ACCESS_SW3
 ip add 10.7.0.18 255.255.255.252
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-mls qos trust dscp
 ip ospf hello-interval 2
 ip ospf dead-interval 5
 ip ospf priority 255
@@ -132,13 +129,13 @@ router-id 10.7.10.4
 area 0 authentication message-digest
 area 99 authentication message-digest
 log-adjacency-changes detail
-network 10.7.0.28 0.0.0.0 area 0
-network 10.7.0.40 0.0.0.0 area 0
-network 10.7.0.32 0.0.0.0 area 0
-network 10.7.0.0 0.0.0.3 area 99
-network 10.7.0.8 0.0.0.3 area 99
-network 10.7.0.16 0.0.0.3 area 99
-network 10.7.0.24 0.0.0.0 area 99
+network 10.7.0.29 0.0.0.0 area 0
+network 10.7.0.41 0.0.0.0 area 0
+network 10.7.0.33 0.0.0.0 area 0
+network 10.7.0.2 0.0.0.0 area 99
+network 10.7.0.10 0.0.0.0 area 99
+network 10.7.0.18 0.0.0.0 area 99
+network 10.7.0.25 0.0.0.0 area 99
 network 10.7.10.4 0.0.0.0 area 99
 area 99 range 10.7.0.0 255.255.240.0
 auto-cost reference-bandwidth 10000
@@ -230,13 +227,12 @@ int po 11
 description CH#11 -->> Access_SW1
 ip add 10.7.0.6 255.255.255.252
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-mls qos trust dscp
 ip ospf hello-interval 2
 ip ospf dead-interval 5
 ip ospf priority 255
 no shut
 exit
-int range g1/0/3-5,g1/0/8-11,g1/0/16-17,g1/0/20-24,g1/1/4
+int range g1/0/3-13,g1/0/18-19,g1/0/22-24
 switchport mode access
 switchport access vlan 51
 spanning-tree bpduguard enable
@@ -255,7 +251,6 @@ int po 13
 description CH#13 -->> ACCESS_SW2
 ip add 10.7.0.14 255.255.255.252
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-mls qos trust dscp
 ip ospf hello-interval 2
 ip ospf dead-interval 5
 ip ospf priority 255
@@ -271,7 +266,6 @@ int po 15
 description CH#15 -->> ACCESS_SW3
 ip add 10.7.0.22 255.255.255.252
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-mls qos trust dscp
 ip ospf hello-interval 2
 ip ospf dead-interval 5
 ip ospf priority 255
@@ -282,13 +276,13 @@ router-id 10.7.10.5
 area 0 authentication message-digest
 area 99 authentication message-digest
 log-adjacency-changes detail
-network 10.7.0.28 0.0.0.3 area 0
-network 10.7.0.36 0.0.0.3 area 0
-network 10.7.0.44 0.0.0.3 area 0
-network 10.7.0.4 0.0.0.3 area 99
-network 10.7.0.12 0.0.0.3 area 99
-network 10.7.0.20 0.0.0.3 area 99
-network 10.7.0.24 0.0.0.3 area 99
+network 10.7.0.30 0.0.0.0 area 0
+network 10.7.0.37 0.0.0.0 area 0
+network 10.7.0.45 0.0.0.0 area 0
+network 10.7.0.6 0.0.0.0 area 99
+network 10.7.0.14 0.0.0.0 area 99
+network 10.7.0.22 0.0.0.0 area 99
+network 10.7.0.26 0.0.0.0 area 99
 network 10.7.10.5 0.0.0.0 area 99
 area 99 range 10.7.0.0 255.255.240.0
 auto-cost reference-bandwidth 10000
