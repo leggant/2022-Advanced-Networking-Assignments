@@ -21,23 +21,6 @@ no int lo 3
 no int lo 4
 no int lo 5
 no int lo 6
-int lo 0 
-ip add 58.58.58.58 255.255.255.255
-ip ospf 47 area 0
-ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-no shut
-exit
-int g1/0
-description Connection to Provider R1
-ip add 172.16.17.13 255.255.255.252
-ip ospf 47 area 0
-ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-no shut
-exit
 router ospf 47
 router-id 58.58.58.58
 area 0 authentication message-digest
@@ -45,57 +28,109 @@ area 58 authentication message-digest
 log-adjacency-changes detail
 auto-cost reference-bandwidth 1000
 exit
+int lo 0 
+ip add 10.8.58.58 255.255.255.255
+ip ospf 47 area 0
+ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
+ip ospf dead-interval minimal hello-multiplier 4
+no shut
+exit
+int g1/0
+description Connection to Provider R1
+ip add 172.16.17.13 255.255.255.252
+ip ospf 47 area 0
+ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
+ip ospf dead-interval minimal hello-multiplier 4
+logging event link-status
+load-interval 30
+carrier-delay msec 0
+mls qos trust dscp
+ip pim sparse-mode
+dampening
+no shut
+exit
+int lo 1 
 ip add 10.8.1.1 255.255.255.0
-keepalive
 ip ospf 47 area 58
 ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
-ip ospf hello-interval 3
-ip ospf dead-interval 8
+ip ospf dead-interval minimal hello-multiplier 4
+ip ospf priority 255
+logging event link-status
+load-interval 30
+carrier-delay msec 0
+mls qos trust dscp
+ip pim sparse-mode
+dampening
 no shut
 exit
 int lo 2 
 ip add 10.8.2.1 255.255.255.0
-keepalive
 ip ospf 47 area 58
 ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
-ip ospf hello-interval 3
-ip ospf dead-interval 8
+ip ospf dead-interval minimal hello-multiplier 4
+ip ospf priority 255
+logging event link-status
+load-interval 30
+carrier-delay msec 0
+mls qos trust dscp
+ip pim sparse-mode
+dampening
 no shut
 exit
 int lo 3
 ip add 10.8.3.1 255.255.255.0
-keepalive
 ip ospf 47 area 58
 ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
-ip ospf hello-interval 3
-ip ospf dead-interval 8
+ip ospf dead-interval minimal hello-multiplier 4
+ip ospf priority 255
+logging event link-status
+load-interval 30
+carrier-delay msec 0
+mls qos trust dscp
+ip pim sparse-mode
+dampening
 no shut
 exit
 int lo 4 
 ip add 10.8.4.1 255.255.255.0
-keepalive
 ip ospf 47 area 58
 ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
-ip ospf hello-interval 3
-ip ospf dead-interval 8
+ip ospf dead-interval minimal hello-multiplier 4
+ip ospf priority 255
+logging event link-status
+load-interval 30
+carrier-delay msec 0
+mls qos trust dscp
+ip pim sparse-mode
+dampening
 no shut
 exit
 int lo 5 
 ip add 10.8.5.1 255.255.255.0
-keepalive
 ip ospf 47 area 58
 ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
-ip ospf hello-interval 3
-ip ospf dead-interval 8
+ip ospf dead-interval minimal hello-multiplier 4
+ip ospf priority 255
+logging event link-status
+load-interval 30
+carrier-delay msec 0
+mls qos trust dscp
+ip pim sparse-mode
+dampening
 no shut
 exit
 int lo 6
 ip add 10.8.6.10 255.255.255.0
-keepalive
 ip ospf 47 area 58
 ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
-ip ospf hello-interval 3
-ip ospf dead-interval 8
+ip ospf dead-interval minimal hello-multiplier 4
+ip ospf priority 255
+logging event link-status
+load-interval 30
+carrier-delay msec 0
+mls qos trust dscp
+ip pim sparse-mode
+dampening
 no shut
 exit
 end

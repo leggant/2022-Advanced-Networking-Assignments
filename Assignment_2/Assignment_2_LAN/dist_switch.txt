@@ -22,11 +22,35 @@ int lo 0
 description Management
 ip add 10.7.10.1 255.255.255.255
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+no shut
+exit
+
+
+
+int g1/1/2
+description Link -->> CORE_2
+ip add 10.7.0.41 255.255.255.252
+ip ospf message-digest-key 1 md5 #:?xhFmg6$[:%9U(
+ip ospf hello-interval 3
+ip ospf dead-interval 8
+mls qos trust dscp
+no shut
+exit
+
+
+int po 4
+description CH#4 -->> CORE_1
+ip add 10.7.0.30 255.255.255.252
+ip ospf message-digest-key 1 md5 #:?xhFmg6$[:%9U(
+mls qos trust dscp
+ip ospf network point-to-point
 ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
 exit
-int range g1/0/1-5,g1/0/8-11,g1/0/16-17,g1/0/20-24
+
+
+int range g1/0/3-5,g1/0/8-11,g1/0/16-17,g1/0/20-24,g1/1/4
 switchport mode access
 switchport access vlan 51
 spanning-tree bpduguard enable
@@ -34,45 +58,26 @@ switchport port-security maximum 1
 switchport port-security violation shutdown
 switchport port-security mac-address sticky
 shut
-int range g1/1/3-4
+exit
+
+
+int range g1/0/1-2
 no switchport
 description Link -->> DIST_SW2
 channel-group 1 mode on
+mls qos trust dscp
+ip ospf network point-to-point
+ip ospf hello-interval 3
+ip ospf dead-interval 8
 exit
 int po 1
 description CH#1 Link -->> DIST_SW2
 ip add 10.7.0.1 255.255.255.252
+no ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-ip ospf hello-interval 3
-ip ospf dead-interval 8
 no shut
 exit
-int range g1/0/6-7
-no switchport
-description Link -->> CORE_2
-channel-group 5 mode on
-exit
-int po 5
-description CH#5 -->> CORE_2
-ip add 10.7.0.34 255.255.255.252
-ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-no shut
-exit
-int range g1/1/1-2
-no switchport
-description Link -->> CORE_1
-channel-group 4 mode on
-exit
-int po 4
-description CH#4 -->> CORE_1
-ip add 10.7.0.30 255.255.255.252
-ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-no shut
-exit
+
 int range g1/0/12-13
 no switchport
 description Link -->> ACCESS_SW1
