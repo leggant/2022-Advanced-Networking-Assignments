@@ -20,36 +20,72 @@ vlan 51
 name Parking
 int lo 0
 description Management
-ip add 10.7.10.1 255.255.255.255
+ip add 10.7.10.4 255.255.255.255
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 2
+ip ospf dead-interval 5
 no shut
 exit
-
-
-
+int range g1/0/1-2
+no switchport
+description Link -->> DIST_SW2
+channel-group 1 mode on
+mls qos trust dscp
+exit
+int po 1
+description CH#1 -->> DIST_SW2
+ip add 10.7.0.25 255.255.255.252
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 2
+ip ospf dead-interval 5
+no shut
+exit
+int g1/1/1
+no switchport
+description Fibre Link -->> DIST_SW2
+ip add 10.7.0.29 255.255.255.252
+ip ospf message-digest-key 1 md5 #:?xhFmg6$[:%9U(
+ip ospf hello-interval 2
+ip ospf dead-interval 5
+mls qos trust dscp
+no shut
+exit
 int g1/1/2
-description Link -->> CORE_2
+no switchport
+description Fibre Link -->> CORE_2
 ip add 10.7.0.41 255.255.255.252
 ip ospf message-digest-key 1 md5 #:?xhFmg6$[:%9U(
-ip ospf hello-interval 3
-ip ospf dead-interval 8
+ip ospf hello-interval 2
+ip ospf dead-interval 5
 mls qos trust dscp
 no shut
 exit
-
-
-int po 4
-description CH#4 -->> CORE_1
-ip add 10.7.0.30 255.255.255.252
+int g1/1/3
+no switchport
+description Fibre Link -->> CORE_1
+ip add 10.7.0.33 255.255.255.252
 ip ospf message-digest-key 1 md5 #:?xhFmg6$[:%9U(
+ip ospf hello-interval 2
+ip ospf dead-interval 5
 mls qos trust dscp
-ip ospf network point-to-point
-ip ospf hello-interval 3
-ip ospf dead-interval 8
 no shut
 exit
-
-
+int range g1/0/12-13
+no switchport
+description Link -->> Access_SW1
+channel-group 10 mode on
+mls qos trust dscp
+exit
+int po 10
+description CH#10 -->> Access_SW1
+ip add 10.7.0.2 255.255.255.252
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+mls qos trust dscp
+ip ospf hello-interval 2
+ip ospf dead-interval 5
+ip ospf priority 255
+no shut
+exit
 int range g1/0/3-5,g1/0/8-11,g1/0/16-17,g1/0/20-24,g1/1/4
 switchport mode access
 switchport access vlan 51
@@ -59,86 +95,56 @@ switchport port-security violation shutdown
 switchport port-security mac-address sticky
 shut
 exit
-
-
-int range g1/0/1-2
-no switchport
-description Link -->> DIST_SW2
-channel-group 1 mode on
-mls qos trust dscp
-ip ospf network point-to-point
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-exit
-int po 1
-description CH#1 Link -->> DIST_SW2
-ip add 10.7.0.1 255.255.255.252
-no ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-no shut
-exit
-
-int range g1/0/12-13
-no switchport
-description Link -->> ACCESS_SW1
-channel-group 10 mode on
-exit
-int po 10
-description CH#10 -->> ACCESS_SW1
-ip add 10.7.0.5 255.255.255.252
-ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-no shut
-exit
 int range g1/0/14-15
 no switchport
 description Link -->> ACCESS_SW2
 channel-group 12 mode on
+mls qos trust dscp
 exit
 int po 12
 description CH#12 -->> ACCESS_SW2
-ip add 10.7.0.13 255.255.255.252
+ip add 10.7.0.10 255.255.255.252
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-ip ospf hello-interval 3
-ip ospf dead-interval 8
+mls qos trust dscp
+ip ospf hello-interval 2
+ip ospf dead-interval 5
+ip ospf priority 255
 no shut
 exit
 int range g1/0/18-19
 no switchport
 description Link -->> ACCESS_SW3
 channel-group 14 mode on
+mls qos trust dscp
 exit
 int po 14
 description CH#14 -->> ACCESS_SW3
-ip add 10.7.0.21 255.255.255.252
+ip add 10.7.0.18 255.255.255.252
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-ip ospf hello-interval 3
-ip ospf dead-interval 8
+mls qos trust dscp
+ip ospf hello-interval 2
+ip ospf dead-interval 5
+ip ospf priority 255
 no shut
 exit
 router ospf 1
-router-id 99.99.99.10
+router-id 10.7.10.4
 area 0 authentication message-digest
 area 99 authentication message-digest
 log-adjacency-changes detail
-network 10.7.0.30 0.0.0.0 area 0
-network 10.7.0.34 0.0.0.0 area 0
-network 10.7.0.1 0.0.0.0 area 99
-network 10.7.0.5 0.0.0.0 area 99
-network 10.7.0.13 0.0.0.0 area 99
-network 10.7.0.21 0.0.0.0 area 99
-network 10.7.10.1 0.0.0.0 area 0
+network 10.7.0.28 0.0.0.0 area 0
+network 10.7.0.40 0.0.0.0 area 0
+network 10.7.0.32 0.0.0.0 area 0
+network 10.7.0.0 0.0.0.3 area 99
+network 10.7.0.8 0.0.0.3 area 99
+network 10.7.0.16 0.0.0.3 area 99
+network 10.7.0.24 0.0.0.0 area 99
+network 10.7.10.4 0.0.0.0 area 99
+area 99 range 10.7.0.0 255.255.240.0
 auto-cost reference-bandwidth 10000
 passive-interface loopback 0
 exit
-int range g1/1/1-4,g1/0/18-19,g1/0/12-15
-shut 
-no shut
-exit
-exit
-clear ip ospf process
-y
+port-channel load-balance src-dst-mac
 end
 wr
 
@@ -164,13 +170,73 @@ vlan 51
 name Parking
 int lo 0
 description Management
-ip add 10.7.10.2 255.255.255.255
+ip add 10.7.10.5 255.255.255.255
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-ip ospf hello-interval 3
-ip ospf dead-interval 8
+ip ospf hello-interval 2
+ip ospf dead-interval 5
 no shut
 exit
-int range g1/0/1-5,g1/0/8-13,g1/0/18-19,g1/0/22-24
+int range g1/0/1-2
+no switchport
+description Link -->> DIST_SW1
+channel-group 1 mode on
+mls qos trust dscp
+exit
+int po 1
+description CH#1 -->> DIST_SW1
+ip add 10.7.0.26 255.255.255.252
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+ip ospf hello-interval 2
+ip ospf dead-interval 5
+no shut
+exit
+int g1/1/1
+no switchport
+description Fibre Link -->> DIST_SW1
+ip add 10.7.0.30 255.255.255.252
+ip ospf message-digest-key 1 md5 #:?xhFmg6$[:%9U(
+ip ospf hello-interval 2
+ip ospf dead-interval 5
+mls qos trust dscp
+no shut
+exit
+int g1/1/3
+no switchport
+description Fibre Link -->> CORE_2
+ip add 10.7.0.37 255.255.255.252
+ip ospf message-digest-key 1 md5 #:?xhFmg6$[:%9U(
+ip ospf hello-interval 2
+ip ospf dead-interval 5
+mls qos trust dscp
+no shut
+exit
+int g1/1/4
+no switchport
+description Fibre Link -->> CORE_1
+ip add 10.7.0.45 255.255.255.252
+ip ospf message-digest-key 1 md5 #:?xhFmg6$[:%9U(
+ip ospf hello-interval 2
+ip ospf dead-interval 5
+mls qos trust dscp
+no shut
+exit
+int range g1/0/14-15
+no switchport
+description Link -->> Access_SW1
+channel-group 11 mode on
+mls qos trust dscp
+exit
+int po 11
+description CH#11 -->> Access_SW1
+ip add 10.7.0.6 255.255.255.252
+ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
+mls qos trust dscp
+ip ospf hello-interval 2
+ip ospf dead-interval 5
+ip ospf priority 255
+no shut
+exit
+int range g1/0/3-5,g1/0/8-11,g1/0/16-17,g1/0/20-24,g1/1/4
 switchport mode access
 switchport access vlan 51
 spanning-tree bpduguard enable
@@ -178,105 +244,55 @@ switchport port-security maximum 1
 switchport port-security violation shutdown
 switchport port-security mac-address sticky
 shut
-int range g1/1/3-4
-no switchport
-description Link -->> DIST_SW1
-channel-group 1 mode on
-exit
-int po 1
-description CH#1 Link -->> DIST_SW1
-ip add 10.7.0.2 255.255.255.252
-ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-no shut
-exit
-int range g1/0/6-7
-no switchport
-description Link -->> CORE_1
-channel-group 5 mode on
-exit
-int po 5
-description CH#5 -->> CORE_1
-ip add 10.7.0.42 255.255.255.252
-ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-no shut
-exit
-int range g1/1/1-2
-no switchport
-description Link -->> CORE_2
-channel-group 4 mode on
-exit
-int po 4
-description CH#4 -->> CORE_2
-ip add 10.7.0.38 255.255.255.252
-ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-no shut
-exit
-int range g1/0/14-15
-no switchport
-description Link -->> ACCESS_SW1
-channel-group 11 mode on
-exit
-int po 11
-description CH#11 -->> ACCESS_SW1
-ip add 10.7.0.9 255.255.255.252
-ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-ip ospf hello-interval 3
-ip ospf dead-interval 8
-no shut
 exit
 int range g1/0/16-17
 no switchport
 description Link -->> ACCESS_SW2
 channel-group 13 mode on
+mls qos trust dscp
 exit
 int po 13
 description CH#13 -->> ACCESS_SW2
-ip add 10.7.0.17 255.255.255.252
+ip add 10.7.0.14 255.255.255.252
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-ip ospf hello-interval 3
-ip ospf dead-interval 8
+mls qos trust dscp
+ip ospf hello-interval 2
+ip ospf dead-interval 5
+ip ospf priority 255
 no shut
 exit
 int range g1/0/20-21
 no switchport
 description Link -->> ACCESS_SW3
 channel-group 15 mode on
+mls qos trust dscp
 exit
 int po 15
 description CH#15 -->> ACCESS_SW3
-ip add 10.7.0.25 255.255.255.252
+ip add 10.7.0.22 255.255.255.252
 ip ospf message-digest-key 1 md5 FZ*J+R7Gw]nm:2$[
-ip ospf hello-interval 3
-ip ospf dead-interval 8
+mls qos trust dscp
+ip ospf hello-interval 2
+ip ospf dead-interval 5
+ip ospf priority 255
 no shut
 exit
 router ospf 1
-router-id 99.99.99.20
+router-id 10.7.10.5
 area 0 authentication message-digest
 area 99 authentication message-digest
 log-adjacency-changes detail
-network 10.7.0.38 0.0.0.0 area 0
-network 10.7.0.42 0.0.0.0 area 0
-network 10.7.0.2 0.0.0.0 area 99
-network 10.7.0.9 0.0.0.0 area 99
-network 10.7.0.17 0.0.0.0 area 99
-network 10.7.0.25 0.0.0.0 area 99
-network 10.7.10.2 0.0.0.0 area 0
+network 10.7.0.28 0.0.0.3 area 0
+network 10.7.0.36 0.0.0.3 area 0
+network 10.7.0.44 0.0.0.3 area 0
+network 10.7.0.4 0.0.0.3 area 99
+network 10.7.0.12 0.0.0.3 area 99
+network 10.7.0.20 0.0.0.3 area 99
+network 10.7.0.24 0.0.0.3 area 99
+network 10.7.10.5 0.0.0.0 area 99
+area 99 range 10.7.0.0 255.255.240.0
 auto-cost reference-bandwidth 10000
 passive-interface loopback 0
 exit
-int range g1/1/1-4,g1/0/18-19,g1/0/12-15
-shut 
-no shut
-exit
-exit
-clear ip ospf process
-y
-end
+port-channel load-balance src-dst-mac
 wr
