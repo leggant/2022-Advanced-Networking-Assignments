@@ -25,8 +25,8 @@ int lo 0
 ip add 10.8.10.1 255.255.255.255
 ip ospf 47 area 58
 ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
-ip ospf hello-interval 2
-ip ospf dead-interval 5
+ip ospf hello-interval 3
+ip ospf dead-interval 8
 no shut
 exit
 int g1/0
@@ -44,6 +44,8 @@ router-id 10.8.10.1
 area 0 authentication message-digest
 area 58 authentication message-digest
 log-adjacency-changes detail
+network 172.16.17.12 0.0.0.3 area 0
+network 10.8.0.0 0.0.255.255 area 58
 exit
 int lo 1 
 ip add 10.8.1.1 255.255.255.0
@@ -63,10 +65,10 @@ ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
 exit
-int lo 3
+int lo 3 
 ip add 10.8.3.1 255.255.255.0
 keepalive
-ip ospf 47 area 58
+ip ospf 48 area 58
 ip ospf message-digest-key 47 md5 [Z,Q@n6eSY\*R,7$
 ip ospf hello-interval 3
 ip ospf dead-interval 8
@@ -90,7 +92,7 @@ ip ospf hello-interval 3
 ip ospf dead-interval 8
 no shut
 exit
-int lo 6
+int lo 6 
 ip add 10.8.6.10 255.255.255.0
 keepalive
 ip ospf 47 area 58
@@ -161,7 +163,9 @@ router-id 47.1.1.1
 area 0 authentication message-digest
 log-adjacency-changes detail
 auto-cost reference-bandwidth 10000
-exit
+network 172.16.17.8 0.0.0.3 area 0
+network 172.16.17.12 0.0.0.3 area 0
+exitc
 
 
 int g2/0
