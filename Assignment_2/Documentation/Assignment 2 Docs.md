@@ -52,7 +52,6 @@ The customer has requested that subnet allocations are easy to summarise, unders
     I have created the subnets using /24 CIDRs. These are commonly used, have a large number of user IP addresses which can be allocated in future as needed. End user subnets start at the 10.7.1.0/24 and end at 10.7.4.0/24. The 10.7.0.0/24 address space has been allocated to point-to-point connections, this makes it easier to keep track of addresses that are exclusively for the network infrastructure. This also keeps a large address space in reserve for future expansion of the network. An additional subnet has been created for loopback addressing, these addresses are to be allocated as needed for routing and testing purposes. Unused address space has approx. ____ IP addresses unused.
 2. You must provide documentation that lists each of the IP Subnets (including L3 links) and what they are used for. 
 
-
 **Consider** how device management addressing will be allocated. Ensure some point-to-point /30  networks are set aside for the WAN design. 
 
 
@@ -207,7 +206,8 @@ Provide the following documents and evidence. Ensure your work adheres to the ma
   - Show traffic flows (primary / backup paths) 
     If needed the diagram can be split into multiple parts. The diagram must be separate to the supplied packet tracer or VIRL configuration (though packet tracer or VIRL can be used as the basis). 
 
-### Deliverable – WAN Logical topology diagram (5%) 
+### Deliverable – WAN Logical topology diagram (5%)
+
   You are to provide a WAN logical topology diagram that includes the following:
   - Distribution layer, WAN edge, Service provider, Liverpool, Fulham
   - Interface / port assignment
