@@ -56,3 +56,49 @@ May 24 09:53:53.132 HYPERVISOR: exec_cmd: vm set_ios Fulham D:/GNS3/images/IOS/c
 May 24 09:54:17.527 HYPERVISOR: exec_cmd: vm set_ios Fulham D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
 May 24 09:54:18.013 HYPERVISOR: exec_cmd: vm set_ios Fulham D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
 May 24 09:54:18.075 HYPERVISOR: exec_cmd: vm set_ios Fulham D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 24 10:53:09.217 HYPERVISOR: exec_cmd: vm extract_config Fulham 
+May 24 10:57:12.875 HYPERVISOR: exec_cmd: nio create_udp udp-e3c21fd1-8444-4309-be6e-301688cd7feb 10062 127.0.0.1 10063 
+May 24 10:57:12.877 HYPERVISOR: exec_cmd: vm slot_add_nio_binding Fulham 4 0 udp-e3c21fd1-8444-4309-be6e-301688cd7feb 
+May 24 10:57:12.877 HYPERVISOR: exec_cmd: vm get_status Fulham 
+May 24 10:57:12.877 HYPERVISOR: exec_cmd: vm slot_enable_nio Fulham 4 0 
+May 24 11:12:39.658 HYPERVISOR: exec_cmd: vm extract_config Fulham 
+May 24 11:13:39.672 HYPERVISOR: exec_cmd: vm extract_config Fulham 
+May 24 11:52:10.533 HYPERVISOR: exec_cmd: vm extract_config Fulham 
+May 24 11:57:40.645 HYPERVISOR: exec_cmd: vm extract_config Fulham 
+May 24 12:01:10.695 HYPERVISOR: exec_cmd: vm extract_config Fulham 
+May 24 12:03:10.755 HYPERVISOR: exec_cmd: vm extract_config Fulham 
+May 24 12:05:10.803 HYPERVISOR: exec_cmd: vm extract_config Fulham 
+May 24 12:21:10.996 HYPERVISOR: exec_cmd: vm extract_config Fulham 
+May 24 12:22:40.980 HYPERVISOR: exec_cmd: vm extract_config Fulham 
+May 24 12:24:41.039 HYPERVISOR: exec_cmd: vm extract_config Fulham 
+May 24 14:02:36.594 HYPERVISOR: exec_cmd: vm get_status Fulham 
+May 24 14:02:36.594 HYPERVISOR: exec_cmd: vm slot_disable_nio Fulham 4 0 
+May 24 14:02:36.609 HYPERVISOR: exec_cmd: vm slot_remove_nio_binding Fulham 4 0 
+May 24 14:02:36.609 HYPERVISOR: exec_cmd: nio delete udp-e3c21fd1-8444-4309-be6e-301688cd7feb 
+May 24 14:25:43.526 HYPERVISOR: exec_cmd: vm extract_config Fulham 
+May 24 14:26:43.539 HYPERVISOR: exec_cmd: vm extract_config Fulham 
+May 24 15:25:14.733 HYPERVISOR: exec_cmd: vm extract_config Fulham 
+May 24 15:27:44.805 HYPERVISOR: exec_cmd: vm extract_config Fulham 
+May 24 15:40:59.128 HYPERVISOR: exec_cmd: vm get_status Fulham 
+May 24 15:40:59.128 HYPERVISOR: exec_cmd: vm stop Fulham 
+May 24 15:40:59.268 VM: VM Fulham shutdown.
+May 24 15:40:59.269 HYPERVISOR: exec_cmd: vm extract_config Fulham 
+May 24 15:41:53.546 HYPERVISOR: exec_cmd: vm set_ghost_status Fulham 2 
+May 24 15:41:53.546 HYPERVISOR: exec_cmd: vm set_ghost_file Fulham C:\Users\Ant\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin-256.ghost 
+May 24 15:41:53.547 HYPERVISOR: exec_cmd: vm get_status Fulham 
+May 24 15:41:53.548 HYPERVISOR: exec_cmd: vm set_config Fulham configs\i6_startup-config.cfg configs\i6_private-config.cfg 
+May 24 15:41:53.549 HYPERVISOR: exec_cmd: vm start Fulham 
+May 24 18:20:26.776 HYPERVISOR: exec_cmd: vm extract_config Fulham 
+May 24 18:27:55.065 HYPERVISOR: exec_cmd: vm get_status Fulham 
+May 24 18:27:55.066 HYPERVISOR: exec_cmd: vm stop Fulham 
+May 24 18:27:55.178 VM: VM Fulham shutdown.
+May 24 18:27:55.179 HYPERVISOR: exec_cmd: vm extract_config Fulham 
+May 24 18:30:39.455 HYPERVISOR: exec_cmd: vm get_status Fulham 
+May 24 18:30:39.457 HYPERVISOR: exec_cmd: vm extract_config Fulham 
+May 24 18:30:39.963 HYPERVISOR: exec_cmd: vm get_status Fulham 
+May 24 18:30:39.965 HYPERVISOR: exec_cmd: vm extract_config Fulham 
+May 24 18:30:39.970 HYPERVISOR: exec_cmd: vm delete Fulham 
+May 24 18:30:39.970 VM: VM Fulham destroyed.
+May 24 18:30:39.974 HYPERVISOR: exec_cmd: hypervisor stop 
+May 24 18:30:40.470 HYPERVISOR: Stopped.
+May 24 18:30:40.470 GENERAL: reset done.

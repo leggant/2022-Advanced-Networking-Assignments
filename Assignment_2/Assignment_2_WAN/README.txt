@@ -1,4 +1,4 @@
-Project: 'Assignment_2_WAN' created on 2022-05-19
-Author: Anthony Legg
+Project: 'Assignment_2_WAN' 
+Author: Anthony Legg 03007276
 
 No project description was given

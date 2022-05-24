@@ -466,6 +466,15 @@
                 "x": -729,
                 "y": -237,
                 "z": 2
+            },
+            {
+                "drawing_id": "8853ac00-0f93-4164-9ec2-4f531cdd34b6",
+                "locked": false,
+                "rotation": 0,
+                "svg": "<svg height=\"24\" width=\"115\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">lo0 10.7.250.250</text></svg>",
+                "x": -132,
+                "y": 188,
+                "z": 2
             }
         ],
         "links": [
