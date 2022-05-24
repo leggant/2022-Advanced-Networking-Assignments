@@ -1,0 +1,41 @@
+May 24 20:39:42.525 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+May 24 20:39:42.525 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 60519.
+May 24 20:39:43.027 HYPERVISOR: exec_cmd: hypervisor version 
+May 24 20:39:43.027 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\Ant\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips 
+May 24 20:39:43.027 GENERAL: working_dir=C:\Users\Ant\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips
+May 24 20:39:43.027 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\Ant\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\ea8b9614-3fa0-4d0e-8047-947c25d1805f 
+May 24 20:39:43.027 GENERAL: working_dir=C:\Users\Ant\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\ea8b9614-3fa0-4d0e-8047-947c25d1805f
+May 24 20:39:43.027 HYPERVISOR: exec_cmd: vm create Liverpool 9 c7200 
+May 24 20:39:43.027 VM: VM Liverpool created.
+May 24 20:39:43.027 HYPERVISOR: exec_cmd: vm set_con_tcp_port Liverpool 5002 
+May 24 20:39:43.027 HYPERVISOR: exec_cmd: c7200 get_mac_addr Liverpool 
+May 24 20:39:43.027 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 24 20:39:43.027 HYPERVISOR: exec_cmd: vm slot_add_binding Liverpool 0 0 C7200-IO-FE 
+May 24 20:39:43.027 HYPERVISOR: exec_cmd: vm set_disk0 Liverpool 0 
+May 24 20:39:43.027 HYPERVISOR: exec_cmd: vm set_exec_area Liverpool 64 
+May 24 20:39:43.027 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 24 20:39:43.027 HYPERVISOR: exec_cmd: vm set_idle_pc Liverpool 0x61ec17d4 
+May 24 20:39:43.027 HYPERVISOR: exec_cmd: vm set_ios Liverpool D:/GNS3/images/IOS/c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin 
+May 24 20:39:43.027 HYPERVISOR: exec_cmd: c7200 set_mac_addr Liverpool ca09.0f3c.0000 
+May 24 20:39:43.027 HYPERVISOR: exec_cmd: vm set_nvram Liverpool 512 
+May 24 20:39:43.027 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 24 20:39:43.027 HYPERVISOR: exec_cmd: vm slot_add_binding Liverpool 1 0 PA-GE 
+May 24 20:39:43.027 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 24 20:39:43.027 HYPERVISOR: exec_cmd: vm slot_add_binding Liverpool 2 0 PA-GE 
+May 24 20:39:43.027 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 24 20:39:43.027 HYPERVISOR: exec_cmd: vm slot_add_binding Liverpool 3 0 PA-GE 
+May 24 20:39:43.027 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 24 20:39:43.027 HYPERVISOR: exec_cmd: vm slot_add_binding Liverpool 4 0 PA-GE 
+May 24 20:39:45.217 HYPERVISOR: exec_cmd: nio create_udp udp-90fdb74b-90ea-4c3f-b7bb-a1acfd70c944 10052 127.0.0.1 10053 
+May 24 20:39:45.464 HYPERVISOR: exec_cmd: vm slot_add_nio_binding Liverpool 1 0 udp-90fdb74b-90ea-4c3f-b7bb-a1acfd70c944 
+May 24 20:39:45.464 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 24 20:40:12.611 HYPERVISOR: exec_cmd: vm set_ghost_status Liverpool 2 
+May 24 20:40:12.611 HYPERVISOR: exec_cmd: vm set_ghost_file Liverpool C:\Users\Ant\Desktop\2022-Advanced-Networking-Assignments\Assignment_2\Assignment_2_WAN\project-files\dynamips\c7200-advipservicesk9-mz.122-33.SRC2.extracted.bin-256.ghost 
+May 24 20:40:12.611 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 24 20:40:12.611 HYPERVISOR: exec_cmd: vm set_config Liverpool configs\i9_startup-config.cfg configs\i9_private-config.cfg 
+May 24 20:40:12.611 HYPERVISOR: exec_cmd: vm start Liverpool 
+May 24 20:40:42.922 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
+May 24 21:18:52.249 HYPERVISOR: exec_cmd: vm get_status Liverpool 
+May 24 21:18:52.249 HYPERVISOR: exec_cmd: vm stop Liverpool 
+May 24 21:18:52.372 VM: VM Liverpool shutdown.
+May 24 21:18:52.372 HYPERVISOR: exec_cmd: vm extract_config Liverpool 
